@@ -13,15 +13,16 @@ import com.clubobsidian.trident.Listener;
 public class JavaAssistEventManager implements EventManager {
 
 	private Queue<Listener> registeredListeners = new ConcurrentLinkedQueue<>();
-	private Map<Class<?>, Queue<Event>> registeredEvents = new ConcurrentHashMap<>();
+	private Map<Listener, Queue<MethodExecutor>> listenerRegisteredExecutors = new ConcurrentHashMap<>();
+	private Map<Class<?>, Queue<MethodExecutor>> classRegisteredEvents = new ConcurrentHashMap<>();
 	
 	@Override
 	public boolean dispatchEvent(Event event) 
 	{
-		Queue<Event> events = this.registeredEvents.get(event.getClass());
+		Queue<MethodExecutor> events = this.classRegisteredEvents.get(event.getClass());
 		if(events == null)
 			return false;
-		Iterator<Event> it = events.iterator();
+		Iterator<MethodExecutor> it = events.iterator();
 		
 	}
 	
