@@ -6,7 +6,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 import com.clubobsidian.trident.Event;
-import com.clubobsidian.trident.EventManager;
 import com.clubobsidian.trident.Listener;
 import com.clubobsidian.trident.MethodExecutor;
 
@@ -33,9 +32,9 @@ public class JavaAssistMethodExecutor extends MethodExecutor {
 		{
 			map = new ConcurrentHashMap<>();
 			pool = new ClassPool(true);
-			pool.insertClassPath("cn.nukkit.plugin.MethodCallback");
-			pool.insertClassPath("cn.nukkit.event.Event");
-			pool.insertClassPath("cn.nukkit.event.Listener");
+			pool.insertClassPath("com.clubobsidian.trident.impl.javaassist.MethodCallback");
+			pool.insertClassPath("com.clubobsidian.trident.Event");
+			pool.insertClassPath("com.clubobsidian.trident.Listener");
 		} 
 		catch (NotFoundException e) 
 		{
@@ -47,7 +46,7 @@ public class JavaAssistMethodExecutor extends MethodExecutor {
 	public JavaAssistMethodExecutor(Listener listener, Method method)
 	{
 		super(listener, method);
-		this.callBack = JavaAssistMethodExecutor.generateCallBack(listener, method, EventManager.class.getClassLoader());
+		this.callBack = JavaAssistMethodExecutor.generateCallBack(listener, method, JavaAssistEventManager.class.getClassLoader());
 	}
 	
 	public static ClassPool getClassPool()
@@ -86,7 +85,7 @@ public class JavaAssistMethodExecutor extends MethodExecutor {
 			callbackClassName += collision;
 			
 			CtClass callBackClass = pool.makeClass(callbackClassName);
-			callBackClass.addInterface(pool.get("cn.nukkit.plugin.MethodCallback"));
+			callBackClass.addInterface(pool.get("com.clubobsidian.trident.impl.javaassist.MethodCallback"));
 			
 			CtField listenerField = CtField.make("private " + listener.getClass().getName() + " listener;", callBackClass);
 			callBackClass.addField(listenerField);
@@ -103,7 +102,7 @@ public class JavaAssistMethodExecutor extends MethodExecutor {
 			String eventType = method.getParameterTypes()[0].getName();
 			
 			sb = new StringBuilder();
-			sb.append("public void call(cn.nukkit.event.Event event)");
+			sb.append("public void call(com.clubobsidian.trident.Event event)");
 			sb.append("{");
 			sb.append(eventType + " ev = " + "((" + eventType + ") event);");
 			sb.append("listener." + method.getName() + "(ev);");
@@ -112,7 +111,7 @@ public class JavaAssistMethodExecutor extends MethodExecutor {
 			CtMethod call = CtNewMethod.make(sb.toString(), callBackClass);
 			callBackClass.addMethod(call);
 			
-			Class<?> cl = callBackClass.toClass(classLoader);
+			Class<?> cl = callBackClass.toClass(classLoader, JavaAssistEventManager.class.getProtectionDomain());
 			return (MethodCallback) cl.getDeclaredConstructors()[0].newInstance(listener);
 			
 		} 

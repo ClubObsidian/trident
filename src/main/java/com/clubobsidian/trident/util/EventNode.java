@@ -12,6 +12,7 @@ public class EventNode
 	public EventNode(MethodExecutor data, int priority)
 	{
 		this.data = data;
+		this.priority = priority;
 	}
 	
 	public MethodExecutor getData()

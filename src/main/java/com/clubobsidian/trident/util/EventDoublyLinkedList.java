@@ -17,7 +17,6 @@ public class EventDoublyLinkedList implements Serializable {
 	 */
 	
 	private EventNode head;
-	
 	public EventDoublyLinkedList()
 	{
 		this.head = null;
@@ -42,11 +41,16 @@ public class EventDoublyLinkedList implements Serializable {
 			EventNode found = this.findPriorityNode(priorityValue);
 			if(found.equals(this.head))
 			{
+				System.out.println(priorityValue);
+				System.out.println(found.getPriority());
 				if(priorityValue < found.getPriority())
 				{
+					System.out.println("Lower");
 					EventNode oldHead = this.head;
 					this.head = newNode;
 					this.head.setNext(oldHead);
+					oldHead.setPrev(this.head);
+					return true;
 				}
 				else
 				{
@@ -72,6 +76,7 @@ public class EventDoublyLinkedList implements Serializable {
 				newNode.setNext(found);
 				newNode.setPrev(found);
 				found.setPrev(newNode);
+				return true;
 			}
 		}
 	

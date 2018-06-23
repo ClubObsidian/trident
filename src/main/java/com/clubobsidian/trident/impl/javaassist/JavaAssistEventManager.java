@@ -1,6 +1,7 @@
 package com.clubobsidian.trident.impl.javaassist;
 
 import java.lang.reflect.Method;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentHashMap;
@@ -16,7 +17,6 @@ import com.clubobsidian.trident.util.EventNode;
 
 public class JavaAssistEventManager implements EventManager {
 
-	private Queue<Listener> registeredListeners = new ConcurrentLinkedQueue<>();
 	private Map<Listener, Queue<MethodExecutor>> registeredEventListeners = new ConcurrentHashMap<>();
 	private Map<Class<?>, EventDoublyLinkedList> registeredExecutors = new ConcurrentHashMap<>();
 	
@@ -40,12 +40,13 @@ public class JavaAssistEventManager implements EventManager {
 	@Override
 	public boolean register(Listener listener) 
 	{
-		if(this.registeredListeners.contains(listener))
+		if(this.registeredEventListeners.keySet().contains(listener))
 		{
 			return false;
 		}
+		
 		this.registerEventsFromListener(listener);
-		return this.registeredListeners.add(listener);
+		return true;
 	}
 	
 	private void registerEventsFromListener(Listener listener)
@@ -80,13 +81,25 @@ public class JavaAssistEventManager implements EventManager {
 	@Override
 	public boolean unregister(Listener listener) 
 	{
-		boolean result = this.registeredListeners.remove(listener);
-		this.unregisterEventsFromListener(listener);
-		return result;
+		Queue<MethodExecutor> executors = this.registeredEventListeners.remove(listener);
+		if(executors == null)
+			return false;
+		
+		this.unregisterEventsFromExecutors(executors);
+		return true;
 	}
 	
-	private void unregisterEventsFromListener(Listener listener)
+	//Unregistering is going to be slow, this should be fixed later
+	private void unregisterEventsFromExecutors(Queue<MethodExecutor> executors)
 	{
-		
+		for(EventDoublyLinkedList list : this.registeredExecutors.values())
+		{
+			Iterator<MethodExecutor> it = executors.iterator();
+			while(it.hasNext())
+			{
+				MethodExecutor executor = it.next();
+				list.remove(executor);
+			}
+		}
 	}
 }
