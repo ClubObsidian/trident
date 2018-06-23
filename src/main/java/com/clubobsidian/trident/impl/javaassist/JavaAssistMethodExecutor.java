@@ -113,7 +113,6 @@ public class JavaAssistMethodExecutor extends MethodExecutor {
 			
 			Class<?> cl = callBackClass.toClass(classLoader, JavaAssistEventManager.class.getProtectionDomain());
 			return (MethodCallback) cl.getDeclaredConstructors()[0].newInstance(listener);
-			
 		} 
     	catch (NotFoundException | CannotCompileException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | SecurityException | ClassNotFoundException e) 
     	{

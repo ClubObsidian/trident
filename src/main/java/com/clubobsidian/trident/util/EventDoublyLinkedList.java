@@ -12,8 +12,8 @@ public class EventDoublyLinkedList implements Serializable {
 	 */
 	private static final long serialVersionUID = 6359060072540225110L;
 
-	/* Class for implementing a doubly linked list 
-	 * that takes event priority into account.
+	/** Class for implementing a doubly linked list 
+	 * that orders the list based off of {@link EventPriority}.
 	 */
 	
 	private EventNode head;
@@ -41,11 +41,8 @@ public class EventDoublyLinkedList implements Serializable {
 			EventNode found = this.findPriorityNode(priorityValue);
 			if(found.equals(this.head))
 			{
-				System.out.println(priorityValue);
-				System.out.println(found.getPriority());
 				if(priorityValue < found.getPriority())
 				{
-					System.out.println("Lower");
 					EventNode oldHead = this.head;
 					this.head = newNode;
 					this.head.setNext(oldHead);
@@ -76,6 +73,12 @@ public class EventDoublyLinkedList implements Serializable {
 				newNode.setNext(found);
 				newNode.setPrev(found);
 				found.setPrev(newNode);
+				return true;
+			}
+			else if(found.getNext() == null)
+			{
+				found.setNext(newNode);
+				newNode.setPrev(found);
 				return true;
 			}
 		}
