@@ -1,5 +1,7 @@
 # Trident
-A dead simpile annotation event system using bytecode generation on runtime for method executors
+A dead simpile annotation event system that allows different event executor implementations.
+
+The current implementation of Trident used JavaAssist to generate code on runtime for method executors.
 
 # Building
 ./gradlew shadowJar
