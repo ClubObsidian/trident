@@ -16,7 +16,6 @@ Build artifacts are hosted via [Jitpack.](https://jitpack.io/#clubobsidian/Tride
 
 ```
 repositories {
-			
 	maven { url 'https://jitpack.io' }
 }
 
@@ -27,18 +26,18 @@ compile 'com.github.clubobsidian:Trident:-SNAPSHOT'
 ### Maven
 
 ```
-	<repositories>
-		<repository>
-		    <id>jitpack.io</id>
-		    <url>https://jitpack.io</url>
-		</repository>
-	</repositories>
+<repositories>
+	<repository>
+		<id>jitpack.io</id>
+		<url>https://jitpack.io</url>
+	</repository>
+</repositories>
 
-	<dependency>
-	    <groupId>com.github.clubobsidian</groupId>
-	    <artifactId>Trident</artifactId>
-	    <version>-SNAPSHOT</version>
-	</dependency>
+<dependency>
+	<groupId>com.github.clubobsidian</groupId>
+	<artifactId>Trident</artifactId>
+	<version>-SNAPSHOT</version>
+</dependency>
 ```
 
 # Building
