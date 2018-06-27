@@ -151,8 +151,7 @@ public class EventDoublyLinkedListTest {
 			
 			assertTrue("Head is not null after traversing after removing all nodes after random insert", list.getHead() == null);
 			assertTrue("Removed nodes are not equal to iterating length after random insert", iterate == removalCount);
-			
-		} 
+		}
 		catch (NoSuchMethodException | SecurityException e) 
 		{
 			e.printStackTrace();

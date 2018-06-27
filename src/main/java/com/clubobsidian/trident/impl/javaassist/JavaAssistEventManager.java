@@ -90,7 +90,7 @@ public class JavaAssistEventManager implements EventManager {
 		return true;
 	}
 	
-	//Unregistering is going to be slow, this should be fixed later
+	//Unregistering might be too slow, this should be tested later
 	private void unregisterEventsFromExecutors(Queue<MethodExecutor> executors)
 	{
 		for(EventDoublyLinkedList list : this.registeredExecutors.values())
