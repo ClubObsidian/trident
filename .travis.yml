@@ -5,4 +5,7 @@ jdk:
   - oraclejdk9
 before_install:
   - chmod +x gradlew
-script: ./gradlew test
+script:
+- ./gradlew test
+- ./gradlew jacocoTestReport
+- bash <(curl -s https://codecov.io/bash)

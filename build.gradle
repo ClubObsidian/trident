@@ -10,6 +10,7 @@ buildscript {
 
 apply plugin: 'java'
 apply plugin: 'com.github.johnrengelman.shadow'
+apply plugin: 'jacoco'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -29,4 +30,11 @@ shadowJar {
 dependencies {
     testImplementation 'junit:junit:4.12'
     compile 'org.javassist:javassist:3.22.0-GA' 
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        html.enabled false
+    }
 }
