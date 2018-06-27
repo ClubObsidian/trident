@@ -1,4 +1,5 @@
 import com.clubobsidian.trident.EventHandler;
+import com.clubobsidian.trident.EventPriority;
 import com.clubobsidian.trident.Listener;
 
 public class TestListener implements Listener {
@@ -25,5 +26,20 @@ public class TestListener implements Listener {
 	public void test(TestEvent event)
 	{
 		this.test = !test;
+	}
+	
+	@EventHandler
+	public void testCancelleable(TestEventCancellable event)
+	{
+		event.setCancelled(true);
+	}
+	
+	@EventHandler(priority = EventPriority.HIGHEST)
+	public void testCancellableHighest(TestEventCancellable event)
+	{
+		if(event.isCancelled())
+		{
+			this.test = true;
+		}
 	}
 }

@@ -20,5 +20,21 @@ public class JavaAssistEventManagerTest {
 		manager.dispatchEvent(new TestEvent());
 		
 		assertTrue("Test is not true", test.getTest());
+		
+		manager.dispatchEvent(new TestEvent());
+		
+		assertTrue("Test is not false", !test.getTest());
+	}
+	
+	@Test
+	public void testEventCancellable()
+	{
+		TestListener test = new TestListener("test");
+		EventManager manager = new JavaAssistEventManager();
+		manager.register(test);
+		
+		manager.dispatchEvent(new TestEventCancellable());
+		
+		assertTrue("Test is not true, event was not cancelled", test.getTest());
 	}
 }
