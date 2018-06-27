@@ -17,11 +17,11 @@ public class JavaAssistEventManagerTest {
 		assertTrue("Event is not registered", registered);
 		assertTrue("Test is not false", !test.getTest());
 		
-		manager.dispatchEvent(new TestEvent());
+		manager.callEvent(new TestEvent());
 		
 		assertTrue("Test is not true", test.getTest());
 		
-		manager.dispatchEvent(new TestEvent());
+		manager.callEvent(new TestEvent());
 		
 		assertTrue("Test is not false", !test.getTest());
 	}
@@ -33,7 +33,7 @@ public class JavaAssistEventManagerTest {
 		EventManager manager = new JavaAssistEventManager();
 		manager.register(test);
 		
-		manager.dispatchEvent(new TestCancellableEvent());
+		manager.callEvent(new TestCancellableEvent());
 		
 		assertTrue("Test is not true, event was not cancelled", test.getTest());
 	}
@@ -45,7 +45,7 @@ public class JavaAssistEventManagerTest {
 		EventManager manager = new JavaAssistEventManager();
 		manager.register(test);
 		
-		manager.dispatchEvent(new TestOrderEvent());
+		manager.callEvent(new TestOrderEvent());
 		
 		assertTrue("Events were not listened in the correct order", test.getData().equals("012345"));
 	}
