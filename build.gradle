@@ -3,7 +3,7 @@ buildscript {
     jcenter()
   }
   dependencies {
-    classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.3'
+    classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.4'
   }
 }
 
@@ -23,6 +23,7 @@ shadowJar {
    baseName = 'Trident'
    classifier = null
    version = null
+   relocate 'javassist', 'com.clubobsidian.trident.javassist'
 }
 
 dependencies {

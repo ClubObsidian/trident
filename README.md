@@ -10,7 +10,7 @@ The current implementation of Trident used JavaAssist to generate code on runtim
 
 Build artifacts are hosted via [Jitpack.](https://jitpack.io/#clubobsidian/Trident/)
 
-## Setting up dependency
+## Setting up as a dependency
 
 ### Gradle
 
