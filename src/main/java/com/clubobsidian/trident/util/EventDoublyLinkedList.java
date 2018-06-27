@@ -13,9 +13,8 @@ public class EventDoublyLinkedList implements Serializable {
 	private static final long serialVersionUID = 6359060072540225110L;
 
 	/** Class for implementing a doubly linked list 
-	 * that orders the list based off of {@link EventPriority}.
+	 * that orders the list based off of creation time and {@link EventPriority}.
 	 */
-	
 	private EventNode head;
 	public EventDoublyLinkedList()
 	{
@@ -38,40 +37,20 @@ public class EventDoublyLinkedList implements Serializable {
 		}
 		else
 		{
-			EventNode found = this.findPriorityNode(priorityValue);
-			if(found.equals(this.head))
+			EventNode found = this.findInsertionNode(priorityValue);
+			if(found.equals(this.head) && priorityValue < this.head.getPriority())
 			{
-				if(priorityValue < found.getPriority())
-				{
-					EventNode oldHead = this.head;
-					this.head = newNode;
-					this.head.setNext(oldHead);
-					oldHead.setPrev(this.head);
-					return true;
-				}
-				else
-				{
-					if(this.head.getNext() == null)
-					{
-						this.head.setNext(newNode);
-						newNode.setPrev(this.head);
-						return true;
-					}
-					else
-					{
-						newNode.setNext(this.head.getNext());
-						this.head.setPrev(newNode);
-						this.head.setNext(newNode);
-						newNode.setPrev(this.head);
-						return true;
-					}	
-				}
+				EventNode oldHead = this.head;
+				this.head = newNode;
+				this.head.setNext(oldHead);
+				oldHead.setPrev(this.head);
+				return true;
 			}
 			else if(found.getPriority() > priorityValue)
 			{
-				found.getPrev().setNext(newNode);
 				newNode.setNext(found);
-				newNode.setPrev(found);
+				newNode.setPrev(found.getPrev());
+				newNode.getPrev().setNext(newNode);
 				found.setPrev(newNode);
 				return true;
 			}
@@ -79,6 +58,13 @@ public class EventDoublyLinkedList implements Serializable {
 			{
 				found.setNext(newNode);
 				newNode.setPrev(found);
+				return true;
+			}
+			else if(found.getPriority() == priorityValue)
+			{
+				newNode.setNext(found.getNext());
+				found.setNext(newNode);
+				newNode.getNext().setPrev(newNode);
 				return true;
 			}
 		}
@@ -130,14 +116,22 @@ public class EventDoublyLinkedList implements Serializable {
 	}
 	
 	/**
-	 * @return The last node that can be found for the priority value 
+	 * @return The node to be inserted around
 	 */
-	private EventNode findPriorityNode(int priorityValue)
+	private EventNode findInsertionNode(int priorityValue)
 	{
 		EventNode next = this.head;
 		while(next != null)
 		{
 			if(next.getNext() == null) //if tail
+			{
+				return next;
+			}
+			else if(next.getPriority() == priorityValue && next.getNext() == null)
+			{
+				return next;
+			}
+			else if(next.getPriority() == priorityValue && next.getNext().getPriority() > priorityValue)
 			{
 				return next;
 			}

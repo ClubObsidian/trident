@@ -1,5 +1,7 @@
 import static org.junit.Assert.assertTrue;
 
+import java.util.Random;
+
 import org.junit.Test;
 
 import com.clubobsidian.trident.EventPriority;
@@ -105,13 +107,55 @@ public class EventDoublyLinkedListTest {
 				node = node.getNext();
 			}
 			
-			assertTrue("Head is not null after traversing and removing all node", list.getHead() == null);
-			assertTrue("Removed nodes is not equal to EventPriority length", EventPriority.values().length == removalCount);
+			assertTrue("Head is not null after traversing after removing all node", list.getHead() == null);
+			assertTrue("Removed nodes are not equal to EventPriority length", EventPriority.values().length == removalCount);
+			
+			for(int i = (EventPriority.values()[EventPriority.values().length - 1]).getValue(); i > -1 ; i--)
+			{
+				list.insert(new JavaAssistMethodExecutor(new TestListener("test" + i), test.getClass().getDeclaredMethod("test", TestEvent.class)), EventPriority.getByValue(i));
+			}
+			
+			node = list.getHead();
+			removalCount = 0;
+			while(node != null)
+			{
+				list.remove(node.getData());
+				removalCount += 1;
+				node = node.getNext();
+			}
+			
+			assertTrue("Head is not null after traversing after removing all nodes reverse", list.getHead() == null);
+			assertTrue("Removed nodes are not equal to EventPriority length", EventPriority.values().length == removalCount);
+			
+			Random rand = new Random();
+			
+			int iterate = 10000;
+			for(int i = 0; i < iterate; i++)
+			{
+				
+				rand.setSeed(System.nanoTime());
+				int next = rand.nextInt(6);
+				boolean inserted = list.insert(new JavaAssistMethodExecutor(new TestListener("test" + i), test.getClass().getDeclaredMethod("test", TestEvent.class)), EventPriority.getByValue(next));
+			
+				assertTrue("Insert failed for random insert for removal", inserted);
+			}
+			
+			node = list.getHead();
+			removalCount = 0;
+			while(node != null)
+			{
+				list.remove(node.getData());
+				removalCount += 1;
+				node = node.getNext();
+			}
+			
+			assertTrue("Head is not null after traversing after removing all nodes after random insert", list.getHead() == null);
+			assertTrue("Removed nodes are not equal to iterating length after random insert", iterate == removalCount);
+			
 		} 
 		catch (NoSuchMethodException | SecurityException e) 
 		{
 			e.printStackTrace();
 		}
-		
 	}
 }
