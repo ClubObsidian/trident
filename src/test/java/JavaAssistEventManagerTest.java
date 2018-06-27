@@ -12,7 +12,7 @@ public class JavaAssistEventManagerTest {
 	{
 		TestListener test = new TestListener("test");
 		EventManager manager = new JavaAssistEventManager();
-		boolean registered = manager.register(test);
+		boolean registered = manager.registerEvents(test);
 		
 		assertTrue("Event is not registered", registered);
 		assertTrue("Test is not false", !test.getTest());
@@ -31,7 +31,7 @@ public class JavaAssistEventManagerTest {
 	{
 		TestListener test = new TestListener("test");
 		EventManager manager = new JavaAssistEventManager();
-		manager.register(test);
+		manager.registerEvents(test);
 		
 		manager.callEvent(new TestCancellableEvent());
 		
@@ -43,7 +43,7 @@ public class JavaAssistEventManagerTest {
 	{
 		TestListener test = new TestListener("");
 		EventManager manager = new JavaAssistEventManager();
-		manager.register(test);
+		manager.registerEvents(test);
 		
 		manager.callEvent(new TestOrderEvent());
 		

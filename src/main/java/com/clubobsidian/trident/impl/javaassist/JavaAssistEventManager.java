@@ -39,7 +39,7 @@ public class JavaAssistEventManager implements EventManager {
 	}
 	
 	@Override
-	public boolean register(Listener listener) 
+	public boolean registerEvents(Listener listener) 
 	{
 		if(this.registeredEventListeners.keySet().contains(listener))
 		{
@@ -80,7 +80,7 @@ public class JavaAssistEventManager implements EventManager {
 	}
 
 	@Override
-	public boolean unregister(Listener listener) 
+	public boolean unregisterEvents(Listener listener) 
 	{
 		Queue<MethodExecutor> executors = this.registeredEventListeners.remove(listener);
 		if(executors == null)
