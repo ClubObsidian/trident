@@ -1,6 +1,7 @@
 # Trident 
 [![Build Status](https://api.travis-ci.org/ClubObsidian/Trident.svg?branch=master)](https://travis-ci.org/ClubObsidian/Trident)
 [![](https://jitpack.io/v/clubobsidian/Trident.svg)](https://jitpack.io/#clubobsidian/Trident)
+[![codecov](https://codecov.io/gh/ClubObsidian/Trident/branch/master/graph/badge.svg)](https://codecov.io/gh/ClubObsidian/Trident)
 
 A dead simpile annotation event system that allows different event executor implementations.
 
