@@ -72,11 +72,11 @@ public class EventDoublyLinkedList implements Serializable {
 		return false;
 	}
 	
-	public boolean remove(MethodExecutor executor)
+	public EventNode remove(MethodExecutor executor)
 	{
 		EventNode found = this.find(executor);
 		if(found == null)
-			return false;
+			return null;
 		
 		if(found.equals(this.head))
 		{
@@ -88,17 +88,17 @@ public class EventDoublyLinkedList implements Serializable {
 			{
 				this.head = this.head.getNext();
 			}
-			return true;
+			return found;
 		}
 		else if(found.getNext() == null)
 		{
 			found.getPrev().setNext(null);
-			return true;
+			return found;
 		}
 		else
 		{
 			found.getPrev().setNext(found.getNext());
-			return true;
+			return found;
 		}
 	}
 	

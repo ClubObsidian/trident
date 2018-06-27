@@ -157,4 +157,96 @@ public class EventDoublyLinkedListTest {
 			e.printStackTrace();
 		}
 	}
+	
+	@Test
+	public void emptyLinkedListTest()
+	{
+		EventDoublyLinkedList list = new EventDoublyLinkedList();
+		TestListener test = new TestListener("test1");
+		try 
+		{
+			MethodExecutor executor = new JavaAssistMethodExecutor(test, test.getClass().getDeclaredMethod("test", TestEvent.class));
+			assertTrue("Executor was removed", list.remove(executor) == null);
+		} 
+		catch (NoSuchMethodException | SecurityException e) 
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void nextIsNullAndNotHeadRemove()
+	{
+		try 
+		{
+			EventDoublyLinkedList list = new EventDoublyLinkedList();
+			TestListener test1 = new TestListener("test1");
+			MethodExecutor executor1 = new JavaAssistMethodExecutor(test1, test1.getClass().getDeclaredMethod("test", TestEvent.class));
+			
+			list.insert(executor1, EventPriority.LOWEST);
+			
+			TestListener test2 = new TestListener("test2");
+			MethodExecutor executor2 = new JavaAssistMethodExecutor(test2, test2.getClass().getDeclaredMethod("test", TestEvent.class));
+			
+			list.insert(executor2, EventPriority.LOW);
+			
+			EventNode removed = list.remove(executor2);
+			
+			assertTrue("EventNode data was not equal", removed.getData().equals(executor2));
+			
+			assertTrue("EventNode previous node's next node was not null", removed.getPrev().getNext() == null);
+		} 
+		catch (NoSuchMethodException | SecurityException e) 
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void foundIsMiddleNodeRemoveTest()
+	{
+		try 
+		{
+			EventDoublyLinkedList list = new EventDoublyLinkedList();
+			TestListener test1 = new TestListener("test1");
+			MethodExecutor executor1 = new JavaAssistMethodExecutor(test1, test1.getClass().getDeclaredMethod("test", TestEvent.class));
+			
+			list.insert(executor1, EventPriority.LOWEST);
+			
+			TestListener test2 = new TestListener("test2");
+			MethodExecutor executor2 = new JavaAssistMethodExecutor(test2, test2.getClass().getDeclaredMethod("test", TestEvent.class));
+			
+			list.insert(executor2, EventPriority.LOW);
+			
+			TestListener test3 = new TestListener("test3");
+			MethodExecutor executor3 = new JavaAssistMethodExecutor(test3, test3.getClass().getDeclaredMethod("test", TestEvent.class));
+			
+			list.insert(executor3, EventPriority.NORMAL);
+			
+			EventNode removed = list.remove(executor2);
+			
+			assertTrue("Previous node's next node was not set to removed next node", removed.getPrev().getNext().equals(removed.getNext()));
+		
+		} 
+		catch (NoSuchMethodException | SecurityException e) 
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void findMethodExecutorThatDoesNotExistTest()
+	{
+		try 
+		{
+			EventDoublyLinkedList list = new EventDoublyLinkedList();
+			TestListener test1 = new TestListener("test1");
+			MethodExecutor executor1 = new JavaAssistMethodExecutor(test1, test1.getClass().getDeclaredMethod("test", TestEvent.class));
+			assertTrue("Executor was found while not inserted", list.find(executor1) == null);
+		} 
+		catch (NoSuchMethodException | SecurityException e) 
+		{
+			e.printStackTrace();
+		}
+	}
 }
