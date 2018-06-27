@@ -26,14 +26,14 @@ public class EventDoublyLinkedList implements Serializable {
 		return this.head;
 	}
 	
-	public boolean insert(MethodExecutor executor, EventPriority priority)
+	public EventNode insert(MethodExecutor executor, EventPriority priority)
 	{
 		int priorityValue = priority.getValue();
 		EventNode newNode = new EventNode(executor, priorityValue);
 		if(this.head == null)
 		{
 			this.head = new EventNode(executor, priorityValue);
-			return true;
+			return newNode;
 		}
 		else
 		{
@@ -44,7 +44,7 @@ public class EventDoublyLinkedList implements Serializable {
 				this.head = newNode;
 				this.head.setNext(oldHead);
 				oldHead.setPrev(this.head);
-				return true;
+				return newNode;
 			}
 			else if(found.getPriority() > priorityValue)
 			{
@@ -52,24 +52,24 @@ public class EventDoublyLinkedList implements Serializable {
 				newNode.setPrev(found.getPrev());
 				newNode.getPrev().setNext(newNode);
 				found.setPrev(newNode);
-				return true;
+				return newNode;
 			}
 			else if(found.getNext() == null)
 			{
 				found.setNext(newNode);
 				newNode.setPrev(found);
-				return true;
+				return newNode;
 			}
 			else if(found.getPriority() == priorityValue)
 			{
 				newNode.setNext(found.getNext());
 				found.setNext(newNode);
 				newNode.getNext().setPrev(newNode);
-				return true;
+				return newNode;
 			}
 		}
 	
-		return false;
+		return null;
 	}
 	
 	public EventNode remove(MethodExecutor executor)

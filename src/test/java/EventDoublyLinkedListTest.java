@@ -23,55 +23,55 @@ public class EventDoublyLinkedListTest {
 			
 			TestListener test = new TestListener("test");
 			MethodExecutor executor = new JavaAssistMethodExecutor(test, test.getClass().getDeclaredMethod("test", TestEvent.class));
-			boolean low = list.insert(executor, EventPriority.LOW);
-			assertTrue("Low could not be inserted at head", low);
+			EventNode low = list.insert(executor, EventPriority.LOW);
+			assertTrue("Low could not be inserted at head", low != null);
 			
 			assertTrue("Low is not head", list.getHead().getData().equals(executor));
 			
 			
 			TestListener test2 = new TestListener("test2");
 			MethodExecutor executor2 = new JavaAssistMethodExecutor(test2, test2.getClass().getDeclaredMethod("test", TestEvent.class));
-			boolean lowest = list.insert(executor2, EventPriority.LOWEST);
-			assertTrue("Lowest could not be inserted", lowest);
+			EventNode lowest = list.insert(executor2, EventPriority.LOWEST);
+			assertTrue("Lowest could not be inserted", lowest != null);
 			
 			assertTrue("Lowest is not head", list.getHead().getData().equals(executor2));
 			
 			
 			TestListener test3 = new TestListener("test3");
 			MethodExecutor executor3 = new JavaAssistMethodExecutor(test3, test3.getClass().getDeclaredMethod("test", TestEvent.class));
-			boolean nextLowest = list.insert(executor3, EventPriority.LOWEST);
-			assertTrue("NextLowest could not be inserted", nextLowest);
+			EventNode nextLowest = list.insert(executor3, EventPriority.LOWEST);
+			assertTrue("NextLowest could not be inserted", nextLowest != null);
 			
 			assertTrue("NextLowest is not next to head", list.getHead().getNext().getData().equals(executor3));
 			
 			
 			TestListener test4 = new TestListener("test4");
 			MethodExecutor executor4 = new JavaAssistMethodExecutor(test4, test4.getClass().getDeclaredMethod("test", TestEvent.class));
-			boolean monitor = list.insert(executor4, EventPriority.MONITOR);
-			assertTrue("Monitor could not be inserted", monitor);
+			EventNode monitor = list.insert(executor4, EventPriority.MONITOR);
+			assertTrue("Monitor could not be inserted", monitor != null);
 			
 			assertTrue("Monitor is not tail", list.find(executor4).getData().equals(executor4));
 			
 			
 			TestListener test5 = new TestListener("test5");
 			MethodExecutor executor5 = new JavaAssistMethodExecutor(test5, test5.getClass().getDeclaredMethod("test", TestEvent.class));
-			boolean high = list.insert(executor5, EventPriority.HIGH);
-			assertTrue("High could not be inserted", high);
+			EventNode high = list.insert(executor5, EventPriority.HIGH);
+			assertTrue("High could not be inserted", high != null);
 			
 			assertTrue("High next node is not priority monitor", list.find(executor5).getNext().getData().equals(executor4));
 			
 			TestListener test6 = new TestListener("test6");
 			MethodExecutor executor6 = new JavaAssistMethodExecutor(test6, test6.getClass().getDeclaredMethod("test", TestEvent.class));
-			boolean normal = list.insert(executor6, EventPriority.NORMAL);
-			assertTrue("Normal could not be inserted", normal);
+			EventNode normal = list.insert(executor6, EventPriority.NORMAL);
+			assertTrue("Normal could not be inserted", normal != null);
 			
 			assertTrue("Normal next node is not priority high", list.find(executor6).getNext().getData().equals(executor5));
 			
 			
 			TestListener test7 = new TestListener("test7");
 			MethodExecutor executor7 = new JavaAssistMethodExecutor(test7, test7.getClass().getDeclaredMethod("test", TestEvent.class));
-			boolean highest = list.insert(executor7, EventPriority.HIGHEST);
-			assertTrue("Highest could not be inserted", highest);
+			EventNode highest = list.insert(executor7, EventPriority.HIGHEST);
+			assertTrue("Highest could not be inserted", highest != null);
 			
 			assertTrue("Highest next node is not priority monitor", list.find(executor7).getNext().getData().equals(executor4));
 		} 
@@ -137,9 +137,9 @@ public class EventDoublyLinkedListTest {
 				
 				rand.setSeed(System.nanoTime());
 				int next = rand.nextInt(6);
-				boolean inserted = list.insert(new JavaAssistMethodExecutor(new TestListener("test" + i), test.getClass().getDeclaredMethod("test", TestEvent.class)), EventPriority.getByValue(next));
+				EventNode inserted = list.insert(new JavaAssistMethodExecutor(new TestListener("test" + i), test.getClass().getDeclaredMethod("test", TestEvent.class)), EventPriority.getByValue(next));
 			
-				assertTrue("Insert failed for random insert for removal", inserted);
+				assertTrue("Insert failed for random insert for removal", inserted != null);
 			}
 			
 			node = list.getHead();
@@ -264,6 +264,30 @@ public class EventDoublyLinkedListTest {
 			assertTrue("Null node was not found", findInsertion.invoke(list, 6) == null);
 		} 
 		catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) 
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void findIfFoundNodePriorityIsTheSameTest()
+	{
+		try 
+		{
+			EventDoublyLinkedList list = new EventDoublyLinkedList();
+			TestListener test1 = new TestListener("test1");
+			MethodExecutor executor1 = new JavaAssistMethodExecutor(test1, test1.getClass().getDeclaredMethod("test", TestEvent.class));
+			
+			list.insert(executor1, EventPriority.LOWEST);
+			
+			TestListener test2 = new TestListener("test2");
+			MethodExecutor executor2 = new JavaAssistMethodExecutor(test2, test2.getClass().getDeclaredMethod("test", TestEvent.class));
+			
+			EventNode lastInserted = list.insert(executor2, EventPriority.LOWEST);
+			
+			assertTrue("Previous node's priority is not the same", lastInserted.getPriority() == lastInserted.getPrev().getPriority());
+		} 
+		catch (NoSuchMethodException | SecurityException e) 
 		{
 			e.printStackTrace();
 		}
