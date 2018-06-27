@@ -1,5 +1,7 @@
 import static org.junit.Assert.assertTrue;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Random;
 
 import org.junit.Test;
@@ -245,6 +247,23 @@ public class EventDoublyLinkedListTest {
 			assertTrue("Executor was found while not inserted", list.find(executor1) == null);
 		} 
 		catch (NoSuchMethodException | SecurityException e) 
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	@Test //This should never happen under normal circumstances but is being used for code coverage
+	public void findInsertNull()
+	{
+		try 
+		{
+			EventDoublyLinkedList list = new EventDoublyLinkedList();
+			
+			Method findInsertion = list.getClass().getDeclaredMethod("findInsertionNode", int.class);
+			findInsertion.setAccessible(true);
+			assertTrue("Null node was not found", findInsertion.invoke(list, 6) == null);
+		} 
+		catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) 
 		{
 			e.printStackTrace();
 		}

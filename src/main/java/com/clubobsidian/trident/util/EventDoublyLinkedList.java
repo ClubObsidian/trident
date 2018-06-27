@@ -127,10 +127,6 @@ public class EventDoublyLinkedList implements Serializable {
 			{
 				return next;
 			}
-			else if(next.getPriority() == priorityValue && next.getNext() == null)
-			{
-				return next;
-			}
 			else if(next.getPriority() == priorityValue && next.getNext().getPriority() > priorityValue)
 			{
 				return next;
