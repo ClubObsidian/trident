@@ -4,7 +4,6 @@ import com.clubobsidian.trident.Event;
 
 public interface MethodCallback {
 
-	
 	public abstract void call(Event event);
 	
 }

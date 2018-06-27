@@ -12,6 +12,7 @@ import com.clubobsidian.trident.EventHandler;
 import com.clubobsidian.trident.EventManager;
 import com.clubobsidian.trident.Listener;
 import com.clubobsidian.trident.MethodExecutor;
+import com.clubobsidian.trident.util.ClassUtil;
 import com.clubobsidian.trident.util.EventDoublyLinkedList;
 import com.clubobsidian.trident.util.EventNode;
 
@@ -59,7 +60,7 @@ public class JavaAssistEventManager implements EventManager {
 				if(method.getParameters().length == 1)
 				{
 					Class<?> eventClass = method.getParameterTypes()[0];
-					if(eventClass.isAssignableFrom(Event.class))
+					if(ClassUtil.getSuperClass(eventClass) != null)
 					{
 						if(this.registeredExecutors.get(eventClass) == null)
 						{
