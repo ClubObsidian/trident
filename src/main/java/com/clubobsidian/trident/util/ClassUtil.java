@@ -2,8 +2,10 @@ package com.clubobsidian.trident.util;
 
 import com.clubobsidian.trident.Event;
 
-public class ClassUtil {
+public final class ClassUtil {
 
+	private ClassUtil() {}
+	
 	public static Class<?> getSuperClass(Class<?> cl)
 	{
 		while((cl = cl.getSuperclass()) != null)
