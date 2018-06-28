@@ -69,4 +69,15 @@ public class JavaAssistEventManagerTest {
 		
 		assertTrue("Event call ran when event did not exist", !manager.callEvent(event));
 	}
+	
+	@Test
+	public void testUnregister()
+	{
+		TestListener test = new TestListener("test");
+		EventManager manager = new JavaAssistEventManager();
+		manager.registerEvents(test);
+		
+		assertTrue("Listener was not registered", manager.unregisterEvents(test));
+		assertTrue("Listener was still registered", !manager.unregisterEvents(test));
+	}
 }
