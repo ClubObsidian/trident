@@ -18,5 +18,4 @@ public class UtilTest {
 		superClass = ClassUtil.getSuperClass(String.class);
 		assertTrue("Super class is not null for string class", superClass == null);
 	}
-
 }

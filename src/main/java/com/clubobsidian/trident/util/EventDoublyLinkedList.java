@@ -25,9 +25,12 @@ public class EventDoublyLinkedList implements Serializable {
 	{
 		return this.head;
 	}
-	
+
 	public EventNode insert(MethodExecutor executor, EventPriority priority)
 	{
+		if(executor == null || priority == null)
+			return null;
+
 		int priorityValue = priority.getValue();
 		EventNode newNode = new EventNode(executor, priorityValue);
 		if(this.head == null)
@@ -35,40 +38,37 @@ public class EventDoublyLinkedList implements Serializable {
 			this.head = new EventNode(executor, priorityValue);
 			return newNode;
 		}
+
+		EventNode found = this.findInsertionNode(priorityValue);
+		if(found.equals(this.head) && priorityValue < this.head.getPriority())
+		{
+			EventNode oldHead = this.head;
+			this.head = newNode;
+			this.head.setNext(oldHead);
+			oldHead.setPrev(this.head);
+			return newNode;
+		}
+		else if(found.getPriority() > priorityValue)
+		{
+			newNode.setNext(found);
+			newNode.setPrev(found.getPrev());
+			newNode.getPrev().setNext(newNode);
+			found.setPrev(newNode);
+			return newNode;
+		}
+		else if(found.getNext() == null)
+		{
+			found.setNext(newNode);
+			newNode.setPrev(found);
+			return newNode;
+		}
 		else
 		{
-			EventNode found = this.findInsertionNode(priorityValue);
-			if(found.equals(this.head) && priorityValue < this.head.getPriority())
-			{
-				EventNode oldHead = this.head;
-				this.head = newNode;
-				this.head.setNext(oldHead);
-				oldHead.setPrev(this.head);
-				return newNode;
-			}
-			else if(found.getPriority() > priorityValue)
-			{
-				newNode.setNext(found);
-				newNode.setPrev(found.getPrev());
-				newNode.getPrev().setNext(newNode);
-				found.setPrev(newNode);
-				return newNode;
-			}
-			else if(found.getNext() == null)
-			{
-				found.setNext(newNode);
-				newNode.setPrev(found);
-				return newNode;
-			}
-			else if(found.getPriority() == priorityValue)
-			{
-				newNode.setNext(found.getNext());
-				found.setNext(newNode);
-				newNode.getNext().setPrev(newNode);
-				return newNode;
-			}
+			newNode.setNext(found.getNext());
+			found.setNext(newNode);
+			newNode.getNext().setPrev(newNode);
+			return newNode;
 		}
-		return null;
 	}
 	
 	public EventNode remove(MethodExecutor executor)

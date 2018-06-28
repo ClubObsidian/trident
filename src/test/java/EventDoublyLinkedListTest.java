@@ -294,4 +294,12 @@ public class EventDoublyLinkedListTest {
 			e.printStackTrace();
 		}
 	}
+	
+	@Test
+	public void nullCaseTest()
+	{
+		EventDoublyLinkedList list = new EventDoublyLinkedList();
+		EventNode inserted = list.insert(null, null);
+		assertTrue("Inserted was not null", inserted == null);
+	}
 }
