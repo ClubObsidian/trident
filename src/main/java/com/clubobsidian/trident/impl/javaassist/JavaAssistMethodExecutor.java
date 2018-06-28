@@ -62,6 +62,9 @@ public class JavaAssistMethodExecutor extends MethodExecutor {
 	
     private static MethodCallback generateCallBack(Listener listener, Method method, ClassLoader classLoader) 
     {
+    	if(listener == null || method == null)
+    		return null;
+    	
     	try 
     	{
     		Class<?> listenerClass = Class.forName(listener.getClass().getName(), true, classLoader);

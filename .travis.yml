@@ -8,4 +8,5 @@ before_install:
 script:
 - ./gradlew test
 - ./gradlew jacocoTestReport
+after_success:
 - bash <(curl -s https://codecov.io/bash)
