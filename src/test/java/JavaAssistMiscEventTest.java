@@ -53,7 +53,7 @@ public class JavaAssistMiscEventTest {
 	@Test
 	public void generateCallbackNullTest()
 	{
-		MethodExecutor executor = new JavaAssistMethodExecutor(null, null);
-		assertTrue("Executor is not null", executor == null);
+		JavaAssistMethodExecutor executor = new JavaAssistMethodExecutor(null, null);
+		assertTrue("Executor is not null", executor.getCallBack() == null);
 	}
 }

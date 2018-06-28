@@ -54,6 +54,11 @@ public class JavaAssistMethodExecutor extends MethodExecutor {
 		return JavaAssistMethodExecutor.pool;
 	}
 	
+	public MethodCallback getCallBack()
+	{
+		return this.callBack;
+	}
+	
 	@Override
 	public void execute(Event event) 
 	{
