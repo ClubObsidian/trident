@@ -4,6 +4,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import com.clubobsidian.trident.Event;
 import com.clubobsidian.trident.Listener;
@@ -24,7 +25,7 @@ import javassist.NotFoundException;
 public class JavaAssistMethodExecutor extends MethodExecutor {
 
 	private static ClassPool pool;
-	private static ConcurrentMap<String, Integer> map;
+	private static ConcurrentMap<String, AtomicInteger> map;
 
 	static 
 	{
@@ -48,84 +49,87 @@ public class JavaAssistMethodExecutor extends MethodExecutor {
 		super(listener, method);
 		this.callBack = JavaAssistMethodExecutor.generateCallBack(listener, method, JavaAssistEventManager.class.getClassLoader());
 	}
-	
+
 	public static ClassPool getClassPool()
 	{
 		return JavaAssistMethodExecutor.pool;
 	}
-	
+
 	public MethodCallback getCallBack()
 	{
 		return this.callBack;
 	}
-	
+
 	@Override
 	public void execute(Event event) 
 	{
 		this.callBack.call(event);
 	}
-	
-    private static MethodCallback generateCallBack(Listener listener, Method method, ClassLoader classLoader) 
-    {
-    	if(listener == null || method == null)
-    		return null;
-    	
-    	try 
-    	{
-    		Class<?> listenerClass = Class.forName(listener.getClass().getName(), true, classLoader);
+
+	private static MethodCallback generateCallBack(Listener listener, Method method, ClassLoader classLoader) 
+	{
+		if(listener == null || method == null)
+			return null;
+
+		try 
+		{
+			Class<?> listenerClass = Class.forName(listener.getClass().getName(), true, classLoader);
 			pool.insertClassPath(new LoaderClassPath(classLoader));
-    		pool.insertClassPath(new ClassClassPath(listenerClass));
-			
+			pool.insertClassPath(new ClassClassPath(listenerClass));
+
 			String callbackClassName = listener.getClass().getName() + method.getName();
-			
-			Integer collision = map.get(callbackClassName);
+
+			AtomicInteger collision = map.get(callbackClassName);
+			int classNum = -1;
 			if(collision == null)
 			{
-				collision = 0;
+				collision = new AtomicInteger(0);
+				classNum = 0;
+				map.put(callbackClassName, collision);
 			}
 			else
 			{
-				collision += 1;
+				classNum = collision.getAndIncrement();
 			}
+
 			
-			map.put(callbackClassName, collision);
-			
-			callbackClassName += collision;
-			
+
+			callbackClassName += classNum;
+
 			CtClass callBackClass = pool.makeClass(callbackClassName);
 			callBackClass.addInterface(pool.get("com.clubobsidian.trident.impl.javaassist.MethodCallback"));
-			
+
 			CtField listenerField = CtField.make("private " + listener.getClass().getName() + " listener;", callBackClass);
 			callBackClass.addField(listenerField);
-			
+
 			StringBuilder sb = new StringBuilder();
 			sb.append("public " + listener.getClass().getSimpleName() + method.getName() + collision + "(" + listener.getClass().getName() + " listener)");
 			sb.append("{");
 			sb.append("this.listener = listener;");
 			sb.append("}");
-			
+
 			CtConstructor con = CtNewConstructor.make(sb.toString(), callBackClass);
 			callBackClass.addConstructor(con);
-			
+
 			String eventType = method.getParameterTypes()[0].getName();
-			
+
 			sb = new StringBuilder();
 			sb.append("public void call(com.clubobsidian.trident.Event event)");
 			sb.append("{");
 			sb.append(eventType + " ev = " + "((" + eventType + ") event);");
 			sb.append("listener." + method.getName() + "(ev);");
 			sb.append("}");
-			
+
 			CtMethod call = CtNewMethod.make(sb.toString(), callBackClass);
 			callBackClass.addMethod(call);
-			
+
 			Class<?> cl = callBackClass.toClass(classLoader, JavaAssistEventManager.class.getProtectionDomain());
 			return (MethodCallback) cl.getDeclaredConstructors()[0].newInstance(listener);
 		} 
-    	catch (NotFoundException | CannotCompileException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | SecurityException | ClassNotFoundException e) 
-    	{
+		catch (NotFoundException | CannotCompileException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | SecurityException | ClassNotFoundException e) 
+		{
 			e.printStackTrace();
-    	}
-    	return null;
-    }
+		}
+		return null;
+	}
 }

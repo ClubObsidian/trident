@@ -20,15 +20,15 @@ public class JavaAssistEventManager implements EventManager {
 
 	private Map<Listener, Queue<MethodExecutor>> registeredEventListeners = new ConcurrentHashMap<>();
 	private Map<Class<?>, EventDoublyLinkedList> registeredExecutors = new ConcurrentHashMap<>();
-	
+
 	@Override
 	public boolean callEvent(Event event) 
 	{
 		EventDoublyLinkedList executors = this.registeredExecutors.get(event.getClass());
-		
+
 		if(executors == null)
 			return false;
-		
+
 		boolean ran = false;
 		EventNode node = executors.getHead();
 		if(node != null)
@@ -43,7 +43,7 @@ public class JavaAssistEventManager implements EventManager {
 		}
 		return ran;
 	}
-	
+
 	@Override
 	public boolean registerEvents(Listener listener) 
 	{
@@ -51,11 +51,11 @@ public class JavaAssistEventManager implements EventManager {
 		{
 			return false;
 		}
-		
+
 		this.registerEventsFromListener(listener);
 		return true;
 	}
-	
+
 	private void registerEventsFromListener(Listener listener)
 	{
 		Class<?> cl = listener.getClass();
@@ -76,6 +76,7 @@ public class JavaAssistEventManager implements EventManager {
 						{
 							this.registeredEventListeners.put(listener, new ConcurrentLinkedQueue<>());
 						}
+
 						MethodExecutor executor = new JavaAssistMethodExecutor(listener, method);
 						this.registeredExecutors.get(eventClass).insert(executor, handler.priority());
 						this.registeredEventListeners.get(listener).add(executor);
@@ -91,11 +92,11 @@ public class JavaAssistEventManager implements EventManager {
 		Queue<MethodExecutor> executors = this.registeredEventListeners.remove(listener);
 		if(executors == null)
 			return false;
-		
+
 		this.unregisterEventsFromExecutors(executors);
 		return true;
 	}
-	
+
 	//Unregistering might be too slow, this should be tested later
 	private void unregisterEventsFromExecutors(Queue<MethodExecutor> executors)
 	{

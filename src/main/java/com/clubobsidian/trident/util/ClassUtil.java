@@ -5,7 +5,7 @@ import com.clubobsidian.trident.Event;
 public final class ClassUtil {
 
 	private ClassUtil() {}
-	
+
 	public static Class<?> getSuperClass(Class<?> cl)
 	{
 		while((cl = cl.getSuperclass()) != null)
