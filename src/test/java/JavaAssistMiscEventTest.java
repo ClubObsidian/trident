@@ -54,6 +54,6 @@ public class JavaAssistMiscEventTest {
 	public void generateCallbackNullTest()
 	{
 		MethodExecutor executor = new JavaAssistMethodExecutor(null, null);
-		
+		assertTrue("Executor is not null", executor == null);
 	}
 }
