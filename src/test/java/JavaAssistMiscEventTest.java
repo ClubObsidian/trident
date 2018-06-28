@@ -43,4 +43,10 @@ public class JavaAssistMiscEventTest {
 		assertTrue("-1 event priority is not null", EventPriority.getByValue(-1) == null);
 		assertTrue("Length event priority is not null", EventPriority.getByValue(EventPriority.values().length) == null);
 	}
+	
+	@Test
+	public void classPoolTest()
+	{
+		assertTrue("Class pool is null", JavaAssistMethodExecutor.getClassPool() != null);
+	}
 }
