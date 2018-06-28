@@ -92,8 +92,6 @@ public class JavaAssistMethodExecutor extends MethodExecutor {
 				classNum = collision.incrementAndGet();
 			}
 
-			
-			System.out.println(classNum);
 			callbackClassName += classNum;
 
 			CtClass callBackClass = pool.makeClass(callbackClassName);
