@@ -283,9 +283,11 @@ public class EventDoublyLinkedListTest {
 			TestListener test2 = new TestListener("test2");
 			MethodExecutor executor2 = new JavaAssistMethodExecutor(test2, test2.getClass().getDeclaredMethod("test", TestEvent.class));
 			
-			EventNode lastInserted = list.insert(executor2, EventPriority.LOWEST);
 			
-			assertTrue("Previous node's priority is not the same", lastInserted.getPriority() == lastInserted.getPrev().getPriority());
+			EventPriority priority = EventPriority.LOWEST;
+			EventNode inserted = list.insert(executor2, priority);
+			
+			assertTrue("Previous node's priority is not the same", inserted.getPriority() == priority.getValue());
 		} 
 		catch (NoSuchMethodException | SecurityException e) 
 		{

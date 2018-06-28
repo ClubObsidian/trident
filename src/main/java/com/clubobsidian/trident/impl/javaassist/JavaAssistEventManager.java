@@ -22,20 +22,26 @@ public class JavaAssistEventManager implements EventManager {
 	private Map<Class<?>, EventDoublyLinkedList> registeredExecutors = new ConcurrentHashMap<>();
 	
 	@Override
-	public void callEvent(Event event) 
+	public boolean callEvent(Event event) 
 	{
 		EventDoublyLinkedList executors = this.registeredExecutors.get(event.getClass());
 		
 		if(executors == null)
-			return;
+			return false;
 		
+		boolean ran = false;
 		EventNode node = executors.getHead();
+		if(node != null)
+		{
+			ran = true;
+		}
 		while(node != null)
 		{
 			MethodExecutor executor = node.getData();
 			executor.execute(event);
 			node = node.getNext();
 		}
+		return ran;
 	}
 	
 	@Override

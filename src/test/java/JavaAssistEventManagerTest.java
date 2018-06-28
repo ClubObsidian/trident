@@ -2,6 +2,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import com.clubobsidian.trident.Event;
 import com.clubobsidian.trident.EventManager;
 import com.clubobsidian.trident.impl.javaassist.JavaAssistEventManager;
 
@@ -48,5 +49,24 @@ public class JavaAssistEventManagerTest {
 		manager.callEvent(new TestOrderEvent());
 		
 		assertTrue("Events were not listened in the correct order", test.getData().equals("012345"));
+	}
+	
+	@Test
+	public void testDoubleRegister()
+	{
+		TestListener test = new TestListener("test");
+		EventManager manager = new JavaAssistEventManager();
+		manager.registerEvents(test);
+		
+		assertTrue("Event was double registered", !manager.registerEvents(test));
+	}
+	
+	@Test
+	public void testCalledEvent()
+	{
+		Event event = new TestEvent();
+		EventManager manager = new JavaAssistEventManager();
+		
+		assertTrue("Event call ran when event did not exist", !manager.callEvent(event));
 	}
 }

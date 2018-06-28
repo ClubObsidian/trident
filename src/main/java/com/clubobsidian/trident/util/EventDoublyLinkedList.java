@@ -68,7 +68,6 @@ public class EventDoublyLinkedList implements Serializable {
 				return newNode;
 			}
 		}
-	
 		return null;
 	}
 	
