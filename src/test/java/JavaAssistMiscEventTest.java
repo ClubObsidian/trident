@@ -9,7 +9,6 @@ import com.clubobsidian.trident.EventPriority;
 import com.clubobsidian.trident.Listener;
 import com.clubobsidian.trident.MethodExecutor;
 import com.clubobsidian.trident.impl.javaassist.JavaAssistMethodExecutor;
-import com.clubobsidian.trident.util.JavaAssistUtil;
 
 public class JavaAssistMiscEventTest {
 
@@ -48,7 +47,7 @@ public class JavaAssistMiscEventTest {
 	@Test
 	public void classPoolTest()
 	{
-		assertTrue("Class pool is null", JavaAssistUtil.getClassPool() != null);
+		assertTrue("Class pool is null", JavaAssistMethodExecutor.getClassPool() != null);
 	}
 	
 	@Test
