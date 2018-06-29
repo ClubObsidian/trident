@@ -21,12 +21,12 @@ public class EventDoublyLinkedList implements Serializable {
 		this.head = null;
 	}
 	
-	public EventNode getHead()
+	public synchronized EventNode getHead()
 	{
 		return this.head;
 	}
 
-	public EventNode insert(MethodExecutor executor, EventPriority priority)
+	public synchronized EventNode insert(MethodExecutor executor, EventPriority priority)
 	{
 		if(executor == null || priority == null)
 			return null;
@@ -71,7 +71,7 @@ public class EventDoublyLinkedList implements Serializable {
 		}
 	}
 	
-	public EventNode remove(MethodExecutor executor)
+	public synchronized EventNode remove(MethodExecutor executor)
 	{
 		EventNode found = this.find(executor);
 		if(found == null)
@@ -102,7 +102,7 @@ public class EventDoublyLinkedList implements Serializable {
 	}
 	
 	
-	public EventNode find(MethodExecutor executor)
+	public synchronized EventNode find(MethodExecutor executor)
 	{
 		EventNode node = this.head;
 		while(node != null)

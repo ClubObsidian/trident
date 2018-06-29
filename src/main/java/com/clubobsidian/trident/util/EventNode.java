@@ -24,22 +24,22 @@ public class EventNode
 		return this.priority;
 	}
 
-	public EventNode getNext()
+	public synchronized EventNode getNext()
 	{
 		return this.next;
 	}
 
-	public void setNext(EventNode next)
+	public synchronized void setNext(EventNode next)
 	{
 		this.next = next;
 	}
 
-	public EventNode getPrev()
+	public synchronized EventNode getPrev()
 	{
 		return this.prev;
 	}
 
-	public void setPrev(EventNode prev)
+	public synchronized void setPrev(EventNode prev)
 	{
 		this.prev = prev;
 	}
