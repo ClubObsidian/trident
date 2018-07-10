@@ -15,12 +15,19 @@ import com.clubobsidian.trident.MethodExecutor;
 import com.clubobsidian.trident.util.ClassUtil;
 import com.clubobsidian.trident.util.EventDoublyLinkedList;
 import com.clubobsidian.trident.util.EventNode;
+import com.clubobsidian.trident.util.JavaAssistUtil;
 
 public class JavaAssistEventManager implements EventManager {
 
-	private Map<Listener, Queue<MethodExecutor>> registeredEventListeners = new ConcurrentHashMap<>();
-	private Map<Class<?>, EventDoublyLinkedList> registeredExecutors = new ConcurrentHashMap<>();
+	private Map<Listener, Queue<MethodExecutor>> registeredEventListeners;
+	private Map<Class<?>, EventDoublyLinkedList> registeredExecutors;
 
+	public JavaAssistEventManager()
+	{
+		this.registeredEventListeners = new ConcurrentHashMap<>();
+		this.registeredExecutors = new ConcurrentHashMap<>();
+	}
+	
 	@Override
 	public boolean callEvent(Event event) 
 	{
@@ -77,7 +84,7 @@ public class JavaAssistEventManager implements EventManager {
 							this.registeredEventListeners.put(listener, new ConcurrentLinkedQueue<>());
 						}
 
-						MethodExecutor executor = new JavaAssistMethodExecutor(listener, method);
+						MethodExecutor executor = JavaAssistUtil.generateMethodExecutor(listener, method);
 						this.registeredExecutors.get(eventClass).insert(executor, handler.priority());
 						this.registeredEventListeners.get(listener).add(executor);
 					}
