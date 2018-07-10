@@ -6,7 +6,7 @@
 
 A dead simpile annotation event system that allows different event executor implementations.
 
-The current implementation of Trident used JavaAssist to generate code on runtime for method executors.
+Trident implements reflection and generated Javassist method executors.
 
 # Build Artifacts
 
@@ -21,7 +21,7 @@ repositories {
 	maven { url 'https://jitpack.io' }
 }
 
-compile 'com.github.clubobsidian:Trident:1.0.0'
+compile 'com.github.clubobsidian:Trident:1.0.2'
 
 ```
 
@@ -38,7 +38,7 @@ compile 'com.github.clubobsidian:Trident:1.0.0'
 <dependency>
 	<groupId>com.github.clubobsidian</groupId>
 	<artifactId>Trident</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.2</version>
 </dependency>
 ```
 
