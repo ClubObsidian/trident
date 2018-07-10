@@ -49,11 +49,4 @@ public class JavaAssistMiscEventTest {
 	{
 		assertTrue("Class pool is null", JavaAssistUtil.getClassPool() != null);
 	}
-	
-	/*@Test
-	public void generateCallbackNullTest()
-	{
-		MethodExecutor executor = JavaAssistUtil.generateMethodExecutor(null, null);
-		assertTrue("Executor is not null", executor.getCallBack() == null);
-	}*/
 }
