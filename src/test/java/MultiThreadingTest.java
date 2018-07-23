@@ -6,9 +6,9 @@ import org.junit.Test;
 
 import com.clubobsidian.trident.EventPriority;
 import com.clubobsidian.trident.MethodExecutor;
+import com.clubobsidian.trident.impl.javaassist.JavaAssistUtil;
 import com.clubobsidian.trident.util.EventDoublyLinkedList;
 import com.clubobsidian.trident.util.EventNode;
-import com.clubobsidian.trident.util.JavaAssistUtil;
 
 public class MultiThreadingTest {
 	

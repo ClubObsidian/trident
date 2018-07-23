@@ -15,7 +15,6 @@ import com.clubobsidian.trident.MethodExecutor;
 import com.clubobsidian.trident.util.ClassUtil;
 import com.clubobsidian.trident.util.EventDoublyLinkedList;
 import com.clubobsidian.trident.util.EventNode;
-import com.clubobsidian.trident.util.JavaAssistUtil;
 
 public class JavaAssistEventManager implements EventManager {
 

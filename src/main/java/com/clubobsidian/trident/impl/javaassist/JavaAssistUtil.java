@@ -1,4 +1,4 @@
-package com.clubobsidian.trident.util;
+package com.clubobsidian.trident.impl.javaassist;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -8,7 +8,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import com.clubobsidian.trident.Listener;
 import com.clubobsidian.trident.MethodExecutor;
-import com.clubobsidian.trident.impl.javaassist.JavaAssistEventManager;
 
 import javassist.CannotCompileException;
 import javassist.ClassClassPath;

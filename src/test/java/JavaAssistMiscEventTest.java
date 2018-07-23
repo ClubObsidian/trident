@@ -8,7 +8,7 @@ import com.clubobsidian.trident.Event;
 import com.clubobsidian.trident.EventPriority;
 import com.clubobsidian.trident.Listener;
 import com.clubobsidian.trident.MethodExecutor;
-import com.clubobsidian.trident.util.JavaAssistUtil;
+import com.clubobsidian.trident.impl.javaassist.JavaAssistUtil;
 
 public class JavaAssistMiscEventTest {
 
