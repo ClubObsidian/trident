@@ -40,3 +40,7 @@ jacocoTestReport {
         html.enabled false
     }
 }
+
+artifacts {
+	archives shadowJar
+}
