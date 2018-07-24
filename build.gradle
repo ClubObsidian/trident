@@ -24,9 +24,8 @@ repositories {
 
 shadowJar {
    baseName = 'Trident'
-   classifier = 'shadow'
-   version = '1.03'
-   archiveName = "$baseName-$version-$classifier.$extension"
+   classifier = null
+   version = null
    relocate 'javassist', 'com.clubobsidian.trident.javassist'
 }
 
@@ -40,8 +39,4 @@ jacocoTestReport {
         xml.enabled true
         html.enabled false
     }
-}
-
-artifacts {
-	archives shadowJar
 }
