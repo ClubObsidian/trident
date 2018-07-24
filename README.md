@@ -59,4 +59,4 @@ compile 'com.github.clubobsidian:Trident:1.0.2'
 3. Import project
 
 ### Building
-gradlew shadowJar
+`gradlew shadowJar`
