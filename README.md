@@ -8,7 +8,7 @@ A dead simpile annotation event system that allows different event executor impl
 
 Trident implements reflection and generated Javassist method executors.
 
-# Build Artifacts
+## Build Artifacts
 
 Build artifacts are hosted via [Jitpack.](https://jitpack.io/#clubobsidian/Trident/)
 
@@ -22,7 +22,6 @@ repositories {
 }
 
 compile 'com.github.clubobsidian:Trident:1.0.2'
-
 ```
 
 ### Maven
@@ -42,8 +41,22 @@ compile 'com.github.clubobsidian:Trident:1.0.2'
 </dependency>
 ```
 
-# Building
-./gradlew shadowJar
-
-# Dependencies
+## Dependencies
 * JavaAssist
+
+## Development
+
+### Eclipse
+
+1. Git clone the project
+2. Generate eclipse files with `gradlew eclipse`
+3. Import project
+
+### Intellij
+
+1. Git clone the project
+2. Generate intellij files with `gradlew idea`
+3. Import project
+
+### Building
+gradlew shadowJar
