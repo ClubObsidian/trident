@@ -1,12 +1,15 @@
 # Trident 
 [![Build Status](https://api.travis-ci.org/ClubObsidian/Trident.svg?branch=master)](https://travis-ci.org/ClubObsidian/Trident)
-[![](https://jitpack.io/v/clubobsidian/Trident.svg)](https://jitpack.io/#clubobsidian/Trident)
+[![build artifacts](https://jitpack.io/v/clubobsidian/Trident.svg)](https://jitpack.io/#clubobsidian/Trident)
 [![codecov](https://codecov.io/gh/ClubObsidian/Trident/branch/master/graph/badge.svg)](https://codecov.io/gh/ClubObsidian/Trident)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[Javadocs](https://jitpack.io/com/github/clubobsidian/Trident/1.0.4/javadoc/)
 
 A dead simpile annotation event system that allows different event executor implementations.
 
 Trident implements reflection and generated Javassist method executors.
+
+
 
 ## Build Artifacts
 
@@ -21,7 +24,7 @@ repositories {
 	maven { url 'https://jitpack.io' }
 }
 
-compile 'com.github.clubobsidian:Trident:1.0.3'
+compile 'com.github.clubobsidian:Trident:1.0.4'
 ```
 
 ### Maven
@@ -37,7 +40,7 @@ compile 'com.github.clubobsidian:Trident:1.0.3'
 <dependency>
 	<groupId>com.github.clubobsidian</groupId>
 	<artifactId>Trident</artifactId>
-	<version>1.0.3</version>
+	<version>1.0.4</version>
 </dependency>
 ```
 
