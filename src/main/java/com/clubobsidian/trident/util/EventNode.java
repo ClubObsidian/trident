@@ -4,7 +4,7 @@ import com.clubobsidian.trident.MethodExecutor;
 
 /**
  * Node class for events. Used
- * in {@link EventDoublyLinkedList}
+ * in {@link com.clubobsidian.trident.util.EventDoublyLinkedList}
  * 
  * @author virustotalop
  */
@@ -29,7 +29,7 @@ public class EventNode
 	}
 
 	/**
-	 * @return integer representation of the {@link Event}'s priority
+	 * @return integer representation of the {@link com.clubobsidian.trident.Event}'s priority
 	 */
 	public int getPriority()
 	{
@@ -45,7 +45,7 @@ public class EventNode
 	}
 
 	/**
-	 * @param node to be set as the next node
+	 * @param next node to be set as the next node
 	 */
 	public synchronized void setNext(EventNode next)
 	{
@@ -61,7 +61,7 @@ public class EventNode
 	}
 
 	/**
-	 * @param node to be set as the previous node
+	 * @param prev node to be set as the previous node
 	 */
 	public synchronized void setPrev(EventNode prev)
 	{
