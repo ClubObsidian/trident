@@ -1,5 +1,11 @@
 package com.clubobsidian.trident;
 
+/**
+ * Enum representation of priority for registered events.
+ * Default priority is {@link EventPriority#NORMAL}
+ * 
+ * @author virustotalop
+ */
 public enum EventPriority {
 
 	LOWEST(0),
@@ -15,11 +21,18 @@ public enum EventPriority {
 		this.value = value;
 	}
 	
+	/**
+	 * @return the integer representation of the underlying enum
+	 */
 	public int getValue()
 	{
 		return this.value;
 	}
 	
+	/**
+	 * @param value the integer value of an eventpriority
+	 * @return The EventPriority found by the given value
+	 */
 	public static EventPriority getByValue(int value)
 	{
 		if(value < 0 || value >= EventPriority.values().length)

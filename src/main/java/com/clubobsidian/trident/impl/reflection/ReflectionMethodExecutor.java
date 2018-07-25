@@ -7,6 +7,9 @@ import com.clubobsidian.trident.Event;
 import com.clubobsidian.trident.Listener;
 import com.clubobsidian.trident.MethodExecutor;
 
+/**
+ * {@inheritDoc}
+ */
 public class ReflectionMethodExecutor extends MethodExecutor {
 
 	public ReflectionMethodExecutor(Listener listener, Method method) 

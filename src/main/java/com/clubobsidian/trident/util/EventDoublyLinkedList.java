@@ -5,6 +5,12 @@ import java.io.Serializable;
 import com.clubobsidian.trident.EventPriority;
 import com.clubobsidian.trident.MethodExecutor;
 
+/** 
+ * Class for implementing a doubly linked list 
+ * that orders the list based off of creation time and {@link EventPriority}.
+ * 
+ * @author virustotalop
+ */
 public class EventDoublyLinkedList implements Serializable {
 
 	/**
@@ -12,20 +18,25 @@ public class EventDoublyLinkedList implements Serializable {
 	 */
 	private static final long serialVersionUID = 6359060072540225110L;
 
-	/** Class for implementing a doubly linked list 
-	 * that orders the list based off of creation time and {@link EventPriority}.
-	 */
 	private EventNode head;
 	public EventDoublyLinkedList()
 	{
 		this.head = null;
 	}
 	
+	/**
+	 * @return the first node in the EventDoublyLinkedList
+	 */
 	public synchronized EventNode getHead()
 	{
 		return this.head;
 	}
 
+	/**
+	 * @param executor executor to insert
+	 * @param priority priority of the MethodExecutor
+	 * @return EventNode created or null if not created
+	 */
 	public synchronized EventNode insert(MethodExecutor executor, EventPriority priority)
 	{
 		if(executor == null || priority == null)
@@ -71,6 +82,10 @@ public class EventDoublyLinkedList implements Serializable {
 		}
 	}
 	
+	/**
+	 * @param executor MethodExecutor to remove
+	 * @return the EventNode removed or null if not found
+	 */
 	public synchronized EventNode remove(MethodExecutor executor)
 	{
 		EventNode found = this.find(executor);
@@ -101,7 +116,10 @@ public class EventDoublyLinkedList implements Serializable {
 		}
 	}
 	
-	
+	/**
+	 * @param executor to find
+	 * @return found EventNode
+	 */
 	public synchronized EventNode find(MethodExecutor executor)
 	{
 		EventNode node = this.head;
@@ -115,7 +133,7 @@ public class EventDoublyLinkedList implements Serializable {
 	}
 	
 	/**
-	 * @return The node to be inserted around
+	 * @return the node to be inserted around
 	 */
 	private EventNode findInsertionNode(int priorityValue)
 	{

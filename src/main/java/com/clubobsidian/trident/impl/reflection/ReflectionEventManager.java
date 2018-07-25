@@ -16,6 +16,9 @@ import com.clubobsidian.trident.util.ClassUtil;
 import com.clubobsidian.trident.util.EventDoublyLinkedList;
 import com.clubobsidian.trident.util.EventNode;
 
+/**
+ * {@inheritDoc}
+ */
 public class ReflectionEventManager implements EventManager {
 
 	private Map<Listener, Queue<MethodExecutor>> registeredEventListeners;
@@ -72,7 +75,7 @@ public class ReflectionEventManager implements EventManager {
 				if(method.getParameters().length == 1)
 				{
 					Class<?> eventClass = method.getParameterTypes()[0];
-					if(ClassUtil.getSuperClass(eventClass) != null)
+					if(ClassUtil.hasEventSuperClass(eventClass))
 					{
 						if(this.registeredExecutors.get(eventClass) == null)
 						{

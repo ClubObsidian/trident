@@ -14,6 +14,7 @@ apply plugin: 'jacoco'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 
+
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
@@ -39,4 +40,9 @@ jacocoTestReport {
         xml.enabled true
         html.enabled false
     }
+}
+
+javadoc {
+    source = sourceSets.main.allJava
+    classpath = configurations.compile
 }

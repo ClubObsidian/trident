@@ -12,10 +12,10 @@ public class UtilTest {
 	public void classUtilTest()
 	{
 		Event event = new TestEvent();
-		Class<?> superClass = ClassUtil.getSuperClass(event.getClass());
-		assertTrue("Super class for TestEvent was not event", superClass == Event.class);
+		boolean superClass = ClassUtil.hasEventSuperClass(event.getClass());
+		assertTrue("Super class for TestEvent was not event", superClass);
 		
-		superClass = ClassUtil.getSuperClass(String.class);
-		assertTrue("Super class is not null for string class", superClass == null);
+		superClass = ClassUtil.hasEventSuperClass(String.class);
+		assertTrue("Super class is not null for string class", !superClass);
 	}
 }
