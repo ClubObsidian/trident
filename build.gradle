@@ -42,9 +42,9 @@ jacocoTestReport {
     }
 }
 
-javadoc {
-    source = sourceSets.main.allJava
-    classpath = configurations.compile
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
 }
 
 artifacts {
