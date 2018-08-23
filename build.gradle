@@ -24,7 +24,7 @@ repositories {
 }
 
 shadowJar {
-   baseName = 'Trident'
+   baseName = 'trident'
    classifier = null
    version = null
    relocate 'javassist', 'com.clubobsidian.trident.javassist'
