@@ -25,7 +25,7 @@ repositories {
 	maven { url 'https://jitpack.io' }
 }
 
-compile 'com.github.clubobsidian:Trident:1.0.5'
+compile 'com.github.clubobsidian:trident:1.0.5'
 ```
 
 ### Maven
@@ -40,7 +40,7 @@ compile 'com.github.clubobsidian:Trident:1.0.5'
 
 <dependency>
 	<groupId>com.github.clubobsidian</groupId>
-	<artifactId>Trident</artifactId>
+	<artifactId>trident</artifactId>
 	<version>1.0.5</version>
 </dependency>
 ```
