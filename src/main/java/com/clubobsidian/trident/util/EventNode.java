@@ -47,7 +47,7 @@ public class EventNode
 	/**
 	 * @param next node to be set as the next node
 	 */
-	public synchronized void setNext(EventNode next)
+	public synchronized void setNext(final EventNode next)
 	{
 		this.next = next;
 	}
@@ -63,7 +63,7 @@ public class EventNode
 	/**
 	 * @param prev node to be set as the previous node
 	 */
-	public synchronized void setPrev(EventNode prev)
+	public synchronized void setPrev(final EventNode prev)
 	{
 		this.prev = prev;
 	}

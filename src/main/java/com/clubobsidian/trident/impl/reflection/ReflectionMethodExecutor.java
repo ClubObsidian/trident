@@ -18,7 +18,7 @@ public class ReflectionMethodExecutor extends MethodExecutor {
 	}
 
 	@Override
-	public void execute(Event event) 
+	public void execute(final Event event) 
 	{
 		try 
 		{

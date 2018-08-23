@@ -31,7 +31,7 @@ public class ReflectionEventManager implements EventManager {
 	}
 	
 	@Override
-	public boolean callEvent(Event event) 
+	public boolean callEvent(final Event event) 
 	{
 		EventDoublyLinkedList executors = this.registeredExecutors.get(event.getClass());
 
@@ -54,7 +54,7 @@ public class ReflectionEventManager implements EventManager {
 	}
 
 	@Override
-	public boolean registerEvents(Listener listener) 
+	public boolean registerEvents(final Listener listener) 
 	{
 		if(this.registeredEventListeners.keySet().contains(listener))
 		{
@@ -65,7 +65,7 @@ public class ReflectionEventManager implements EventManager {
 		return true;
 	}
 
-	private void registerEventsFromListener(Listener listener)
+	private void registerEventsFromListener(final Listener listener)
 	{
 		Class<?> cl = listener.getClass();
 		for(Method method : cl.getDeclaredMethods())
@@ -96,7 +96,7 @@ public class ReflectionEventManager implements EventManager {
 	}
 
 	@Override
-	public boolean unregisterEvents(Listener listener) 
+	public boolean unregisterEvents(final Listener listener) 
 	{
 		Queue<MethodExecutor> executors = this.registeredEventListeners.remove(listener);
 		if(executors == null)
@@ -107,7 +107,7 @@ public class ReflectionEventManager implements EventManager {
 	}
 
 	//Unregistering might be too slow, this should be tested later
-	private void unregisterEventsFromExecutors(Queue<MethodExecutor> executors)
+	private void unregisterEventsFromExecutors(final Queue<MethodExecutor> executors)
 	{
 		for(EventDoublyLinkedList list : this.registeredExecutors.values())
 		{

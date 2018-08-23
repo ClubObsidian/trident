@@ -37,7 +37,7 @@ public class EventDoublyLinkedList implements Serializable {
 	 * @param priority priority of the MethodExecutor
 	 * @return EventNode created or null if not created
 	 */
-	public synchronized EventNode insert(MethodExecutor executor, EventPriority priority)
+	public synchronized EventNode insert(final MethodExecutor executor, final EventPriority priority)
 	{
 		if(executor == null || priority == null)
 			return null;
@@ -86,7 +86,7 @@ public class EventDoublyLinkedList implements Serializable {
 	 * @param executor MethodExecutor to remove
 	 * @return the EventNode removed or null if not found
 	 */
-	public synchronized EventNode remove(MethodExecutor executor)
+	public synchronized EventNode remove(final MethodExecutor executor)
 	{
 		EventNode found = this.find(executor);
 		if(found == null)
@@ -120,7 +120,7 @@ public class EventDoublyLinkedList implements Serializable {
 	 * @param executor to find
 	 * @return found EventNode
 	 */
-	public synchronized EventNode find(MethodExecutor executor)
+	public synchronized EventNode find(final MethodExecutor executor)
 	{
 		EventNode node = this.head;
 		while(node != null)
@@ -135,7 +135,7 @@ public class EventDoublyLinkedList implements Serializable {
 	/**
 	 * @return the node to be inserted around
 	 */
-	private EventNode findInsertionNode(int priorityValue)
+	private EventNode findInsertionNode(final int priorityValue)
 	{
 		EventNode next = this.head;
 		while(next != null)

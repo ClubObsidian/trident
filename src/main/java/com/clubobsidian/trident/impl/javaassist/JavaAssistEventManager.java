@@ -31,7 +31,7 @@ public class JavaAssistEventManager implements EventManager {
 	}
 	
 	@Override
-	public boolean callEvent(Event event) 
+	public boolean callEvent(final Event event) 
 	{
 		EventDoublyLinkedList executors = this.registeredExecutors.get(event.getClass());
 
@@ -54,7 +54,7 @@ public class JavaAssistEventManager implements EventManager {
 	}
 
 	@Override
-	public boolean registerEvents(Listener listener) 
+	public boolean registerEvents(final Listener listener) 
 	{
 		if(this.registeredEventListeners.keySet().contains(listener))
 		{
@@ -65,7 +65,7 @@ public class JavaAssistEventManager implements EventManager {
 		return true;
 	}
 
-	private void registerEventsFromListener(Listener listener)
+	private void registerEventsFromListener(final Listener listener)
 	{
 		Class<?> cl = listener.getClass();
 		for(Method method : cl.getDeclaredMethods())

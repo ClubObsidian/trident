@@ -46,7 +46,7 @@ public final class JavaAssistUtil {
 		return JavaAssistUtil.pool;
 	}
 	
-	public static MethodExecutor generateMethodExecutor(Listener listener, Method method) 
+	public static MethodExecutor generateMethodExecutor(final Listener listener, final Method method) 
 	{
 		if(listener == null || method == null)
 			return null;

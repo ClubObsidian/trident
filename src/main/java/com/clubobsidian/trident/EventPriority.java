@@ -16,7 +16,7 @@ public enum EventPriority {
 	MONITOR(5);
 
 	private int value;
-	private EventPriority(int value)
+	private EventPriority(final int value)
 	{
 		this.value = value;
 	}
@@ -33,7 +33,7 @@ public enum EventPriority {
 	 * @param value the integer value of an eventpriority
 	 * @return The EventPriority found by the given value
 	 */
-	public static EventPriority getByValue(int value)
+	public static EventPriority getByValue(final int value)
 	{
 		if(value < 0 || value >= EventPriority.values().length)
 		{
