@@ -34,7 +34,7 @@ public class ReflectionEventManagerTest {
 		EventManager manager = new ReflectionEventManager();
 		manager.registerEvents(test);
 		
-		manager.callEvent(new TestCancellableEvent());
+		manager.callEvent(new TestCancelableEvent());
 		
 		assertTrue("Test is not true, event was not cancelled", test.getTest());
 	}

@@ -1,7 +1,7 @@
 package com.clubobsidian.trident;
 
 /**
- * Interface to implement Cancellable. 
+ * Interface to implement Cancelable. 
  * Events should implement this interface
  * if the event should be able to be cancelled.
  * 
@@ -13,10 +13,10 @@ public interface Cancelable {
 	 * Returns if the event is cancelled.
 	 * @return if the event is cancelled
 	 */
-	public boolean isCancelled();
+	public boolean isCanceled();
 	
 	/**
 	 * Set whether or not for an event to be cancelled.
 	 */
-	public void setCancelled(boolean cancel);
+	public void setCanceled(boolean cancel);
 }
