@@ -46,7 +46,8 @@ compile 'com.github.clubobsidian:trident:1.0.8'
 ```
 
 ## Dependencies
-* JavaAssist
+
+* Javassist
 
 ## Development
 
@@ -63,4 +64,11 @@ compile 'com.github.clubobsidian:trident:1.0.8'
 3. Import project
 
 ### Building
+
 `gradlew shadowJar`
+
+### Projects that use Trident
+
+* [Hydra](https://github.com/ClubObsidian/hydra)
+
+Do you use Trident in your project? If so make a pull request and add your repository to the list!
