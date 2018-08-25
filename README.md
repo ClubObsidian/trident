@@ -4,7 +4,7 @@
 [![build artifacts](https://jitpack.io/v/clubobsidian/trident.svg)](https://jitpack.io/#clubobsidian/Trident)
 [![codecov](https://codecov.io/gh/ClubObsidian/Trident/branch/master/graph/badge.svg)](https://codecov.io/gh/ClubObsidian/trident)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[Javadocs](https://jitpack.io/com/github/clubobsidian/trident/1.0.6/javadoc/)
+[Javadocs](https://jitpack.io/com/github/clubobsidian/trident/1.0.7/javadoc/)
 
 A dead simpile annotation event system that allows different event executor implementations.
 
@@ -25,7 +25,7 @@ repositories {
 	maven { url 'https://jitpack.io' }
 }
 
-compile 'com.github.clubobsidian:trident:1.0.6'
+compile 'com.github.clubobsidian:trident:1.0.7'
 ```
 
 ### Maven
@@ -41,7 +41,7 @@ compile 'com.github.clubobsidian:trident:1.0.6'
 <dependency>
 	<groupId>com.github.clubobsidian</groupId>
 	<artifactId>trident</artifactId>
-	<version>1.0.6</version>
+	<version>1.0.7</version>
 </dependency>
 ```
 

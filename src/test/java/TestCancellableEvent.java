@@ -1,6 +1,6 @@
-import com.clubobsidian.trident.Cancellable;
+import com.clubobsidian.trident.Cancelable;
 
-public class TestCancellableEvent extends TestEvent implements Cancellable {
+public class TestCancellableEvent extends TestEvent implements Cancelable {
 
 	private boolean cancelled;
 	

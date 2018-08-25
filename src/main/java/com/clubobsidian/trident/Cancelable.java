@@ -7,7 +7,7 @@ package com.clubobsidian.trident;
  * 
  * @author virustotalop
  */
-public interface Cancellable {
+public interface Cancelable {
 
 	/**
 	 * Returns if the event is cancelled.
