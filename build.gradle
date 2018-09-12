@@ -51,5 +51,6 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 
 artifacts {
 	 archives javadocJar
-	 archives shadowJar
 }
+
+jar.finalizedBy shadowJar
