@@ -53,6 +53,23 @@ public class JavaAssistMiscEventTest {
 	}
 	
 	@Test
+	public void methodExecutorNullTest()
+	{
+		try 
+		{
+			Listener listener = null;
+			Method testEventMethod = null;
+			MethodExecutor executor = JavaAssistUtil.generateMethodExecutor(listener, testEventMethod);
+			
+			assertTrue("Method executor was not null", executor == null);
+		} 
+		catch (SecurityException e) 
+		{
+			e.printStackTrace();
+		}		
+	}
+	
+	@Test
 	public void eventPriorityTest()
 	{
 		assertTrue("-1 event priority is not null", EventPriority.getByValue(-1) == null);
