@@ -70,6 +70,7 @@ compile 'com.github.clubobsidian:trident:1.0.8'
 
 ### Projects that use Trident
 
+* [DynamicGui](https://github.com/ClubObsidian/DynamicGui)
 * [Hydra](https://github.com/ClubObsidian/hydra)
 
 Do you use Trident in your project? If so make a pull request and add your repository to the list!
