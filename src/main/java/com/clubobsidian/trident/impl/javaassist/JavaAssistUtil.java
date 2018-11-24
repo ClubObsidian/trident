@@ -81,7 +81,7 @@ public final class JavaAssistUtil {
 			}
 			else
 			{
-				classLoader = JavaAssistEventManager.class.getClassLoader();
+				classLoader = listener.getClass().getClassLoader();
 			}
 
 			Class<?> listenerClass = Class.forName(listener.getClass().getName(), true, classLoader);
