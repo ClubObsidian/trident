@@ -95,17 +95,4 @@ public class ReflectionEventManagerTest {
 		assertTrue("Listener was not registered", manager.unregisterEvents(test));
 		assertTrue("Listener was still registered", !manager.unregisterEvents(test));
 	}
-	
-	@Test
-	public void benchmark()
-	{
-		TestListener test = new TestListener("test");
-		EventManager manager = new ReflectionEventManager();
-		manager.registerEvents(test);
-		
-		for(int i = 0; i < 1000000; i++)
-		{
-			manager.callEvent(new TestEvent());
-		}
-	}
 }
