@@ -39,7 +39,6 @@ public final class JavaAssistUtil {
 
 	private static ClassPool pool;
 	private static ConcurrentMap<String, AtomicInteger> map;
-	private static ClassLoader classLoader;
 	
 	static 
 	{
@@ -57,11 +56,6 @@ public final class JavaAssistUtil {
 		}
 	}
 	
-	public static void setClassLoader(ClassLoader classLoader)
-	{
-		JavaAssistUtil.classLoader = classLoader;
-	}
-	
 	public static ClassPool getClassPool()
 	{
 		return JavaAssistUtil.pool;
@@ -74,15 +68,7 @@ public final class JavaAssistUtil {
 
 		try 
 		{
-			ClassLoader classLoader = null;
-			if(JavaAssistUtil.classLoader != null)
-			{
-				classLoader = JavaAssistUtil.classLoader;
-			}
-			else
-			{
-				classLoader = listener.getClass().getClassLoader();
-			}
+			ClassLoader classLoader = listener.getClass().getClassLoader();
 
 			Class<?> listenerClass = Class.forName(listener.getClass().getName(), true, classLoader);
 			pool.insertClassPath(new LoaderClassPath(classLoader));
