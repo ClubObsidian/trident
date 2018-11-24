@@ -37,7 +37,7 @@ public class EventDoublyLinkedListTest {
 			EventDoublyLinkedList list = new EventDoublyLinkedList();
 			
 			TestListener test = new TestListener("test");
-			MethodExecutor executor = JavaAssistUtil.generateMethodExecutor(test, test.getClass().getDeclaredMethod("test", TestEvent.class));
+			MethodExecutor executor = JavaAssistUtil.generateMethodExecutor(test, test.getClass().getDeclaredMethod("test", TestEvent.class), false);
 			EventNode low = list.insert(executor, EventPriority.LOW);
 			assertTrue("Low could not be inserted at head", low != null);
 			
@@ -45,7 +45,7 @@ public class EventDoublyLinkedListTest {
 			
 			
 			TestListener test2 = new TestListener("test2");
-			MethodExecutor executor2 = JavaAssistUtil.generateMethodExecutor(test2, test2.getClass().getDeclaredMethod("test", TestEvent.class));
+			MethodExecutor executor2 = JavaAssistUtil.generateMethodExecutor(test2, test2.getClass().getDeclaredMethod("test", TestEvent.class), false);
 			EventNode lowest = list.insert(executor2, EventPriority.LOWEST);
 			assertTrue("Lowest could not be inserted", lowest != null);
 			
@@ -53,7 +53,7 @@ public class EventDoublyLinkedListTest {
 			
 			
 			TestListener test3 = new TestListener("test3");
-			MethodExecutor executor3 = JavaAssistUtil.generateMethodExecutor(test3, test3.getClass().getDeclaredMethod("test", TestEvent.class));
+			MethodExecutor executor3 = JavaAssistUtil.generateMethodExecutor(test3, test3.getClass().getDeclaredMethod("test", TestEvent.class), false);
 			EventNode nextLowest = list.insert(executor3, EventPriority.LOWEST);
 			assertTrue("NextLowest could not be inserted", nextLowest != null);
 			
@@ -61,7 +61,7 @@ public class EventDoublyLinkedListTest {
 			
 			
 			TestListener test4 = new TestListener("test4");
-			MethodExecutor executor4 = JavaAssistUtil.generateMethodExecutor(test4, test4.getClass().getDeclaredMethod("test", TestEvent.class));
+			MethodExecutor executor4 = JavaAssistUtil.generateMethodExecutor(test4, test4.getClass().getDeclaredMethod("test", TestEvent.class), false);
 			EventNode monitor = list.insert(executor4, EventPriority.MONITOR);
 			assertTrue("Monitor could not be inserted", monitor != null);
 			
@@ -69,14 +69,14 @@ public class EventDoublyLinkedListTest {
 			
 			
 			TestListener test5 = new TestListener("test5");
-			MethodExecutor executor5 = JavaAssistUtil.generateMethodExecutor(test5, test5.getClass().getDeclaredMethod("test", TestEvent.class));
+			MethodExecutor executor5 = JavaAssistUtil.generateMethodExecutor(test5, test5.getClass().getDeclaredMethod("test", TestEvent.class), false);
 			EventNode high = list.insert(executor5, EventPriority.HIGH);
 			assertTrue("High could not be inserted", high != null);
 			
 			assertTrue("High next node is not priority monitor", list.find(executor5).getNext().getData().equals(executor4));
 			
 			TestListener test6 = new TestListener("test6");
-			MethodExecutor executor6 = JavaAssistUtil.generateMethodExecutor(test6, test6.getClass().getDeclaredMethod("test", TestEvent.class));
+			MethodExecutor executor6 = JavaAssistUtil.generateMethodExecutor(test6, test6.getClass().getDeclaredMethod("test", TestEvent.class), false);
 			EventNode normal = list.insert(executor6, EventPriority.NORMAL);
 			assertTrue("Normal could not be inserted", normal != null);
 			
@@ -84,7 +84,7 @@ public class EventDoublyLinkedListTest {
 			
 			
 			TestListener test7 = new TestListener("test7");
-			MethodExecutor executor7 = JavaAssistUtil.generateMethodExecutor(test7, test7.getClass().getDeclaredMethod("test", TestEvent.class));
+			MethodExecutor executor7 = JavaAssistUtil.generateMethodExecutor(test7, test7.getClass().getDeclaredMethod("test", TestEvent.class), false);
 			EventNode highest = list.insert(executor7, EventPriority.HIGHEST);
 			assertTrue("Highest could not be inserted", highest != null);
 			
@@ -103,7 +103,7 @@ public class EventDoublyLinkedListTest {
 		{
 			EventDoublyLinkedList list = new EventDoublyLinkedList();
 			TestListener test = new TestListener("test1");
-			MethodExecutor executor = JavaAssistUtil.generateMethodExecutor(test, test.getClass().getDeclaredMethod("test", TestEvent.class));
+			MethodExecutor executor = JavaAssistUtil.generateMethodExecutor(test, test.getClass().getDeclaredMethod("test", TestEvent.class), false);
 			list.insert(executor, EventPriority.MONITOR);
 			
 			assertTrue("Monitor is not head", list.getHead().getData().equals(executor));
@@ -112,7 +112,7 @@ public class EventDoublyLinkedListTest {
 			
 			for(int i = EventPriority.values()[0].getValue(); i < (EventPriority.values()[EventPriority.values().length - 1]).getValue() + 1; i++)
 			{
-				list.insert(JavaAssistUtil.generateMethodExecutor(new TestListener("test" + i), test.getClass().getDeclaredMethod("test", TestEvent.class)), EventPriority.getByValue(i));
+				list.insert(JavaAssistUtil.generateMethodExecutor(new TestListener("test" + i), test.getClass().getDeclaredMethod("test", TestEvent.class) , false), EventPriority.getByValue(i));
 			}
 			
 			EventNode node = list.getHead();
@@ -129,7 +129,7 @@ public class EventDoublyLinkedListTest {
 			
 			for(int i = (EventPriority.values()[EventPriority.values().length - 1]).getValue(); i > -1 ; i--)
 			{
-				list.insert(JavaAssistUtil.generateMethodExecutor(new TestListener("test" + i), test.getClass().getDeclaredMethod("test", TestEvent.class)), EventPriority.getByValue(i));
+				list.insert(JavaAssistUtil.generateMethodExecutor(new TestListener("test" + i), test.getClass().getDeclaredMethod("test", TestEvent.class), false), EventPriority.getByValue(i));
 			}
 			
 			node = list.getHead();
@@ -152,7 +152,7 @@ public class EventDoublyLinkedListTest {
 				
 				rand.setSeed(System.nanoTime());
 				int next = rand.nextInt(6);
-				EventNode inserted = list.insert(JavaAssistUtil.generateMethodExecutor(new TestListener("test" + i), test.getClass().getDeclaredMethod("test", TestEvent.class)), EventPriority.getByValue(next));
+				EventNode inserted = list.insert(JavaAssistUtil.generateMethodExecutor(new TestListener("test" + i), test.getClass().getDeclaredMethod("test", TestEvent.class), false), EventPriority.getByValue(next));
 			
 				assertTrue("Insert failed for random insert for removal", inserted != null);
 			}
@@ -182,7 +182,7 @@ public class EventDoublyLinkedListTest {
 		TestListener test = new TestListener("test1");
 		try 
 		{
-			MethodExecutor executor = JavaAssistUtil.generateMethodExecutor(test, test.getClass().getDeclaredMethod("test", TestEvent.class));
+			MethodExecutor executor = JavaAssistUtil.generateMethodExecutor(test, test.getClass().getDeclaredMethod("test", TestEvent.class), false);
 			assertTrue("Executor was removed", list.remove(executor) == null);
 		} 
 		catch (NoSuchMethodException | SecurityException e) 
@@ -198,12 +198,12 @@ public class EventDoublyLinkedListTest {
 		{
 			EventDoublyLinkedList list = new EventDoublyLinkedList();
 			TestListener test1 = new TestListener("test1");
-			MethodExecutor executor1 = JavaAssistUtil.generateMethodExecutor(test1, test1.getClass().getDeclaredMethod("test", TestEvent.class));
+			MethodExecutor executor1 = JavaAssistUtil.generateMethodExecutor(test1, test1.getClass().getDeclaredMethod("test", TestEvent.class), false);
 			
 			list.insert(executor1, EventPriority.LOWEST);
 			
 			TestListener test2 = new TestListener("test2");
-			MethodExecutor executor2 = JavaAssistUtil.generateMethodExecutor(test2, test2.getClass().getDeclaredMethod("test", TestEvent.class));
+			MethodExecutor executor2 = JavaAssistUtil.generateMethodExecutor(test2, test2.getClass().getDeclaredMethod("test", TestEvent.class), false);
 			
 			list.insert(executor2, EventPriority.LOW);
 			
@@ -226,17 +226,17 @@ public class EventDoublyLinkedListTest {
 		{
 			EventDoublyLinkedList list = new EventDoublyLinkedList();
 			TestListener test1 = new TestListener("test1");
-			MethodExecutor executor1 = JavaAssistUtil.generateMethodExecutor(test1, test1.getClass().getDeclaredMethod("test", TestEvent.class));
+			MethodExecutor executor1 = JavaAssistUtil.generateMethodExecutor(test1, test1.getClass().getDeclaredMethod("test", TestEvent.class), false);
 			
 			list.insert(executor1, EventPriority.LOWEST);
 			
 			TestListener test2 = new TestListener("test2");
-			MethodExecutor executor2 = JavaAssistUtil.generateMethodExecutor(test2, test2.getClass().getDeclaredMethod("test", TestEvent.class));
+			MethodExecutor executor2 = JavaAssistUtil.generateMethodExecutor(test2, test2.getClass().getDeclaredMethod("test", TestEvent.class), false);
 			
 			list.insert(executor2, EventPriority.LOW);
 			
 			TestListener test3 = new TestListener("test3");
-			MethodExecutor executor3 = JavaAssistUtil.generateMethodExecutor(test3, test3.getClass().getDeclaredMethod("test", TestEvent.class));
+			MethodExecutor executor3 = JavaAssistUtil.generateMethodExecutor(test3, test3.getClass().getDeclaredMethod("test", TestEvent.class), false);
 			
 			list.insert(executor3, EventPriority.NORMAL);
 			
@@ -258,7 +258,7 @@ public class EventDoublyLinkedListTest {
 		{
 			EventDoublyLinkedList list = new EventDoublyLinkedList();
 			TestListener test1 = new TestListener("test1");
-			MethodExecutor executor1 = JavaAssistUtil.generateMethodExecutor(test1, test1.getClass().getDeclaredMethod("test", TestEvent.class));
+			MethodExecutor executor1 = JavaAssistUtil.generateMethodExecutor(test1, test1.getClass().getDeclaredMethod("test", TestEvent.class), false);
 			assertTrue("Executor was found while not inserted", list.find(executor1) == null);
 		} 
 		catch (NoSuchMethodException | SecurityException e) 
@@ -291,12 +291,12 @@ public class EventDoublyLinkedListTest {
 		{
 			EventDoublyLinkedList list = new EventDoublyLinkedList();
 			TestListener test1 = new TestListener("test1");
-			MethodExecutor executor1 = JavaAssistUtil.generateMethodExecutor(test1, test1.getClass().getDeclaredMethod("test", TestEvent.class));
+			MethodExecutor executor1 = JavaAssistUtil.generateMethodExecutor(test1, test1.getClass().getDeclaredMethod("test", TestEvent.class), false);
 			
 			list.insert(executor1, EventPriority.LOWEST);
 			
 			TestListener test2 = new TestListener("test2");
-			MethodExecutor executor2 = JavaAssistUtil.generateMethodExecutor(test2, test2.getClass().getDeclaredMethod("test", TestEvent.class));
+			MethodExecutor executor2 = JavaAssistUtil.generateMethodExecutor(test2, test2.getClass().getDeclaredMethod("test", TestEvent.class), false);
 			
 			
 			EventPriority priority = EventPriority.LOWEST;

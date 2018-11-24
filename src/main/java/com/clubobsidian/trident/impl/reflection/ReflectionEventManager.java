@@ -101,7 +101,8 @@ public class ReflectionEventManager implements EventManager {
 							this.registeredEventListeners.put(listener, new ConcurrentLinkedQueue<>());
 						}
 
-						MethodExecutor executor = new ReflectionMethodExecutor(listener, method);
+						boolean ignoreCanceled = handler.ignoreCanceled();
+						MethodExecutor executor = new ReflectionMethodExecutor(listener, method, ignoreCanceled);
 						this.registeredExecutors.get(eventClass).insert(executor, handler.priority());
 						this.registeredEventListeners.get(listener).add(executor);
 					}

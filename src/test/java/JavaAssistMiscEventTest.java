@@ -41,7 +41,7 @@ public class JavaAssistMiscEventTest {
 		{
 			Listener listener = new TestListener("test");
 			Method testEventMethod = listener.getClass().getDeclaredMethod("test", TestEvent.class);
-			MethodExecutor executor = JavaAssistUtil.generateMethodExecutor(listener, testEventMethod);
+			MethodExecutor executor = JavaAssistUtil.generateMethodExecutor(listener, testEventMethod, false);
 			
 			assertTrue("Listeners are not equal for method executor", listener.equals(executor.getListener()));
 			assertTrue("Methods are not equal for method executor", testEventMethod.equals(executor.getMethod()));
@@ -59,7 +59,7 @@ public class JavaAssistMiscEventTest {
 		{
 			Listener listener = null;
 			Method testEventMethod = null;
-			MethodExecutor executor = JavaAssistUtil.generateMethodExecutor(listener, testEventMethod);
+			MethodExecutor executor = JavaAssistUtil.generateMethodExecutor(listener, testEventMethod, false);
 			
 			assertTrue("Method executor was not null", executor == null);
 		} 

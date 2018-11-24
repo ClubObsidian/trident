@@ -27,9 +27,9 @@ import com.clubobsidian.trident.MethodExecutor;
  */
 public class ReflectionMethodExecutor extends MethodExecutor {
 
-	public ReflectionMethodExecutor(Listener listener, Method method) 
+	public ReflectionMethodExecutor(Listener listener, Method method, boolean ignoreCanceled) 
 	{
-		super(listener, method);
+		super(listener, method, ignoreCanceled);
 	}
 
 	@Override

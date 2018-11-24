@@ -22,6 +22,7 @@ import java.util.Queue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
+import com.clubobsidian.trident.Cancelable;
 import com.clubobsidian.trident.Event;
 import com.clubobsidian.trident.EventHandler;
 import com.clubobsidian.trident.EventManager;
@@ -62,6 +63,15 @@ public class JavaAssistEventManager implements EventManager {
 		while(node != null)
 		{
 			MethodExecutor executor = node.getData();
+			if(event instanceof Cancelable)
+			{
+				Cancelable cancelable = (Cancelable) event;
+				if(cancelable.isCanceled() && executor.isIgnoringCanceled())
+				{
+					node = node.getNext();
+					continue;
+				}
+			}
 			executor.execute(event);
 			node = node.getNext();
 		}
@@ -90,6 +100,7 @@ public class JavaAssistEventManager implements EventManager {
 				if(method.getParameters().length == 1)
 				{
 					Class<?> eventClass = method.getParameterTypes()[0];
+						
 					if(ClassUtil.hasEventSuperClass(eventClass))
 					{
 						if(this.registeredExecutors.get(eventClass) == null)
@@ -100,8 +111,9 @@ public class JavaAssistEventManager implements EventManager {
 						{
 							this.registeredEventListeners.put(listener, new ConcurrentLinkedQueue<>());
 						}
-
-						MethodExecutor executor = JavaAssistUtil.generateMethodExecutor(listener, method);
+						
+						boolean ignoreCanceled = handler.ignoreCanceled();
+						MethodExecutor executor = JavaAssistUtil.generateMethodExecutor(listener, method, ignoreCanceled);
 						this.registeredExecutors.get(eventClass).insert(executor, handler.priority());
 						this.registeredEventListeners.get(listener).add(executor);
 					}

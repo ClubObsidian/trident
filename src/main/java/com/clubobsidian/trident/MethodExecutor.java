@@ -28,10 +28,12 @@ public abstract class MethodExecutor {
 
 	private Listener listener;
 	private Method method;
-	public MethodExecutor(Listener listener, Method method)
+	private boolean ignoreCanceled;
+	public MethodExecutor(Listener listener, Method method, boolean ignoreCanceled)
 	{
 		this.listener = listener;
 		this.method = method;
+		this.ignoreCanceled = ignoreCanceled;
 	}
 
 	/** 
@@ -48,6 +50,14 @@ public abstract class MethodExecutor {
 	public Method getMethod()
 	{
 		return this.method;
+	}
+	
+	/** 
+	 * @return whether or not the method executor is ignoring canceled
+	 */
+	public boolean isIgnoringCanceled()
+	{
+		return this.ignoreCanceled;
 	}
 	
 	/**

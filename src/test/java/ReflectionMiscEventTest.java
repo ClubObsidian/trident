@@ -32,7 +32,7 @@ public class ReflectionMiscEventTest {
 		{
 			Listener listener = new TestListener("test");
 			Method testEventMethod = listener.getClass().getDeclaredMethod("test", TestEvent.class);
-			MethodExecutor executor = new ReflectionMethodExecutor(listener, testEventMethod);
+			MethodExecutor executor = new ReflectionMethodExecutor(listener, testEventMethod, false);
 			
 			assertTrue("Listeners are not equal for method executor", listener.equals(executor.getListener()));
 			assertTrue("Methods are not equal for method executor", testEventMethod.equals(executor.getMethod()));

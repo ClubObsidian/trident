@@ -43,7 +43,7 @@ public class MultiThreadingTest {
 					{
 						int inc = count.incrementAndGet();
 						TestListener testListener = new TestListener("test" + inc);
-						MethodExecutor testExecutor = JavaAssistUtil.generateMethodExecutor(testListener, testListener.getClass().getDeclaredMethod("test", TestEvent.class));
+						MethodExecutor testExecutor = JavaAssistUtil.generateMethodExecutor(testListener, testListener.getClass().getDeclaredMethod("test", TestEvent.class), false);
 						EventNode node = list.insert(testExecutor, EventPriority.LOWEST);
 						assertTrue("Node was null when inserted", node != null);
 					} 

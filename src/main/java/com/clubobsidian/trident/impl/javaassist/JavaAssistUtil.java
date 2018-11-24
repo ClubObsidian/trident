@@ -61,7 +61,7 @@ public final class JavaAssistUtil {
 		return JavaAssistUtil.pool;
 	}
 	
-	public static MethodExecutor generateMethodExecutor(final Listener listener, final Method method) 
+	public static MethodExecutor generateMethodExecutor(final Listener listener, final Method method, final boolean ignoreCanceled) 
 	{
 		if(listener == null || method == null)
 			return null;
@@ -107,7 +107,7 @@ public final class JavaAssistUtil {
 			methodExecutorClass.addMethod(call);
 
 			Class<?> cl = methodExecutorClass.toClass(classLoader, JavaAssistEventManager.class.getProtectionDomain());
-			return (MethodExecutor) cl.getDeclaredConstructors()[0].newInstance(listener, method);
+			return (MethodExecutor) cl.getDeclaredConstructors()[0].newInstance(listener, method, ignoreCanceled);
 		} 
 		catch (NotFoundException | CannotCompileException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | SecurityException | ClassNotFoundException e) 
 		{
