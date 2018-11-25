@@ -22,7 +22,6 @@ import java.util.Queue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-import com.clubobsidian.trident.impl.reflection.ReflectionMethodExecutor;
 import com.clubobsidian.trident.util.ClassUtil;
 import com.clubobsidian.trident.util.EventDoublyLinkedList;
 import com.clubobsidian.trident.util.EventNode;

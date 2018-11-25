@@ -85,7 +85,7 @@ public class JavaAssistEventManagerTest {
 		Event event = new TestEvent();
 		EventManager manager = new JavaAssistEventManager();
 		
-		assertTrue("Event call ran when event did not exist", !manager.callEvent(event));
+		assertFalse("Event call ran when event did not exist", manager.callEvent(event));
 	}
 	
 	@Test

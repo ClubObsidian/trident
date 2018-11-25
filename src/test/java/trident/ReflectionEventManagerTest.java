@@ -42,7 +42,7 @@ public class ReflectionEventManagerTest {
 		
 		manager.callEvent(new TestEvent());
 		
-		assertTrue("Test is not false", !test.getTest());
+		assertFalse("Test is not false", test.getTest());
 	}
 	
 	@Test
