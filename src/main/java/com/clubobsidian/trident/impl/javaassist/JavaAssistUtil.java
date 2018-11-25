@@ -35,8 +35,6 @@ import javassist.NotFoundException;
 
 public final class JavaAssistUtil {
 
-	private JavaAssistUtil() {}
-
 	private static ClassPool pool;
 	private static ConcurrentMap<String, AtomicInteger> map;
 	
@@ -55,6 +53,8 @@ public final class JavaAssistUtil {
 			e.printStackTrace();
 		}
 	}
+	
+	private JavaAssistUtil() {}
 	
 	public static ClassPool getClassPool()
 	{

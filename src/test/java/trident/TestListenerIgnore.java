@@ -13,20 +13,37 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-import com.clubobsidian.trident.Cancelable;
+package trident;
 
-public class TestCancelableEvent extends TestEvent implements Cancelable {
+import com.clubobsidian.trident.EventHandler;
+import com.clubobsidian.trident.EventPriority;
+import com.clubobsidian.trident.Listener;
 
-	private boolean canceled;
-	
-	@Override
+public class TestListenerIgnore implements Listener {
+
+	private boolean canceled = false;
+	private boolean ignored = true;
+
 	public boolean isCanceled()
 	{
 		return this.canceled;
 	}
 	
-	public void setCanceled(boolean cancelled)
+	public boolean getIgnored()
 	{
-		this.canceled = cancelled;
+		return this.ignored;
+	}
+	
+	@EventHandler
+	public void setCanceled(TestCancelableEvent e)
+	{
+		e.setCanceled(true);
+		this.canceled = true;
+	}
+	
+	@EventHandler(priority = EventPriority.HIGHEST, ignoreCanceled = true)
+	public void test(TestCancelableEvent e)
+	{
+		this.ignored = false;
 	}
 }

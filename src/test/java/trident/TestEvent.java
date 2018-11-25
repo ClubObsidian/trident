@@ -13,13 +13,13 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-import com.clubobsidian.trident.Event;
+package trident;
 
 /**
  * 
- * Used in testing for unit tests.
- * Should not be called, extended by {@link} TestEvent
- *
+ * Extends TestEventSuper, is used partially in testing of getting
+ * the super class for the event class.
+ * 
  */
 
-public class TestEventSuper extends Event {}
+public class TestEvent extends TestEventSuper {}

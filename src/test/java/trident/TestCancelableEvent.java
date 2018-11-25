@@ -13,26 +13,22 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
+package trident;
 
-import static org.junit.Assert.assertTrue;
+import com.clubobsidian.trident.Cancelable;
 
-import org.junit.Test;
+public class TestCancelableEvent extends TestEvent implements Cancelable {
 
-import com.clubobsidian.trident.EventManager;
-import com.clubobsidian.trident.impl.javaassist.JavaAssistEventManager;
-
-public class IgnoreCanceledTest {
-
-	@Test
-	public void ignoredCanceled()
+	private boolean canceled;
+	
+	@Override
+	public boolean isCanceled()
 	{
-		TestListenerIgnore listener = new TestListenerIgnore();
-		EventManager manager = new JavaAssistEventManager();
-		manager.registerEvents(listener);
-		manager.callEvent(new TestCancelableEvent());
-		
-		assertTrue("Event was not canceled", listener.isCanceled());
-		assertTrue("Event was not ignored", listener.getIgnored());
+		return this.canceled;
 	}
-
+	
+	public void setCanceled(boolean cancelled)
+	{
+		this.canceled = cancelled;
+	}
 }

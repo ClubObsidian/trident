@@ -13,11 +13,27 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-/**
- * 
- * Extends TestEventSuper, is used partially in testing of getting
- * the super class for the event class.
- * 
- */
+package trident;
 
-public class TestEvent extends TestEventSuper {}
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
+
+import org.junit.Test;
+
+import com.clubobsidian.trident.Event;
+
+import com.clubobsidian.trident.util.ClassUtil;
+
+public class UtilTest {
+
+	@Test
+	public void classUtilTest()
+	{
+		Event event = new TestEvent();
+		boolean superClass = ClassUtil.hasEventSuperClass(event.getClass());
+		assertTrue("Super class for TestEvent was not event", superClass);
+		
+		superClass = ClassUtil.hasEventSuperClass(String.class);
+		assertFalse("Super class is not null for string class", superClass);
+	}
+}

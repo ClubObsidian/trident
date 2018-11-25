@@ -13,7 +13,10 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
+package trident;
+
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 import org.junit.Test;
 
@@ -31,7 +34,7 @@ public class JavaAssistEventManagerTest {
 		boolean registered = manager.registerEvents(test);
 		
 		assertTrue("Event is not registered", registered);
-		assertTrue("Test is not false", !test.getTest());
+		assertFalse("Test is not false", test.getTest());
 		
 		manager.callEvent(new TestEvent());
 		
@@ -39,7 +42,7 @@ public class JavaAssistEventManagerTest {
 		
 		manager.callEvent(new TestEvent());
 		
-		assertTrue("Test is not false", !test.getTest());
+		assertFalse("Test is not false", test.getTest());
 	}
 	
 	@Test
@@ -73,7 +76,7 @@ public class JavaAssistEventManagerTest {
 		EventManager manager = new JavaAssistEventManager();
 		manager.registerEvents(test);
 		
-		assertTrue("Event was double registered", !manager.registerEvents(test));
+		assertFalse("Event was double registered", manager.registerEvents(test));
 	}
 	
 	@Test
@@ -93,6 +96,6 @@ public class JavaAssistEventManagerTest {
 		manager.registerEvents(test);
 		
 		assertTrue("Listener was not registered", manager.unregisterEvents(test));
-		assertTrue("Listener was still registered", !manager.unregisterEvents(test));
+		assertFalse("Listener was still registered", manager.unregisterEvents(test));
 	}
 }

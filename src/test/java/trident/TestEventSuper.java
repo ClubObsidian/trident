@@ -13,6 +13,15 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
+package trident;
+
 import com.clubobsidian.trident.Event;
 
-public class TestOrderEvent extends Event {}
+/**
+ * 
+ * Used in testing for unit tests.
+ * Should not be called, extended by {@link} TestEvent
+ *
+ */
+
+public class TestEventSuper extends Event {}

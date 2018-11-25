@@ -13,6 +13,9 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
+package trident;
+
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -31,7 +34,7 @@ public class ReflectionEventManagerTest {
 		boolean registered = manager.registerEvents(test);
 		
 		assertTrue("Event is not registered", registered);
-		assertTrue("Test is not false", !test.getTest());
+		assertFalse("Test is not false", test.getTest());
 		
 		manager.callEvent(new TestEvent());
 		
@@ -73,7 +76,7 @@ public class ReflectionEventManagerTest {
 		EventManager manager = new ReflectionEventManager();
 		manager.registerEvents(test);
 		
-		assertTrue("Event was double registered", !manager.registerEvents(test));
+		assertFalse("Event was double registered", manager.registerEvents(test));
 	}
 	
 	@Test
@@ -82,7 +85,7 @@ public class ReflectionEventManagerTest {
 		Event event = new TestEvent();
 		EventManager manager = new ReflectionEventManager();
 		
-		assertTrue("Event call ran when event did not exist", !manager.callEvent(event));
+		assertFalse("Event call ran when event did not exist", manager.callEvent(event));
 	}
 	
 	@Test
@@ -93,6 +96,6 @@ public class ReflectionEventManagerTest {
 		manager.registerEvents(test);
 		
 		assertTrue("Listener was not registered", manager.unregisterEvents(test));
-		assertTrue("Listener was still registered", !manager.unregisterEvents(test));
+		assertFalse("Listener was still registered", manager.unregisterEvents(test));
 	}
 }
