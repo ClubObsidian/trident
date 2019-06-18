@@ -92,7 +92,7 @@ public class JavaAssistEventBus extends EventBus {
 			{
 				collision = new AtomicInteger(0);
 				classNum = 0;
-				map.put(callbackClassName, collision);
+				JavaAssistEventBus.map.put(callbackClassName, collision);
 			}
 			else
 			{
@@ -101,8 +101,8 @@ public class JavaAssistEventBus extends EventBus {
 
 			callbackClassName += classNum;
 
-			CtClass methodExecutorClass = pool.makeClass(callbackClassName);
-			methodExecutorClass.setSuperclass(pool.get("com.clubobsidian.trident.MethodExecutor"));
+			CtClass methodExecutorClass = this.pool.makeClass(callbackClassName);
+			methodExecutorClass.setSuperclass(this.pool.get("com.clubobsidian.trident.MethodExecutor"));
 
 			String eventType = method.getParameterTypes()[0].getName();
 			String listenerType = listener.getClass().getName();
