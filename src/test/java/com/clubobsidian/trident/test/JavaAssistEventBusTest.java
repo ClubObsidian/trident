@@ -15,11 +15,22 @@
 */
 package com.clubobsidian.trident.test;
 
+import static org.junit.Assert.assertTrue;
+
+import org.junit.Test;
+
 import com.clubobsidian.trident.EventBus;
 import com.clubobsidian.trident.impl.javaassist.JavaAssistEventBus;
 
 public class JavaAssistEventBusTest extends EventBusTest {
 
+	@Test
+	public void testClassPoolExists()
+	{
+		JavaAssistEventBus eventBus = new JavaAssistEventBus();
+		assertTrue("No class pool for JavaAssist event bus", eventBus.getClassPool() != null);
+	}
+	
 	@Override
 	protected EventBus createNewEventBus() 
 	{
