@@ -26,17 +26,13 @@ import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.junit.FixMethodOrder;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 import org.junit.runners.MethodSorters;
 
 import com.clubobsidian.trident.EventBus;
 import com.clubobsidian.trident.Listener;
 import com.clubobsidian.trident.impl.javaassist.JavaAssistEventBus;
 import com.clubobsidian.trident.test.impl.TestListener;
-
-import javassist.CannotCompileException;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class JavaAssistEventBusTest extends EventBusTest {
@@ -77,9 +73,7 @@ public class JavaAssistEventBusTest extends EventBusTest {
 			ConcurrentMap<String, AtomicInteger> savedMap = (ConcurrentMap<String, AtomicInteger>) mapField.get(null);
 
 			mapField.set(null, new ConcurrentHashMap<String,AtomicInteger>());
-			boolean registered = false;
-
-			registered = eventBus.registerEvents(new TestListener("data"));
+			boolean registered = eventBus.registerEvents(new TestListener("data"));
 
 			mapField.set(null, savedMap);
 			System.out.println("Set map back to prior state");
