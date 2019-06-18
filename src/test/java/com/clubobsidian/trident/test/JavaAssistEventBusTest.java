@@ -17,9 +17,13 @@ package com.clubobsidian.trident.test;
 
 import static org.junit.Assert.assertTrue;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 import org.junit.Test;
 
 import com.clubobsidian.trident.EventBus;
+import com.clubobsidian.trident.Listener;
 import com.clubobsidian.trident.impl.javaassist.JavaAssistEventBus;
 
 public class JavaAssistEventBusTest extends EventBusTest {
@@ -29,6 +33,23 @@ public class JavaAssistEventBusTest extends EventBusTest {
 	{
 		JavaAssistEventBus eventBus = new JavaAssistEventBus();
 		assertTrue("No class pool for JavaAssist event bus", eventBus.getClassPool() != null);
+	}
+	
+	@Test
+	public void testNullMethodOnMethodExecutor()
+	{
+		JavaAssistEventBus eventBus = new JavaAssistEventBus();
+		try 
+		{
+			Method generate = eventBus.getClass().getDeclaredMethod("generateMethodExecutor", Listener.class, Method.class, boolean.class);
+			generate.setAccessible(true);
+			Object methodExecutor = generate.invoke(eventBus, null, null, false);
+			assertTrue("Method executor is not null even though a null listener was passed", methodExecutor == null);
+		} 
+		catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) 
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	@Override

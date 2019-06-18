@@ -78,11 +78,13 @@ public class JavaAssistEventBus extends EventBus {
 			this.addClassToPool(Event.class);
 			this.addClassToPool(Listener.class);
 			
-			if(this.pool.getOrNull(listenerClass.getName()) == null)
-			{
-				this.pool.insertClassPath(new LoaderClassPath(classLoader));
-				this.addClassToPool(listenerClass);
-			}
+			LoaderClassPath loaderClassPath = new LoaderClassPath(classLoader);
+			
+			//If class path exists, remove it first and then add
+			this.pool.removeClassPath(loaderClassPath);
+			this.pool.insertClassPath(loaderClassPath);
+			
+			this.addClassToPool(listenerClass);
 			
 			String callbackClassName = listener.getClass().getName() + method.getName();
 

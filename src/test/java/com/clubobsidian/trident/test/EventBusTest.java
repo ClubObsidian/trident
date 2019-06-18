@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import com.clubobsidian.trident.Event;
 import com.clubobsidian.trident.EventBus;
+import com.clubobsidian.trident.Listener;
 import com.clubobsidian.trident.test.impl.TestCancelableEvent;
 import com.clubobsidian.trident.test.impl.TestEvent;
 import com.clubobsidian.trident.test.impl.TestListener;
@@ -105,6 +106,17 @@ public abstract class EventBusTest {
 		assertFalse("Listener was still registered event though the listener was null", registered);
 	}
 	
+	@Test
+	public void testPrivateListener()
+	{
+		EventBus manager = this.createNewEventBus();
+		boolean registered = manager.registerEvents(new PrivateListener());
+		
+		assertTrue("Listener was still registered event though the listener was private", registered);
+	}
+	
 	protected abstract EventBus createNewEventBus();
 	
+	
+	private class PrivateListener implements Listener {}
 }
