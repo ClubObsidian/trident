@@ -25,8 +25,10 @@ import org.junit.Test;
 import com.clubobsidian.trident.Listener;
 import com.clubobsidian.trident.MethodExecutor;
 import com.clubobsidian.trident.impl.reflection.ReflectionMethodExecutor;
+import com.clubobsidian.trident.test.impl.TestWrongArgumentListener;
 import com.clubobsidian.trident.test.impl.TestEvent;
 import com.clubobsidian.trident.test.impl.TestListener;
+import com.clubobsidian.trident.test.impl.TestWrongArgumentEvent;
 
 public class ReflectionMiscEventTest {
 
@@ -41,6 +43,24 @@ public class ReflectionMiscEventTest {
 			
 			assertTrue("Listeners are not equal for method executor", listener.equals(executor.getListener()));
 			assertTrue("Methods are not equal for method executor", testEventMethod.equals(executor.getMethod()));
+		} 
+		catch (NoSuchMethodException | SecurityException e) 
+		{
+			e.printStackTrace();
+		}		
+	}
+	
+	@Test
+	public void methodExecutorPrivateTest()
+	{
+		try 
+		{
+			TestWrongArgumentListener listener = new TestWrongArgumentListener("test");
+			Method testEventMethod = listener.getClass().getDeclaredMethod("test", TestEvent.class);
+			MethodExecutor executor = new ReflectionMethodExecutor(listener, testEventMethod, false);
+			executor.execute(new TestWrongArgumentEvent());
+			
+			assertTrue("Executor was able to execute method on a listener with a different event class", listener.getTest() == false);
 		} 
 		catch (NoSuchMethodException | SecurityException e) 
 		{
