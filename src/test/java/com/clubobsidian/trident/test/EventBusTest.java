@@ -87,6 +87,24 @@ public abstract class EventBusTest {
 		assertFalse("Listener was still registered", manager.unregisterEvents(test));
 	}
 	
+	@Test
+	public void testEmptyCallEvent()
+	{
+		EventBus manager = this.createNewEventBus();
+		boolean called = manager.callEvent(new TestEvent());
+		
+		assertFalse("Event was called when a listener is not registered", called);
+	}
+	
+	@Test
+	public void testNullRegister()
+	{
+		EventBus manager = this.createNewEventBus();
+		boolean registered = manager.registerEvents(null);
+		
+		assertFalse("Listener was still registered event though the listener was null", registered);
+	}
+	
 	protected abstract EventBus createNewEventBus();
 	
 }

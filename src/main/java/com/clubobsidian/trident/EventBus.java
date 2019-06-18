@@ -83,7 +83,11 @@ public abstract class EventBus {
 	 */
 	public boolean registerEvents(final Listener listener) 
 	{
-		if(this.registeredEventListeners.keySet().contains(listener))
+		if(listener == null)
+		{
+			return false;
+		}
+		else if(this.registeredEventListeners.keySet().contains(listener))
 		{
 			return false;
 		}
@@ -109,6 +113,10 @@ public abstract class EventBus {
 
 						boolean ignoreCanceled = handler.ignoreCanceled();
 						MethodExecutor executor = this.createMethodExecutor(listener, method, ignoreCanceled);
+						
+						if(executor == null)
+							return false;
+						
 						this.registeredExecutors.get(eventClass).insert(executor, handler.priority());
 						this.registeredEventListeners.get(listener).add(executor);
 					}
