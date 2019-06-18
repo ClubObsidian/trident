@@ -103,7 +103,19 @@ public class JavaAssistEventBus extends EventBus {
 
 			callbackClassName += classNum;
 
+			CtClass checkMethodExecutorClass = this.pool.getOrNull(callbackClassName);
+			if(checkMethodExecutorClass != null)
+			{
+				if(checkMethodExecutorClass.isFrozen())
+				{
+					System.out.println("Method executor class is frozen");
+					return null;
+				}
+			}
+			
 			CtClass methodExecutorClass = this.pool.makeClass(callbackClassName);
+			
+			
 			methodExecutorClass.setSuperclass(this.pool.get("com.clubobsidian.trident.MethodExecutor"));
 
 			String eventType = method.getParameterTypes()[0].getName();
@@ -129,13 +141,10 @@ public class JavaAssistEventBus extends EventBus {
 		return null;
 	}	
 	
-	private boolean addClassToPool(Class<?> clazz)
+	private void addClassToPool(Class<?> clazz)
 	{
-		if(this.pool.getOrNull(clazz.getName()) == null)
-		{
-			this.pool.insertClassPath(new ClassClassPath(clazz));
-			return true;
-		}
-		return false;
+		ClassClassPath classClassPath = new ClassClassPath(clazz);
+		this.pool.removeClassPath(classClassPath);
+		this.pool.insertClassPath(classClassPath);
 	}
 }
