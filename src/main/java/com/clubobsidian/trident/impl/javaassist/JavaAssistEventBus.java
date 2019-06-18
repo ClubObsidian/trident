@@ -21,6 +21,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import com.clubobsidian.trident.Event;
+import com.clubobsidian.trident.EventBus;
 import com.clubobsidian.trident.Listener;
 import com.clubobsidian.trident.MethodExecutor;
 
@@ -33,35 +35,36 @@ import javassist.CtNewMethod;
 import javassist.LoaderClassPath;
 import javassist.NotFoundException;
 
-public final class JavaAssistUtil {
+/**
+ * {@inheritDoc}
+ */
+public class JavaAssistEventBus extends EventBus {
 
-	private static ClassPool pool;
 	private static ConcurrentMap<String, AtomicInteger> map;
 	
 	static 
 	{
-		try 
-		{
-			map = new ConcurrentHashMap<>();
-			pool = new ClassPool(true);
-			pool.insertClassPath("com.clubobsidian.trident.impl.javaassist.MethodCallback");
-			pool.insertClassPath("com.clubobsidian.trident.Event");
-			pool.insertClassPath("com.clubobsidian.trident.Listener");
-		} 
-		catch (NotFoundException e) 
-		{
-			e.printStackTrace();
-		}
+		JavaAssistEventBus.map = new ConcurrentHashMap<>();
 	}
 	
-	private JavaAssistUtil() {}
-	
-	public static ClassPool getClassPool()
+	private ClassPool pool;
+	public JavaAssistEventBus()
 	{
-		return JavaAssistUtil.pool;
+		this.pool = new ClassPool(true);
 	}
-
-	public static MethodExecutor generateMethodExecutor(final Listener listener, final Method method, final boolean ignoreCanceled) 
+	
+	public ClassPool getClassPool()
+	{
+		return this.pool;
+	}
+	
+	@Override
+	protected MethodExecutor createMethodExecutor(Listener listener, Method method, boolean ignoreCanceled) 
+	{
+		return this.generateMethodExecutor(listener, method, ignoreCanceled);
+	}
+	
+	private MethodExecutor generateMethodExecutor(final Listener listener, final Method method, final boolean ignoreCanceled) 
 	{
 		if(listener == null || method == null)
 			return null;
@@ -71,9 +74,16 @@ public final class JavaAssistUtil {
 			ClassLoader classLoader = listener.getClass().getClassLoader();
 
 			Class<?> listenerClass = Class.forName(listener.getClass().getName(), true, classLoader);
-			pool.insertClassPath(new LoaderClassPath(classLoader));
-			pool.insertClassPath(new ClassClassPath(listenerClass));
-
+			
+			this.addClassToPool(Event.class);
+			this.addClassToPool(Listener.class);
+			
+			if(this.pool.getOrNull(listenerClass.getName()) == null)
+			{
+				this.pool.insertClassPath(new LoaderClassPath(classLoader));
+				this.addClassToPool(listenerClass);
+			}
+			
 			String callbackClassName = listener.getClass().getName() + method.getName();
 
 			AtomicInteger collision = map.get(callbackClassName);
@@ -107,7 +117,7 @@ public final class JavaAssistUtil {
 			CtMethod call = CtNewMethod.make(sb.toString(), methodExecutorClass);
 			methodExecutorClass.addMethod(call);
 
-			Class<?> cl = methodExecutorClass.toClass(classLoader, JavaAssistEventManager.class.getProtectionDomain());
+			Class<?> cl = methodExecutorClass.toClass(classLoader, JavaAssistEventBus.class.getProtectionDomain());
 			return (MethodExecutor) cl.getDeclaredConstructors()[0].newInstance(listener, method, ignoreCanceled);
 		} 
 		catch (NotFoundException | CannotCompileException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | SecurityException | ClassNotFoundException e) 
@@ -116,4 +126,14 @@ public final class JavaAssistUtil {
 		}
 		return null;
 	}	
+	
+	private boolean addClassToPool(Class<?> clazz)
+	{
+		if(this.pool.getOrNull(clazz.getName()) == null)
+		{
+			this.pool.insertClassPath(new ClassClassPath(clazz));
+			return true;
+		}
+		return false;
+	}
 }

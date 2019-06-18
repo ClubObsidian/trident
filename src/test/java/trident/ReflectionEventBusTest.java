@@ -13,22 +13,16 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-package com.clubobsidian.trident.impl.javaassist;
+package trident;
 
-import java.lang.reflect.Method;
+import com.clubobsidian.trident.EventBus;
+import com.clubobsidian.trident.impl.reflection.ReflectionEventBus;
 
-import com.clubobsidian.trident.EventManager;
-import com.clubobsidian.trident.Listener;
-import com.clubobsidian.trident.MethodExecutor;
-
-/**
- * {@inheritDoc}
- */
-public class JavaAssistEventManager extends EventManager {
+public class ReflectionEventBusTest extends EventBusTest {
 
 	@Override
-	protected MethodExecutor createMethodExecutor(Listener listener, Method method, boolean ignoreCanceled) 
+	protected EventBus createNewEventBus() 
 	{
-		return JavaAssistUtil.generateMethodExecutor(listener, method, ignoreCanceled);
+		return new ReflectionEventBus();
 	}
 }

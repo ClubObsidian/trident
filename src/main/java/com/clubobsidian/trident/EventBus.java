@@ -27,16 +27,16 @@ import com.clubobsidian.trident.util.EventDoublyLinkedList;
 import com.clubobsidian.trident.util.EventNode;
 
 /**
- * Abstract class for implementing EventManager
- * classes. For an example see @see com.clubobsidian.trident.impl.javaassist.JavaAssistEventManager
+ * Abstract class for implementing EventBus
+ * classes. For an example see @see com.clubobsidian.trident.impl.javaassist.JavaAssistEventBus
  * 
  * @author virustotalop
  */
-public abstract class EventManager {
+public abstract class EventBus {
 
 	private Map<Listener, Queue<MethodExecutor>> registeredEventListeners;
 	private Map<Class<?>, EventDoublyLinkedList> registeredExecutors;
-	public EventManager()
+	public EventBus()
 	{
 		this.registeredEventListeners = new ConcurrentHashMap<>();
 		this.registeredExecutors = new ConcurrentHashMap<>();

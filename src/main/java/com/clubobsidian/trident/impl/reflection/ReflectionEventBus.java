@@ -17,20 +17,18 @@ package com.clubobsidian.trident.impl.reflection;
 
 import java.lang.reflect.Method;
 
-import com.clubobsidian.trident.EventManager;
+import com.clubobsidian.trident.EventBus;
 import com.clubobsidian.trident.Listener;
 import com.clubobsidian.trident.MethodExecutor;
 
 /**
  * {@inheritDoc}
  */
-public class ReflectionEventManager extends EventManager {
+public class ReflectionEventBus extends EventBus {
 
 	@Override
 	protected MethodExecutor createMethodExecutor(Listener listener, Method method, boolean ignoreCanceled) 
 	{
 		return new ReflectionMethodExecutor(listener, method, ignoreCanceled);
 	}
-
-	
 }
