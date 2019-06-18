@@ -13,15 +13,16 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-package trident;
+package com.clubobsidian.trident.test;
 
-import com.clubobsidian.trident.Event;
+import com.clubobsidian.trident.EventBus;
+import com.clubobsidian.trident.impl.reflection.ReflectionEventBus;
 
-/**
- * 
- * Used in testing for unit tests.
- * Should not be called, extended by {@link} TestEvent
- *
- */
+public class ReflectionEventBusTest extends EventBusTest {
 
-public class TestEventSuper extends Event {}
+	@Override
+	protected EventBus createNewEventBus() 
+	{
+		return new ReflectionEventBus();
+	}
+}

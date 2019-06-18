@@ -13,7 +13,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-package trident;
+package com.clubobsidian.trident.test;
 
 import static org.junit.Assert.assertTrue;
 
@@ -25,6 +25,9 @@ import org.junit.Test;
 
 import com.clubobsidian.trident.EventPriority;
 import com.clubobsidian.trident.MethodExecutor;
+import com.clubobsidian.trident.test.impl.TestEvent;
+import com.clubobsidian.trident.test.impl.TestListener;
+import com.clubobsidian.trident.test.impl.TestMethodExecutor;
 import com.clubobsidian.trident.util.EventDoublyLinkedList;
 import com.clubobsidian.trident.util.EventNode;
 

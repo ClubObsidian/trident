@@ -1,4 +1,4 @@
-package trident;
+package com.clubobsidian.trident.test.impl;
 
 import java.lang.reflect.Method;
 

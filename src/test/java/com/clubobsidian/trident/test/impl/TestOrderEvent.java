@@ -13,16 +13,8 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-package trident;
+package com.clubobsidian.trident.test.impl;
 
-import com.clubobsidian.trident.EventBus;
-import com.clubobsidian.trident.impl.reflection.ReflectionEventBus;
+import com.clubobsidian.trident.Event;
 
-public class ReflectionEventBusTest extends EventBusTest {
-
-	@Override
-	protected EventBus createNewEventBus() 
-	{
-		return new ReflectionEventBus();
-	}
-}
+public class TestOrderEvent extends Event {}

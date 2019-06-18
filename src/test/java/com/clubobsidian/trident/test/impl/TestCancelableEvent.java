@@ -13,8 +13,22 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-package trident;
+package com.clubobsidian.trident.test.impl;
 
-import com.clubobsidian.trident.Event;
+import com.clubobsidian.trident.Cancelable;
 
-public class TestOrderEvent extends Event {}
+public class TestCancelableEvent extends TestEvent implements Cancelable {
+
+	private boolean canceled;
+	
+	@Override
+	public boolean isCanceled()
+	{
+		return this.canceled;
+	}
+	
+	public void setCanceled(boolean cancelled)
+	{
+		this.canceled = cancelled;
+	}
+}

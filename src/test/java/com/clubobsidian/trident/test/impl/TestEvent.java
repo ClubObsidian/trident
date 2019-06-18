@@ -13,22 +13,13 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-package trident;
+package com.clubobsidian.trident.test.impl;
 
-import com.clubobsidian.trident.Cancelable;
+/**
+ * 
+ * Extends TestEventSuper, is used partially in testing of getting
+ * the super class for the event class.
+ * 
+ */
 
-public class TestCancelableEvent extends TestEvent implements Cancelable {
-
-	private boolean canceled;
-	
-	@Override
-	public boolean isCanceled()
-	{
-		return this.canceled;
-	}
-	
-	public void setCanceled(boolean cancelled)
-	{
-		this.canceled = cancelled;
-	}
-}
+public class TestEvent extends TestEventSuper {}

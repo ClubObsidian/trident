@@ -1,4 +1,4 @@
-package trident;
+package com.clubobsidian.trident.test;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -7,6 +7,10 @@ import org.junit.Test;
 
 import com.clubobsidian.trident.Event;
 import com.clubobsidian.trident.EventBus;
+import com.clubobsidian.trident.test.impl.TestCancelableEvent;
+import com.clubobsidian.trident.test.impl.TestEvent;
+import com.clubobsidian.trident.test.impl.TestListener;
+import com.clubobsidian.trident.test.impl.TestOrderEvent;
 
 public abstract class EventBusTest {
 

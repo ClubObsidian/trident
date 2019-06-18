@@ -13,7 +13,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-package trident;
+package com.clubobsidian.trident.test;
 
 
 import static org.junit.Assert.assertTrue;
@@ -25,6 +25,8 @@ import org.junit.Test;
 import com.clubobsidian.trident.Listener;
 import com.clubobsidian.trident.MethodExecutor;
 import com.clubobsidian.trident.impl.reflection.ReflectionMethodExecutor;
+import com.clubobsidian.trident.test.impl.TestEvent;
+import com.clubobsidian.trident.test.impl.TestListener;
 
 public class ReflectionMiscEventTest {
 

@@ -13,27 +13,15 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-package trident;
+package com.clubobsidian.trident.test.impl;
 
+import com.clubobsidian.trident.Event;
 
-import static org.junit.Assert.assertTrue;
+/**
+ * 
+ * Used in testing for unit tests.
+ * Should not be called, extended by {@link} TestEvent
+ *
+ */
 
-import org.junit.Test;
-
-import com.clubobsidian.trident.EventBus;
-import com.clubobsidian.trident.impl.javaassist.JavaAssistEventBus;
-
-public class IgnoreCanceledTest {
-
-	@Test
-	public void ignoredCanceled()
-	{
-		TestListenerIgnore listener = new TestListenerIgnore();
-		EventBus manager = new JavaAssistEventBus();
-		manager.registerEvents(listener);
-		manager.callEvent(new TestCancelableEvent());
-		
-		assertTrue("Event was not canceled", listener.isCanceled());
-		assertTrue("Event was not ignored", listener.getIgnored());
-	}
-}
+public class TestEventSuper extends Event {}
