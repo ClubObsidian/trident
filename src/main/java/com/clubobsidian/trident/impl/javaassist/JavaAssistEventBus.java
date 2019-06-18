@@ -108,7 +108,6 @@ public class JavaAssistEventBus extends EventBus {
 			{
 				if(checkMethodExecutorClass.isFrozen())
 				{
-					System.out.println("Method executor class is frozen");
 					return null;
 				}
 			}
