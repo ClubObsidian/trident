@@ -315,10 +315,18 @@ public class EventDoublyLinkedListTest {
 	}
 	
 	@Test
-	public void nullCaseTest()
+	public void methodExecutorNullTest()
 	{
 		EventDoublyLinkedList list = new EventDoublyLinkedList();
 		EventNode inserted = list.insert(null, null);
-		assertTrue("Inserted was not null", inserted == null);
+		assertTrue("Inserted event node was not null for a null method executor", inserted == null);
+	}
+	
+	@Test
+	public void eventPriorityNullTest()
+	{
+		EventDoublyLinkedList list = new EventDoublyLinkedList();
+		EventNode inserted = list.insert(new TestMethodExecutor(null, null, false), null);
+		assertTrue("Inserted event node was not null for a null event priority", inserted == null);
 	}
 }
