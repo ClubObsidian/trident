@@ -6,7 +6,7 @@
 [![Known Vulnerabilities](https://snyk.io//test/github/ClubObsidian/trident/badge.svg?targetFile=build.gradle)](https://snyk.io//test/github/ClubObsidian/trident?targetFile=build.gradle)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![discord](https://discordapp.com/api/guilds/482823104905609248/widget.png)](https://discord.gg/EY5Tq6r)
-[![javadocs](https://img.shields.io/badge/Javadocs-2.0.0-success.svg)]](https://jitpack.io/com/github/clubobsidian/trident/2.0.0/javadoc/)
+[![javadocs](https://img.shields.io/badge/Javadocs-2.0.0-success.svg)](https://jitpack.io/com/github/clubobsidian/trident/2.0.0/javadoc/)
 
 A dead simpile annotation event system that allows different event executor implementations.
 
