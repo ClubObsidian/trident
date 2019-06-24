@@ -1,33 +1,32 @@
-buildscript {
-  repositories {
-    jcenter()
-  }
-  dependencies {
-    classpath 'com.github.jengelman.gradle.plugins:shadow:4.0.4'
-  }
+plugins {
+	id 'java'
+	id 'com.github.johnrengelman.shadow' version '5.0.0'
+	id 'jacoco'
+	id 'eclipse'
+	id 'idea'
 }
-
-
-apply plugin: 'java'
-apply plugin: 'com.github.johnrengelman.shadow'
-apply plugin: 'jacoco'
-apply plugin: 'eclipse'
-apply plugin: 'idea'
 
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 
+group = 'com.clubobsidian'
+version = '2.0.0'
+
 repositories {
     mavenCentral()
     jcenter()
 }
 
+configurations {
+  shade
+  compile.extendsFrom shade
+}
+
 shadowJar {
    baseName = 'trident'
    classifier = null
-   version = null
    relocate 'javassist', 'com.clubobsidian.trident.javassist'
 }
 
@@ -38,10 +37,11 @@ dependencies {
 }
 
 jacocoTestReport {
-    reports {
-        xml.enabled true
-        html.enabled false
-    }
+	reports {
+		xml.enabled true
+		html.enabled false
+		html.destination file("${buildDir}/jacocoHtml")
+	}
 }
 
 task javadocJar(type: Jar, dependsOn: javadoc) {
