@@ -17,9 +17,8 @@ package com.clubobsidian.trident.test.impl;
 
 import com.clubobsidian.trident.EventHandler;
 import com.clubobsidian.trident.EventPriority;
-import com.clubobsidian.trident.Listener;
 
-public class TestListenerIgnore implements Listener {
+public class TestListenerIgnore {
 
 	private boolean canceled = false;
 	private boolean ignored = true;

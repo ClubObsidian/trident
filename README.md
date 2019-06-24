@@ -8,7 +8,7 @@
 [![Discord](https://img.shields.io/discord/482823104905609248.svg?logo=discord)](https://discord.gg/EY5Tq6r)
 [![javadocs](https://img.shields.io/badge/Javadocs-2.0.0-success.svg)](https://jitpack.io/com/github/clubobsidian/trident/2.0.0/javadoc/)
 
-A dead simpile annotation event system that allows different event executor implementations.
+A dead simpile annotation-based event bus that allows different event executor implementations.
 
 Trident implements reflection and generated Javassist method executors.
 

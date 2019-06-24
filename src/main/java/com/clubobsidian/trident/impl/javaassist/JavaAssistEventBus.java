@@ -23,7 +23,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import com.clubobsidian.trident.Event;
 import com.clubobsidian.trident.EventBus;
-import com.clubobsidian.trident.Listener;
 import com.clubobsidian.trident.MethodExecutor;
 
 import javassist.CannotCompileException;
@@ -59,12 +58,12 @@ public class JavaAssistEventBus extends EventBus {
 	}
 	
 	@Override
-	protected MethodExecutor createMethodExecutor(Listener listener, Method method, boolean ignoreCanceled) 
+	protected MethodExecutor createMethodExecutor(Object listener, Method method, boolean ignoreCanceled) 
 	{
 		return this.generateMethodExecutor(listener, method, ignoreCanceled);
 	}
 	
-	private MethodExecutor generateMethodExecutor(final Listener listener, final Method method, final boolean ignoreCanceled) 
+	private MethodExecutor generateMethodExecutor(Object listener, final Method method, final boolean ignoreCanceled) 
 	{
 		if(listener == null || method == null)
 			return null;
@@ -76,7 +75,6 @@ public class JavaAssistEventBus extends EventBus {
 			Class<?> listenerClass = Class.forName(listener.getClass().getName(), true, classLoader);
 			
 			this.addClassToPool(Event.class);
-			this.addClassToPool(Listener.class);
 			
 			LoaderClassPath loaderClassPath = new LoaderClassPath(classLoader);
 			

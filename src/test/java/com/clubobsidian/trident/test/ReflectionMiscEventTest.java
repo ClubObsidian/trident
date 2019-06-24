@@ -22,7 +22,6 @@ import java.lang.reflect.Method;
 
 import org.junit.Test;
 
-import com.clubobsidian.trident.Listener;
 import com.clubobsidian.trident.MethodExecutor;
 import com.clubobsidian.trident.impl.reflection.ReflectionMethodExecutor;
 import com.clubobsidian.trident.test.impl.TestWrongArgumentListener;
@@ -37,7 +36,7 @@ public class ReflectionMiscEventTest {
 	{
 		try 
 		{
-			Listener listener = new TestListener("test");
+			TestListener listener = new TestListener("test");
 			Method testEventMethod = listener.getClass().getDeclaredMethod("test", TestEvent.class);
 			MethodExecutor executor = new ReflectionMethodExecutor(listener, testEventMethod, false);
 			

@@ -30,7 +30,6 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import com.clubobsidian.trident.EventBus;
-import com.clubobsidian.trident.Listener;
 import com.clubobsidian.trident.impl.javaassist.JavaAssistEventBus;
 import com.clubobsidian.trident.test.impl.TestListener;
 
@@ -50,7 +49,7 @@ public class JavaAssistEventBusTest extends EventBusTest {
 		JavaAssistEventBus eventBus = new JavaAssistEventBus();
 		try 
 		{
-			Method generate = eventBus.getClass().getDeclaredMethod("generateMethodExecutor", Listener.class, Method.class, boolean.class);
+			Method generate = eventBus.getClass().getDeclaredMethod("generateMethodExecutor", Object.class, Method.class, boolean.class);
 			generate.setAccessible(true);
 			Object methodExecutor = generate.invoke(eventBus, null, null, false);
 			assertTrue("Method executor is not null even though a null listener was passed", methodExecutor == null);

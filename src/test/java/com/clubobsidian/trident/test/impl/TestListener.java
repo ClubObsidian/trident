@@ -17,9 +17,8 @@ package com.clubobsidian.trident.test.impl;
 
 import com.clubobsidian.trident.EventHandler;
 import com.clubobsidian.trident.EventPriority;
-import com.clubobsidian.trident.Listener;
 
-public class TestListener implements Listener {
+public class TestListener {
 	
 	private String data;
 	private boolean test;

@@ -19,7 +19,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import com.clubobsidian.trident.Event;
-import com.clubobsidian.trident.Listener;
 import com.clubobsidian.trident.MethodExecutor;
 
 /**
@@ -27,7 +26,7 @@ import com.clubobsidian.trident.MethodExecutor;
  */
 public class ReflectionMethodExecutor extends MethodExecutor {
 
-	public ReflectionMethodExecutor(Listener listener, Method method, boolean ignoreCanceled) 
+	public ReflectionMethodExecutor(Object listener, Method method, boolean ignoreCanceled) 
 	{
 		super(listener, method, ignoreCanceled);
 	}

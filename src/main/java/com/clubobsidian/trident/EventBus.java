@@ -34,7 +34,7 @@ import com.clubobsidian.trident.util.EventNode;
  */
 public abstract class EventBus {
 
-	private Map<Listener, Queue<MethodExecutor>> registeredEventListeners;
+	private Map<Object, Queue<MethodExecutor>> registeredEventListeners;
 	private Map<Class<?>, EventDoublyLinkedList> registeredExecutors;
 	public EventBus()
 	{
@@ -81,7 +81,7 @@ public abstract class EventBus {
 	 * @param listener listener to be registered
 	 * @return if the listener was registered
 	 */
-	public boolean registerEvents(final Listener listener) 
+	public boolean registerEvents(final Object listener) 
 	{
 		if(listener == null)
 		{
@@ -126,14 +126,14 @@ public abstract class EventBus {
 		return true;
 	}
 	
-	protected abstract MethodExecutor createMethodExecutor(Listener listener, Method method, boolean ignoreCanceled);
+	protected abstract MethodExecutor createMethodExecutor(Object listener, Method method, boolean ignoreCanceled);
 	
 	/**
 	 * 
 	 * @param listener listener to be unregistered
 	 * @return if the listener was unregistered
 	 */
-	public boolean unregisterEvents(Listener listener) 
+	public boolean unregisterEvents(Object listener) 
 	{
 		Queue<MethodExecutor> executors = this.registeredEventListeners.remove(listener);
 		if(executors == null)

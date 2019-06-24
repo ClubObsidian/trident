@@ -7,7 +7,6 @@ import org.junit.Test;
 
 import com.clubobsidian.trident.Event;
 import com.clubobsidian.trident.EventBus;
-import com.clubobsidian.trident.Listener;
 import com.clubobsidian.trident.test.impl.TestCancelableEvent;
 import com.clubobsidian.trident.test.impl.TestEvent;
 import com.clubobsidian.trident.test.impl.TestListener;
@@ -118,5 +117,5 @@ public abstract class EventBusTest {
 	protected abstract EventBus createNewEventBus();
 	
 	
-	private class PrivateListener implements Listener {}
+	private class PrivateListener {}
 }

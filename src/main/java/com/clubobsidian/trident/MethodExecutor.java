@@ -26,10 +26,10 @@ import java.lang.reflect.Method;
  */
 public abstract class MethodExecutor {
 
-	private Listener listener;
+	private Object listener;
 	private Method method;
 	private boolean ignoreCanceled;
-	public MethodExecutor(Listener listener, Method method, boolean ignoreCanceled)
+	public MethodExecutor(Object listener, Method method, boolean ignoreCanceled)
 	{
 		this.listener = listener;
 		this.method = method;
@@ -39,7 +39,7 @@ public abstract class MethodExecutor {
 	/** 
 	 * @return listener to execute events on
 	 */
-	public Listener getListener()
+	public Object getListener()
 	{
 		return this.listener;
 	}
