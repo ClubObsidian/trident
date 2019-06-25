@@ -63,7 +63,7 @@ compile 'com.github.clubobsidian:trident:2.0.0'
 2.  Generate intellij files with `gradlew idea`
 3.  Import project
 
-### Building
+### :building_construction: Building
 
 `gradlew shadowJar`
 
