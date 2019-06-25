@@ -1,4 +1,4 @@
-![trident](/img/trident_logo.png)
+# Trident
 
 [![Build Status](https://api.travis-ci.org/ClubObsidian/trident.svg?branch=master)](https://travis-ci.org/ClubObsidian/trident)
 [![build artifacts](https://jitpack.io/v/clubobsidian/trident.svg)](https://jitpack.io/#clubobsidian/trident)
@@ -12,11 +12,11 @@ A dead simpile annotation-based event bus that allows different event executor i
 
 Trident implements reflection and generated Javassist method executors.
 
-## Build Artifacts
+## :hammer: Build Artifacts
 
 Build artifacts are hosted via [Jitpack.](https://jitpack.io/#clubobsidian/Trident/)
 
-## Setting up as a dependency
+## :open_book: Setting up as a dependency
 
 ### Gradle
 
@@ -45,11 +45,11 @@ compile 'com.github.clubobsidian:trident:2.0.0'
 </dependency>
 ```
 
-## Dependencies
+## :fire: Dependencies
 
 * Javassist
 
-## Development
+## :computer: Development
 
 ### Eclipse
 
@@ -67,7 +67,7 @@ compile 'com.github.clubobsidian:trident:2.0.0'
 
 `gradlew shadowJar`
 
-### Projects that use Trident
+### :notes: Projects that use Trident
 
 * [DynamicGui](https://github.com/ClubObsidian/DynamicGui)
 * [Hydra](https://github.com/ClubObsidian/hydra)
