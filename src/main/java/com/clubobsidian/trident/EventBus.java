@@ -22,6 +22,7 @@ import java.util.Queue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
+import com.clubobsidian.trident.event.DeadEvent;
 import com.clubobsidian.trident.util.ClassUtil;
 import com.clubobsidian.trident.util.EventDoublyLinkedList;
 import com.clubobsidian.trident.util.EventNode;
@@ -51,7 +52,13 @@ public abstract class EventBus {
 		EventDoublyLinkedList executors = this.registeredExecutors.get(event.getClass());
 
 		if(executors == null)
+		{
+			if(!(event instanceof DeadEvent))
+			{
+				this.callEvent(new DeadEvent(event));
+			}
 			return false;
+		}
 
 		boolean ran = false;
 		EventNode node = executors.getHead();
@@ -74,6 +81,7 @@ public abstract class EventBus {
 			executor.execute(event);
 			node = node.getNext();
 		}
+		
 		return ran;
 	}
 	
