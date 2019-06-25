@@ -30,7 +30,7 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import com.clubobsidian.trident.EventBus;
-import com.clubobsidian.trident.impl.javaassist.JavaAssistEventBus;
+import com.clubobsidian.trident.eventbus.javassist.JavassistEventBus;
 import com.clubobsidian.trident.test.impl.TestListener;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -39,14 +39,14 @@ public class JavaAssistEventBusTest extends EventBusTest {
 	@Test
 	public void testClassPoolExists()
 	{
-		JavaAssistEventBus eventBus = new JavaAssistEventBus();
+		JavassistEventBus eventBus = new JavassistEventBus();
 		assertTrue("No class pool for JavaAssist event bus", eventBus.getClassPool() != null);
 	}
 	
 	@Test
 	public void testNullMethodOnMethodExecutor()
 	{
-		JavaAssistEventBus eventBus = new JavaAssistEventBus();
+		JavassistEventBus eventBus = new JavassistEventBus();
 		try 
 		{
 			Method generate = eventBus.getClass().getDeclaredMethod("generateMethodExecutor", Object.class, Method.class, boolean.class);
@@ -65,9 +65,9 @@ public class JavaAssistEventBusTest extends EventBusTest {
 	{
 		try 
 		{
-			JavaAssistEventBus eventBus = new JavaAssistEventBus();
+			JavassistEventBus eventBus = new JavassistEventBus();
 			eventBus.registerEvents(new TestListener("data"));
-			Field mapField = JavaAssistEventBus.class.getDeclaredField("map");
+			Field mapField = JavassistEventBus.class.getDeclaredField("map");
 			mapField.setAccessible(true);
 			ConcurrentMap<String, AtomicInteger> savedMap = (ConcurrentMap<String, AtomicInteger>) mapField.get(null);
 
@@ -88,6 +88,6 @@ public class JavaAssistEventBusTest extends EventBusTest {
 	@Override
 	protected EventBus createNewEventBus() 
 	{
-		return new JavaAssistEventBus();
+		return new JavassistEventBus();
 	}
 }

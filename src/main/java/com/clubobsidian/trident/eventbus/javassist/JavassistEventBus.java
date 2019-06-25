@@ -13,7 +13,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-package com.clubobsidian.trident.impl.javaassist;
+package com.clubobsidian.trident.eventbus.javassist;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -37,17 +37,17 @@ import javassist.NotFoundException;
 /**
  * {@inheritDoc}
  */
-public class JavaAssistEventBus extends EventBus {
+public class JavassistEventBus extends EventBus {
 
 	private static ConcurrentMap<String, AtomicInteger> map;
 	
 	static 
 	{
-		JavaAssistEventBus.map = new ConcurrentHashMap<>();
+		JavassistEventBus.map = new ConcurrentHashMap<>();
 	}
 	
 	private ClassPool pool;
-	public JavaAssistEventBus()
+	public JavassistEventBus()
 	{
 		this.pool = new ClassPool(true);
 	}
@@ -92,7 +92,7 @@ public class JavaAssistEventBus extends EventBus {
 			{
 				collision = new AtomicInteger(0);
 				classNum = 0;
-				JavaAssistEventBus.map.put(callbackClassName, collision);
+				JavassistEventBus.map.put(callbackClassName, collision);
 			}
 			else
 			{
@@ -128,7 +128,7 @@ public class JavaAssistEventBus extends EventBus {
 			CtMethod call = CtNewMethod.make(sb.toString(), methodExecutorClass);
 			methodExecutorClass.addMethod(call);
 
-			Class<?> cl = methodExecutorClass.toClass(classLoader, JavaAssistEventBus.class.getProtectionDomain());
+			Class<?> cl = methodExecutorClass.toClass(classLoader, JavassistEventBus.class.getProtectionDomain());
 			return (MethodExecutor) cl.getDeclaredConstructors()[0].newInstance(listener, method, ignoreCanceled);
 		} 
 		catch (NotFoundException | CannotCompileException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | SecurityException | ClassNotFoundException e) 

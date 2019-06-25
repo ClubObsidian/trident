@@ -16,7 +16,7 @@
 package com.clubobsidian.trident.test;
 
 import com.clubobsidian.trident.EventBus;
-import com.clubobsidian.trident.impl.reflection.ReflectionEventBus;
+import com.clubobsidian.trident.eventbus.reflection.ReflectionEventBus;
 
 public class ReflectionEventBusTest extends EventBusTest {
 

@@ -23,7 +23,7 @@ import java.lang.reflect.Method;
 import org.junit.Test;
 
 import com.clubobsidian.trident.MethodExecutor;
-import com.clubobsidian.trident.impl.reflection.ReflectionMethodExecutor;
+import com.clubobsidian.trident.eventbus.reflection.ReflectionMethodExecutor;
 import com.clubobsidian.trident.test.impl.TestWrongArgumentListener;
 import com.clubobsidian.trident.test.impl.TestEvent;
 import com.clubobsidian.trident.test.impl.TestListener;

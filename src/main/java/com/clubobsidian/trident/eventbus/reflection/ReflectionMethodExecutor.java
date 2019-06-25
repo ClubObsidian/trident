@@ -13,7 +13,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-package com.clubobsidian.trident.impl.reflection;
+package com.clubobsidian.trident.eventbus.reflection;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
