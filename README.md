@@ -12,11 +12,11 @@ A dead simpile annotation-based event bus that allows different event executor i
 
 Trident implements reflection and generated Javassist method executors.
 
-## :hammer: Build Artifacts
+## Build Artifacts :hammer:
 
 Build artifacts are hosted via [Jitpack.](https://jitpack.io/#clubobsidian/Trident/)
 
-## :open_book: Setting up as a dependency
+## Setting up as a dependency :open_book:
 
 ### Gradle
 
@@ -45,11 +45,11 @@ compile 'com.github.clubobsidian:trident:2.0.0'
 </dependency>
 ```
 
-## :fire: Dependencies
+## Dependencies :fire:
 
 * Javassist
 
-## :computer: Development
+## Development :computer:
 
 ### Eclipse
 
@@ -63,11 +63,11 @@ compile 'com.github.clubobsidian:trident:2.0.0'
 2.  Generate intellij files with `gradlew idea`
 3.  Import project
 
-### :building_construction: Building
+### Building :building_construction:
 
 `gradlew shadowJar`
 
-### :notes: Projects that use Trident
+### Projects that use Trident :notes:
 
 * [DynamicGui](https://github.com/ClubObsidian/DynamicGui)
 * [Hydra](https://github.com/ClubObsidian/hydra)

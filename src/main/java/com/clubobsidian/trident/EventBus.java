@@ -158,5 +158,4 @@ public abstract class EventBus {
 		}
 		return true;
 	}
-
 }
