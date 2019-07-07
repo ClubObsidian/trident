@@ -12,6 +12,14 @@ A dead simpile annotation-based event bus that allows different event executor i
 
 Trident implements reflection and generated Javassist method executors.
 
+## Inspiration :star:
+
+Inspiration for Trident.
+
+* [Event4j](https://github.com/Techcable/Event4J)
+* [Guava](https://github.com/google/guava)
+* [mbassador](https://github.com/bennidi/mbassador)
+
 ## Build Artifacts :hammer:
 
 Build artifacts are hosted via [Jitpack.](https://jitpack.io/#clubobsidian/Trident/)
