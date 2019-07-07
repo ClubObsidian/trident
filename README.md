@@ -1,15 +1,24 @@
-![trident](/img/trident_logo.png)
+# Trident
 
 [![Build Status](https://api.travis-ci.org/ClubObsidian/trident.svg?branch=master)](https://travis-ci.org/ClubObsidian/trident)
 [![build artifacts](https://jitpack.io/v/clubobsidian/trident.svg)](https://jitpack.io/#clubobsidian/trident)
 [![codecov](https://codecov.io/gh/ClubObsidian/trident/branch/master/graph/badge.svg)](https://codecov.io/gh/ClubObsidian/trident)
+[![Known Vulnerabilities](https://snyk.io//test/github/ClubObsidian/trident/badge.svg?targetFile=build.gradle)](https://snyk.io//test/github/ClubObsidian/trident?targetFile=build.gradle)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![discord](https://discordapp.com/api/guilds/482823104905609248/widget.png)](https://discord.gg/EY5Tq6r)
-[Javadocs](https://jitpack.io/com/github/clubobsidian/trident/1.0.8/javadoc/)
+[![Discord](https://img.shields.io/discord/482823104905609248.svg?logo=discord)](https://discord.gg/EY5Tq6r)
+[![javadocs](https://img.shields.io/badge/Javadocs-2.0.0-success.svg)](https://jitpack.io/com/github/clubobsidian/trident/2.0.0/javadoc/)
 
-A dead simpile annotation event system that allows different event executor implementations.
+A dead simpile annotation-based event bus that allows different event executor implementations.
 
 Trident implements reflection and generated Javassist method executors.
+
+## Inspiration
+
+Inspiration for Trident.
+
+* [Event4j](https://github.com/Techcable/Event4J)
+* [Guava](https://github.com/google/guava)
+* [mbassador](https://github.com/bennidi/mbassador)
 
 ## Build Artifacts
 
@@ -24,7 +33,7 @@ repositories {
 	maven { url 'https://jitpack.io' }
 }
 
-compile 'com.github.clubobsidian:trident:1.1.0'
+compile 'com.github.clubobsidian:trident:2.0.0'
 ```
 
 ### Maven
@@ -40,13 +49,13 @@ compile 'com.github.clubobsidian:trident:1.1.0'
 <dependency>
 	<groupId>com.github.clubobsidian</groupId>
 	<artifactId>trident</artifactId>
-	<version>1.1.0</version>
+	<version>2.0.0</version>
 </dependency>
 ```
 
 ## Dependencies
 
-* Javassist
+* [Javassist](https://github.com/jboss-javassist/javassist)
 
 ## Development
 

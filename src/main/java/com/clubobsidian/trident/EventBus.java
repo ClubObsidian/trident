@@ -1,5 +1,5 @@
 /*  
-   Copyright 2018 Club Obsidian and contributors.
+   Copyright 2019 Club Obsidian and contributors.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -22,21 +22,22 @@ import java.util.Queue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
+import com.clubobsidian.trident.event.DeadEvent;
 import com.clubobsidian.trident.util.ClassUtil;
 import com.clubobsidian.trident.util.EventDoublyLinkedList;
 import com.clubobsidian.trident.util.EventNode;
 
 /**
- * Abstract class for implementing EventManager
- * classes. For an example see @see com.clubobsidian.trident.impl.javaassist.JavaAssistEventManager
+ * Abstract class for implementing EventBus
+ * classes. For an example see @see com.clubobsidian.trident.impl.javaassist.JavaAssistEventBus
  * 
  * @author virustotalop
  */
-public abstract class EventManager {
+public abstract class EventBus {
 
-	private Map<Listener, Queue<MethodExecutor>> registeredEventListeners;
+	private Map<Object, Queue<MethodExecutor>> registeredEventListeners;
 	private Map<Class<?>, EventDoublyLinkedList> registeredExecutors;
-	public EventManager()
+	public EventBus()
 	{
 		this.registeredEventListeners = new ConcurrentHashMap<>();
 		this.registeredExecutors = new ConcurrentHashMap<>();
@@ -51,7 +52,13 @@ public abstract class EventManager {
 		EventDoublyLinkedList executors = this.registeredExecutors.get(event.getClass());
 
 		if(executors == null)
+		{
+			if(!(event instanceof DeadEvent))
+			{
+				this.callEvent(new DeadEvent(event));
+			}
 			return false;
+		}
 
 		boolean ran = false;
 		EventNode node = executors.getHead();
@@ -74,6 +81,7 @@ public abstract class EventManager {
 			executor.execute(event);
 			node = node.getNext();
 		}
+		
 		return ran;
 	}
 	
@@ -81,9 +89,13 @@ public abstract class EventManager {
 	 * @param listener listener to be registered
 	 * @return if the listener was registered
 	 */
-	public boolean registerEvents(final Listener listener) 
+	public boolean registerEvents(final Object listener) 
 	{
-		if(this.registeredEventListeners.keySet().contains(listener))
+		if(listener == null)
+		{
+			return false;
+		}
+		else if(this.registeredEventListeners.keySet().contains(listener))
 		{
 			return false;
 		}
@@ -109,6 +121,10 @@ public abstract class EventManager {
 
 						boolean ignoreCanceled = handler.ignoreCanceled();
 						MethodExecutor executor = this.createMethodExecutor(listener, method, ignoreCanceled);
+						
+						if(executor == null)
+							return false;
+						
 						this.registeredExecutors.get(eventClass).insert(executor, handler.priority());
 						this.registeredEventListeners.get(listener).add(executor);
 					}
@@ -118,14 +134,14 @@ public abstract class EventManager {
 		return true;
 	}
 	
-	protected abstract MethodExecutor createMethodExecutor(Listener listener, Method method, boolean ignoreCanceled);
+	protected abstract MethodExecutor createMethodExecutor(Object listener, Method method, boolean ignoreCanceled);
 	
 	/**
 	 * 
 	 * @param listener listener to be unregistered
 	 * @return if the listener was unregistered
 	 */
-	public boolean unregisterEvents(Listener listener) 
+	public boolean unregisterEvents(Object listener) 
 	{
 		Queue<MethodExecutor> executors = this.registeredEventListeners.remove(listener);
 		if(executors == null)
@@ -142,5 +158,4 @@ public abstract class EventManager {
 		}
 		return true;
 	}
-
 }

@@ -1,5 +1,5 @@
 /*  
-   Copyright 2018 Club Obsidian and contributors.
+   Copyright 2019 Club Obsidian and contributors.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -13,11 +13,16 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-package com.clubobsidian.trident;
+package com.clubobsidian.trident.test;
 
-/**
- * Interface for listeners to implement.
- * 
- * @author virustotalop
- */
-public interface Listener {}
+import com.clubobsidian.trident.EventBus;
+import com.clubobsidian.trident.eventbus.reflection.ReflectionEventBus;
+
+public class ReflectionEventBusTest extends EventBusTest {
+
+	@Override
+	protected EventBus createNewEventBus() 
+	{
+		return new ReflectionEventBus();
+	}
+}

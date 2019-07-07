@@ -1,5 +1,5 @@
 /*  
-   Copyright 2018 Club Obsidian and contributors.
+   Copyright 2019 Club Obsidian and contributors.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -13,4 +13,22 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-package com.clubobsidian.trident.impl;
+package com.clubobsidian.trident.test.impl;
+
+import com.clubobsidian.trident.Cancelable;
+
+public class TestCancelableEvent extends TestEvent implements Cancelable {
+
+	private boolean canceled;
+	
+	@Override
+	public boolean isCanceled()
+	{
+		return this.canceled;
+	}
+	
+	public void setCanceled(boolean cancelled)
+	{
+		this.canceled = cancelled;
+	}
+}

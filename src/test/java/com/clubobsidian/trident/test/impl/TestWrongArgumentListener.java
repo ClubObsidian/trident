@@ -1,5 +1,5 @@
 /*  
-   Copyright 2018 Club Obsidian and contributors.
+   Copyright 2019 Club Obsidian and contributors.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -13,22 +13,30 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-package com.clubobsidian.trident.impl.javaassist;
+package com.clubobsidian.trident.test.impl;
 
-import java.lang.reflect.Method;
-
-import com.clubobsidian.trident.EventManager;
-import com.clubobsidian.trident.Listener;
-import com.clubobsidian.trident.MethodExecutor;
-
-/**
- * {@inheritDoc}
- */
-public class JavaAssistEventManager extends EventManager {
-
-	@Override
-	protected MethodExecutor createMethodExecutor(Listener listener, Method method, boolean ignoreCanceled) 
+public class TestWrongArgumentListener {
+	
+	private String data;
+	private boolean test;
+	public TestWrongArgumentListener(String data)
 	{
-		return JavaAssistUtil.generateMethodExecutor(listener, method, ignoreCanceled);
+		this.data = data;
+		this.test = false;
+	}
+	
+	public String getData()
+	{
+		return this.data;
+	}
+	
+	public boolean getTest()
+	{
+		return this.test;
+	}
+	
+	public void test(TestEvent event)
+	{
+		this.test = !test;
 	}
 }

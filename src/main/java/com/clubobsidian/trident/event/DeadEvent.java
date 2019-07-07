@@ -1,5 +1,5 @@
 /*  
-   Copyright 2018 Club Obsidian and contributors.
+   Copyright 2019 Club Obsidian and contributors.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -13,22 +13,32 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-package trident;
+package com.clubobsidian.trident.event;
 
-import com.clubobsidian.trident.Cancelable;
+import com.clubobsidian.trident.Event;
 
-public class TestCancelableEvent extends TestEvent implements Cancelable {
+/**
+ * Event that is called if an event is not
+ * listened to by a listener.
+ * Extends {@link Event}
+ * 
+ * @author virustotalop
+ */
+public class DeadEvent extends Event {
 
-	private boolean canceled;
-	
-	@Override
-	public boolean isCanceled()
+	private Event event;
+	public DeadEvent(Event event)
 	{
-		return this.canceled;
+		this.event = event;
 	}
 	
-	public void setCanceled(boolean cancelled)
+	/**
+	 * Returns an event that was
+	 * not fired.
+	 * @return event not fired
+	 */
+	public Event getDeadEvent()
 	{
-		this.canceled = cancelled;
+		return this.event;
 	}
 }

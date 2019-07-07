@@ -1,5 +1,5 @@
 /*  
-   Copyright 2018 Club Obsidian and contributors.
+   Copyright 2019 Club Obsidian and contributors.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -13,15 +13,13 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-package trident;
-
-import com.clubobsidian.trident.Event;
+package com.clubobsidian.trident.test.impl;
 
 /**
  * 
- * Used in testing for unit tests.
- * Should not be called, extended by {@link} TestEvent
- *
+ * Extends TestEventSuper, is used partially in testing of getting
+ * the super class for the event class.
+ * 
  */
 
-public class TestEventSuper extends Event {}
+public class TestEvent extends TestEventSuper {}

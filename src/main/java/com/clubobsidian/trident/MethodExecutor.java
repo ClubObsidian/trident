@@ -1,5 +1,5 @@
 /*  
-   Copyright 2018 Club Obsidian and contributors.
+   Copyright 2019 Club Obsidian and contributors.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -26,10 +26,10 @@ import java.lang.reflect.Method;
  */
 public abstract class MethodExecutor {
 
-	private Listener listener;
+	private Object listener;
 	private Method method;
 	private boolean ignoreCanceled;
-	public MethodExecutor(Listener listener, Method method, boolean ignoreCanceled)
+	public MethodExecutor(Object listener, Method method, boolean ignoreCanceled)
 	{
 		this.listener = listener;
 		this.method = method;
@@ -39,7 +39,7 @@ public abstract class MethodExecutor {
 	/** 
 	 * @return listener to execute events on
 	 */
-	public Listener getListener()
+	public Object getListener()
 	{
 		return this.listener;
 	}

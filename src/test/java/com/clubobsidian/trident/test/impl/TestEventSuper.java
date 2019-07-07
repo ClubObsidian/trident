@@ -1,5 +1,5 @@
 /*  
-   Copyright 2018 Club Obsidian and contributors.
+   Copyright 2019 Club Obsidian and contributors.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -13,24 +13,15 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-package com.clubobsidian.trident.impl.reflection;
+package com.clubobsidian.trident.test.impl;
 
-import java.lang.reflect.Method;
-
-import com.clubobsidian.trident.EventManager;
-import com.clubobsidian.trident.Listener;
-import com.clubobsidian.trident.MethodExecutor;
+import com.clubobsidian.trident.Event;
 
 /**
- * {@inheritDoc}
+ * 
+ * Used in testing for unit tests.
+ * Should not be called, extended by {@link} TestEvent
+ *
  */
-public class ReflectionEventManager extends EventManager {
 
-	@Override
-	protected MethodExecutor createMethodExecutor(Listener listener, Method method, boolean ignoreCanceled) 
-	{
-		return new ReflectionMethodExecutor(listener, method, ignoreCanceled);
-	}
-
-	
-}
+public class TestEventSuper extends Event {}

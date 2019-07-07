@@ -1,5 +1,5 @@
 /*  
-   Copyright 2018 Club Obsidian and contributors.
+   Copyright 2019 Club Obsidian and contributors.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-package trident;
+package com.clubobsidian.trident.test;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
@@ -21,7 +21,7 @@ import static org.junit.Assert.assertFalse;
 import org.junit.Test;
 
 import com.clubobsidian.trident.Event;
-
+import com.clubobsidian.trident.test.impl.TestEvent;
 import com.clubobsidian.trident.util.ClassUtil;
 
 public class UtilTest {

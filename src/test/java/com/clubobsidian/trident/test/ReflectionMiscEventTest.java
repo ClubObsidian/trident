@@ -1,5 +1,5 @@
 /*  
-   Copyright 2018 Club Obsidian and contributors.
+   Copyright 2019 Club Obsidian and contributors.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-package trident;
+package com.clubobsidian.trident.test;
 
 
 import static org.junit.Assert.assertTrue;
@@ -22,9 +22,12 @@ import java.lang.reflect.Method;
 
 import org.junit.Test;
 
-import com.clubobsidian.trident.Listener;
 import com.clubobsidian.trident.MethodExecutor;
-import com.clubobsidian.trident.impl.reflection.ReflectionMethodExecutor;
+import com.clubobsidian.trident.eventbus.reflection.ReflectionMethodExecutor;
+import com.clubobsidian.trident.test.impl.TestWrongArgumentListener;
+import com.clubobsidian.trident.test.impl.TestEvent;
+import com.clubobsidian.trident.test.impl.TestListener;
+import com.clubobsidian.trident.test.impl.TestWrongArgumentEvent;
 
 public class ReflectionMiscEventTest {
 
@@ -33,12 +36,30 @@ public class ReflectionMiscEventTest {
 	{
 		try 
 		{
-			Listener listener = new TestListener("test");
+			TestListener listener = new TestListener("test");
 			Method testEventMethod = listener.getClass().getDeclaredMethod("test", TestEvent.class);
 			MethodExecutor executor = new ReflectionMethodExecutor(listener, testEventMethod, false);
 			
 			assertTrue("Listeners are not equal for method executor", listener.equals(executor.getListener()));
 			assertTrue("Methods are not equal for method executor", testEventMethod.equals(executor.getMethod()));
+		} 
+		catch (NoSuchMethodException | SecurityException e) 
+		{
+			e.printStackTrace();
+		}		
+	}
+	
+	@Test
+	public void methodExecutorPrivateTest()
+	{
+		try 
+		{
+			TestWrongArgumentListener listener = new TestWrongArgumentListener("test");
+			Method testEventMethod = listener.getClass().getDeclaredMethod("test", TestEvent.class);
+			MethodExecutor executor = new ReflectionMethodExecutor(listener, testEventMethod, false);
+			executor.execute(new TestWrongArgumentEvent());
+			
+			assertTrue("Executor was able to execute method on a listener with a different event class", listener.getTest() == false);
 		} 
 		catch (NoSuchMethodException | SecurityException e) 
 		{

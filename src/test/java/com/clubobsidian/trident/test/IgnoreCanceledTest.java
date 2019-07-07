@@ -1,5 +1,5 @@
 /*  
-   Copyright 2018 Club Obsidian and contributors.
+   Copyright 2019 Club Obsidian and contributors.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -13,15 +13,17 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-package trident;
+package com.clubobsidian.trident.test;
 
 
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import com.clubobsidian.trident.EventManager;
-import com.clubobsidian.trident.impl.javaassist.JavaAssistEventManager;
+import com.clubobsidian.trident.EventBus;
+import com.clubobsidian.trident.eventbus.javassist.JavassistEventBus;
+import com.clubobsidian.trident.test.impl.TestCancelableEvent;
+import com.clubobsidian.trident.test.impl.TestListenerIgnore;
 
 public class IgnoreCanceledTest {
 
@@ -29,12 +31,11 @@ public class IgnoreCanceledTest {
 	public void ignoredCanceled()
 	{
 		TestListenerIgnore listener = new TestListenerIgnore();
-		EventManager manager = new JavaAssistEventManager();
+		EventBus manager = new JavassistEventBus();
 		manager.registerEvents(listener);
 		manager.callEvent(new TestCancelableEvent());
 		
 		assertTrue("Event was not canceled", listener.isCanceled());
 		assertTrue("Event was not ignored", listener.getIgnored());
 	}
-
 }
