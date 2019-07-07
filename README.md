@@ -55,7 +55,7 @@ compile 'com.github.clubobsidian:trident:2.0.0'
 
 ## Dependencies :fire:
 
-* Javassist
+* [Javassist](https://github.com/jboss-javassist/javassist)
 
 ## Development :computer:
 
