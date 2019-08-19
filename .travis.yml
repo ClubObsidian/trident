@@ -15,20 +15,6 @@ jobs:
     - ./gradlew clean
     - ./gradlew test
     - ./gradlew jacocoTestReport
-  - # stage: ...
-    env: JDK=9
-    script: 
-    - source install-jdk.sh -C -F 9
-    - ./gradlew clean
-    - ./gradlew test
-    - ./gradlew jacocoTestReport
-  - # stage: ...
-    env: JDK=10
-    script: 
-    - source install-jdk.sh -C -F 10
-    - ./gradlew clean
-    - ./gradlew test
-    - ./gradlew jacocoTestReport
     
     
 after_success:
