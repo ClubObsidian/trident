@@ -119,7 +119,7 @@ public class JavassistEventBus extends EventBus {
 			String listenerType = listener.getClass().getName();
 			
 			StringBuilder sb = new StringBuilder();
-			sb.append("public void execute(com.clubobsidian.trident.Event event)");
+			sb.append("public void execute(" + Event.class.getName() +  " event)");
 			sb.append("{");
 			sb.append(eventType + " ev = " + "((" + eventType + ") event);");
 			sb.append("((" + listenerType + ")" + "this.getListener())." + method.getName() + "(ev);");
