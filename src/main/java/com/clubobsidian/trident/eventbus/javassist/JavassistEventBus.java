@@ -21,6 +21,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import javax.xml.bind.Marshaller.Listener;
+
 import com.clubobsidian.trident.Event;
 import com.clubobsidian.trident.EventBus;
 import com.clubobsidian.trident.MethodExecutor;
@@ -50,6 +52,13 @@ public class JavassistEventBus extends EventBus {
 	public JavassistEventBus()
 	{
 		this.pool = new ClassPool(true);
+		this.setupPool();
+	}
+	
+	private void setupPool()
+	{
+		this.addClassToPool(Event.class);
+		this.addClassToPool(Listener.class);
 	}
 	
 	public ClassPool getClassPool()
@@ -78,10 +87,7 @@ public class JavassistEventBus extends EventBus {
 			
 			LoaderClassPath loaderClassPath = new LoaderClassPath(classLoader);
 			
-			//If class path exists, remove it first and then add
-			this.pool.removeClassPath(loaderClassPath);
 			this.pool.insertClassPath(loaderClassPath);
-			
 			this.addClassToPool(listenerClass);
 			
 			String callbackClassName = listener.getClass().getName() + method.getName();
@@ -141,7 +147,6 @@ public class JavassistEventBus extends EventBus {
 	private void addClassToPool(Class<?> clazz)
 	{
 		ClassClassPath classClassPath = new ClassClassPath(clazz);
-		this.pool.removeClassPath(classClassPath);
 		this.pool.insertClassPath(classClassPath);
 	}
 }
