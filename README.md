@@ -1,6 +1,6 @@
 # Trident
 
-[![Build Status](https://api.travis-ci.org/ClubObsidian/trident.svg?branch=master)](https://travis-ci.org/ClubObsidian/trident)
+[![build](https://github.com/ClubObsidian/wrappy/workflows/build/badge.svg)](https://github.com/ClubObsidian/trident/actions?query=workflow%3Atest)
 [![build artifacts](https://jitpack.io/v/clubobsidian/trident.svg)](https://jitpack.io/#clubobsidian/trident)
 [![codecov](https://codecov.io/gh/ClubObsidian/trident/branch/master/graph/badge.svg)](https://codecov.io/gh/ClubObsidian/trident)
 [![Known Vulnerabilities](https://snyk.io//test/github/ClubObsidian/trident/badge.svg?targetFile=build.gradle)](https://snyk.io//test/github/ClubObsidian/trident?targetFile=build.gradle)
