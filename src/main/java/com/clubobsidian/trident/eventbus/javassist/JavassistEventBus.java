@@ -21,8 +21,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import javax.xml.bind.Marshaller.Listener;
-
 import com.clubobsidian.trident.Event;
 import com.clubobsidian.trident.EventBus;
 import com.clubobsidian.trident.MethodExecutor;
@@ -58,7 +56,6 @@ public class JavassistEventBus extends EventBus {
 	private void setupPool()
 	{
 		this.addClassToPool(Event.class);
-		this.addClassToPool(Listener.class);
 	}
 	
 	public ClassPool getClassPool()
