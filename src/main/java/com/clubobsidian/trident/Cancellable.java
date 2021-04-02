@@ -13,20 +13,26 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-package com.clubobsidian.trident.eventbus.reflection;
-
-import com.clubobsidian.trident.EventBus;
-import com.clubobsidian.trident.MethodExecutor;
-
-import java.lang.reflect.Method;
+package com.clubobsidian.trident;
 
 /**
- * {@inheritDoc}
+ * Interface to implement Cancelable.
+ * Events should implement this interface
+ * if the event should be able to be cancelled.
+ *
+ * @author virustotalop
  */
-public class ReflectionEventBus extends EventBus {
+public interface Cancellable {
 
-    @Override
-    protected MethodExecutor createMethodExecutor(Object listener, Method method, boolean ignoreCancelled) {
-        return new ReflectionMethodExecutor(listener, method, ignoreCancelled);
-    }
+    /**
+     * Returns if the event is cancelled.
+     *
+     * @return if the event is cancelled
+     */
+    boolean isCancelled();
+
+    /**
+     * Set whether or not for an event to be cancelled.
+     */
+    void setCancelled(boolean cancel);
 }

@@ -13,20 +13,16 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-package com.clubobsidian.trident.eventbus.reflection;
+package com.clubobsidian.trident.test;
 
 import com.clubobsidian.trident.EventBus;
-import com.clubobsidian.trident.MethodExecutor;
+import com.clubobsidian.trident.eventbus.methodhandle.MethodHandleEventBus;
+import com.clubobsidian.trident.eventbus.reflection.ReflectionEventBus;
 
-import java.lang.reflect.Method;
-
-/**
- * {@inheritDoc}
- */
-public class ReflectionEventBus extends EventBus {
+public class MethodHandleEventBusTest extends EventBusTest {
 
     @Override
-    protected MethodExecutor createMethodExecutor(Object listener, Method method, boolean ignoreCancelled) {
-        return new ReflectionMethodExecutor(listener, method, ignoreCancelled);
+    protected EventBus createNewEventBus() {
+        return new MethodHandleEventBus();
     }
 }

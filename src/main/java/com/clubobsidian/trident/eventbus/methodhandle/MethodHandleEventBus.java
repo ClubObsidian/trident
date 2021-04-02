@@ -13,7 +13,8 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-package com.clubobsidian.trident.eventbus.reflection;
+
+package com.clubobsidian.trident.eventbus.methodhandle;
 
 import com.clubobsidian.trident.EventBus;
 import com.clubobsidian.trident.MethodExecutor;
@@ -23,10 +24,15 @@ import java.lang.reflect.Method;
 /**
  * {@inheritDoc}
  */
-public class ReflectionEventBus extends EventBus {
+public class MethodHandleEventBus extends EventBus {
 
     @Override
     protected MethodExecutor createMethodExecutor(Object listener, Method method, boolean ignoreCancelled) {
-        return new ReflectionMethodExecutor(listener, method, ignoreCancelled);
+        try {
+            return new MethodHandleExecutor(listener, method, ignoreCancelled);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
