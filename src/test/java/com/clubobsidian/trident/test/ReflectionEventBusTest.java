@@ -20,9 +20,8 @@ import com.clubobsidian.trident.eventbus.reflection.ReflectionEventBus;
 
 public class ReflectionEventBusTest extends EventBusTest {
 
-	@Override
-	protected EventBus createNewEventBus() 
-	{
-		return new ReflectionEventBus();
-	}
+    @Override
+    protected EventBus createNewEventBus() {
+        return new ReflectionEventBus();
+    }
 }

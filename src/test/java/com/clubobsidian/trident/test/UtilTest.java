@@ -15,25 +15,23 @@
 */
 package com.clubobsidian.trident.test;
 
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertFalse;
-
-import org.junit.Test;
-
 import com.clubobsidian.trident.Event;
 import com.clubobsidian.trident.test.impl.TestEvent;
 import com.clubobsidian.trident.util.ClassUtil;
+import org.junit.Test;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class UtilTest {
 
-	@Test
-	public void classUtilTest()
-	{
-		Event event = new TestEvent();
-		boolean superClass = ClassUtil.hasEventSuperClass(event.getClass());
-		assertTrue("Super class for TestEvent was not event", superClass);
-		
-		superClass = ClassUtil.hasEventSuperClass(String.class);
-		assertFalse("Super class is not null for string class", superClass);
-	}
+    @Test
+    public void classUtilTest() {
+        Event event = new TestEvent();
+        boolean superClass = ClassUtil.hasEventSuperClass(event.getClass());
+        assertTrue("Super class for TestEvent was not event", superClass);
+
+        superClass = ClassUtil.hasEventSuperClass(String.class);
+        assertFalse("Super class is not null for string class", superClass);
+    }
 }

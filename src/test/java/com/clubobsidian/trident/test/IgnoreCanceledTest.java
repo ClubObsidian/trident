@@ -16,26 +16,24 @@
 package com.clubobsidian.trident.test;
 
 
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
-
 import com.clubobsidian.trident.EventBus;
 import com.clubobsidian.trident.eventbus.javassist.JavassistEventBus;
 import com.clubobsidian.trident.test.impl.TestCancelableEvent;
 import com.clubobsidian.trident.test.impl.TestListenerIgnore;
+import org.junit.Test;
+
+import static org.junit.Assert.assertTrue;
 
 public class IgnoreCanceledTest {
 
-	@Test
-	public void ignoredCanceled()
-	{
-		TestListenerIgnore listener = new TestListenerIgnore();
-		EventBus manager = new JavassistEventBus();
-		manager.registerEvents(listener);
-		manager.callEvent(new TestCancelableEvent());
-		
-		assertTrue("Event was not canceled", listener.isCanceled());
-		assertTrue("Event was not ignored", listener.getIgnored());
-	}
+    @Test
+    public void ignoredCanceled() {
+        TestListenerIgnore listener = new TestListenerIgnore();
+        EventBus manager = new JavassistEventBus();
+        manager.registerEvents(listener);
+        manager.callEvent(new TestCancelableEvent());
+
+        assertTrue("Event was not canceled", listener.isCanceled());
+        assertTrue("Event was not ignored", listener.getIgnored());
+    }
 }

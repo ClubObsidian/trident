@@ -21,24 +21,24 @@ import com.clubobsidian.trident.Event;
  * Event that is called if an event is not
  * listened to by a listener.
  * Extends {@link Event}
- * 
+ *
  * @author virustotalop
  */
 public class DeadEvent extends Event {
 
-	private Event event;
-	public DeadEvent(Event event)
-	{
-		this.event = event;
-	}
-	
-	/**
-	 * Returns an event that was
-	 * not fired.
-	 * @return event not fired
-	 */
-	public Event getDeadEvent()
-	{
-		return this.event;
-	}
+    private Event event;
+
+    public DeadEvent(Event event) {
+        this.event = event;
+    }
+
+    /**
+     * Returns an event that was
+     * not fired.
+     *
+     * @return event not fired
+     */
+    public Event getDeadEvent() {
+        return this.event;
+    }
 }

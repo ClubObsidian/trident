@@ -16,10 +16,9 @@
 package com.clubobsidian.trident.test.impl;
 
 /**
- * 
  * Extends TestEventSuper, is used partially in testing of getting
  * the super class for the event class.
- * 
  */
 
-public class TestEvent extends TestEventSuper {}
+public class TestEvent extends TestEventSuper {
+}

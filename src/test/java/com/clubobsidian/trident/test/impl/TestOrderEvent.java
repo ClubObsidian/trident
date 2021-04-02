@@ -17,4 +17,5 @@ package com.clubobsidian.trident.test.impl;
 
 import com.clubobsidian.trident.Event;
 
-public class TestOrderEvent extends Event {}
+public class TestOrderEvent extends Event {
+}

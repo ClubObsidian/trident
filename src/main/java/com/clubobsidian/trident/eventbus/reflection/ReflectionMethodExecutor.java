@@ -15,32 +15,27 @@
 */
 package com.clubobsidian.trident.eventbus.reflection;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-
 import com.clubobsidian.trident.Event;
 import com.clubobsidian.trident.MethodExecutor;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 /**
  * {@inheritDoc}
  */
 public class ReflectionMethodExecutor extends MethodExecutor {
 
-	public ReflectionMethodExecutor(Object listener, Method method, boolean ignoreCanceled) 
-	{
-		super(listener, method, ignoreCanceled);
-	}
+    public ReflectionMethodExecutor(Object listener, Method method, boolean ignoreCanceled) {
+        super(listener, method, ignoreCanceled);
+    }
 
-	@Override
-	public void execute(final Event event) 
-	{
-		try 
-		{
-			this.getMethod().invoke(this.getListener(), event);
-		} 
-		catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) 
-		{
-			e.printStackTrace();
-		}
-	}
+    @Override
+    public void execute(final Event event) {
+        try {
+            this.getMethod().invoke(this.getListener(), event);
+        } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -16,27 +16,24 @@
 package com.clubobsidian.trident.test.impl;
 
 public class TestWrongArgumentListener {
-	
-	private String data;
-	private boolean test;
-	public TestWrongArgumentListener(String data)
-	{
-		this.data = data;
-		this.test = false;
-	}
-	
-	public String getData()
-	{
-		return this.data;
-	}
-	
-	public boolean getTest()
-	{
-		return this.test;
-	}
-	
-	public void test(TestEvent event)
-	{
-		this.test = !test;
-	}
+
+    private String data;
+    private boolean test;
+
+    public TestWrongArgumentListener(String data) {
+        this.data = data;
+        this.test = false;
+    }
+
+    public String getData() {
+        return this.data;
+    }
+
+    public boolean getTest() {
+        return this.test;
+    }
+
+    public void test(TestEvent event) {
+        this.test = !test;
+    }
 }

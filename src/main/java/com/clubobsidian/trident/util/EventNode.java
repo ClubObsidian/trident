@@ -19,66 +19,59 @@ import com.clubobsidian.trident.MethodExecutor;
 /**
  * Node class for events. Used
  * in {@link com.clubobsidian.trident.util.EventDoublyLinkedList}
- * 
+ *
  * @author virustotalop
  */
-public class EventNode 
-{
-	private MethodExecutor data;
-	private int priority;
-	private EventNode next;
-	private EventNode prev;
-	public EventNode(MethodExecutor data, int priority)
-	{
-		this.data = data;
-		this.priority = priority;
-	}
+public class EventNode {
+    private MethodExecutor data;
+    private int priority;
+    private EventNode next;
+    private EventNode prev;
 
-	/**
-	 * @return MethodExecutor for the node
-	 */
-	public MethodExecutor getData()
-	{
-		return this.data;
-	}
+    public EventNode(MethodExecutor data, int priority) {
+        this.data = data;
+        this.priority = priority;
+    }
 
-	/**
-	 * @return integer representation of the {@link com.clubobsidian.trident.Event}'s priority
-	 */
-	public int getPriority()
-	{
-		return this.priority;
-	}
+    /**
+     * @return MethodExecutor for the node
+     */
+    public MethodExecutor getData() {
+        return this.data;
+    }
 
-	/**
-	 * @return node next to this node
-	 */
-	public synchronized EventNode getNext()
-	{
-		return this.next;
-	}
+    /**
+     * @return integer representation of the {@link com.clubobsidian.trident.Event}'s priority
+     */
+    public int getPriority() {
+        return this.priority;
+    }
 
-	/**
-	 * @param next node to be set as the next node
-	 */
-	public synchronized void setNext(final EventNode next)
-	{
-		this.next = next;
-	}
+    /**
+     * @return node next to this node
+     */
+    public synchronized EventNode getNext() {
+        return this.next;
+    }
 
-	/**
-	 * @return node behind this node
-	 */
-	public synchronized EventNode getPrev()
-	{
-		return this.prev;
-	}
+    /**
+     * @param next node to be set as the next node
+     */
+    public synchronized void setNext(final EventNode next) {
+        this.next = next;
+    }
 
-	/**
-	 * @param prev node to be set as the previous node
-	 */
-	public synchronized void setPrev(final EventNode prev)
-	{
-		this.prev = prev;
-	}
+    /**
+     * @return node behind this node
+     */
+    public synchronized EventNode getPrev() {
+        return this.prev;
+    }
+
+    /**
+     * @param prev node to be set as the previous node
+     */
+    public synchronized void setPrev(final EventNode prev) {
+        this.prev = prev;
+    }
 }

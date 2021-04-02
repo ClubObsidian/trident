@@ -25,14 +25,14 @@ import java.lang.annotation.Target;
  * When methods are annotated in
  * listeners events are registered in
  * an {@code EventManager} instance.
- * 
+ *
  * @author virustotalop
  */
 @Retention(value = RetentionPolicy.RUNTIME)
 @Target(value = ElementType.METHOD)
 public @interface EventHandler {
 
-	EventPriority priority() default EventPriority.NORMAL;
-	boolean ignoreCanceled() default false;
-	
+    EventPriority priority() default EventPriority.NORMAL;
+    boolean ignoreCanceled() default false;
+
 }

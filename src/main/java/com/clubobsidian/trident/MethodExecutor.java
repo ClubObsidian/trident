@@ -21,47 +21,44 @@ import java.lang.reflect.Method;
  * Abstract class for MethodExecutor implementations
  * to extend. {@link MethodExecutor#execute(Event)}
  * to be overridden in implementation classes.
- * 
+ *
  * @author virustotalop
  */
 public abstract class MethodExecutor {
 
-	private Object listener;
-	private Method method;
-	private boolean ignoreCanceled;
-	public MethodExecutor(Object listener, Method method, boolean ignoreCanceled)
-	{
-		this.listener = listener;
-		this.method = method;
-		this.ignoreCanceled = ignoreCanceled;
-	}
+    private Object listener;
+    private Method method;
+    private boolean ignoreCanceled;
 
-	/** 
-	 * @return listener to execute events on
-	 */
-	public Object getListener()
-	{
-		return this.listener;
-	}
-	
-	/** 
-	 * @return method to execute
-	 */
-	public Method getMethod()
-	{
-		return this.method;
-	}
-	
-	/** 
-	 * @return whether or not the method executor is ignoring canceled
-	 */
-	public boolean isIgnoringCanceled()
-	{
-		return this.ignoreCanceled;
-	}
-	
-	/**
-	 * @param event that is executed on the class listener
-	 */
-	public abstract void execute(Event event);
+    public MethodExecutor(Object listener, Method method, boolean ignoreCanceled) {
+        this.listener = listener;
+        this.method = method;
+        this.ignoreCanceled = ignoreCanceled;
+    }
+
+    /**
+     * @return listener to execute events on
+     */
+    public Object getListener() {
+        return this.listener;
+    }
+
+    /**
+     * @return method to execute
+     */
+    public Method getMethod() {
+        return this.method;
+    }
+
+    /**
+     * @return whether or not the method executor is ignoring canceled
+     */
+    public boolean isIgnoringCanceled() {
+        return this.ignoreCanceled;
+    }
+
+    /**
+     * @param event that is executed on the class listener
+     */
+    public abstract void execute(Event event);
 }
