@@ -22,17 +22,17 @@ package com.clubobsidian.trident;
  *
  * @author virustotalop
  */
-public interface Cancelable {
+public interface Cancellable {
 
     /**
      * Returns if the event is cancelled.
      *
      * @return if the event is cancelled
      */
-    public boolean isCanceled();
+    boolean isCancelled();
 
     /**
      * Set whether or not for an event to be cancelled.
      */
-    public void setCanceled(boolean cancel);
+    void setCancelled(boolean cancel);
 }

@@ -26,7 +26,7 @@ import com.clubobsidian.trident.Event;
  */
 public class DeadEvent extends Event {
 
-    private Event event;
+    private final Event event;
 
     public DeadEvent(Event event) {
         this.event = event;

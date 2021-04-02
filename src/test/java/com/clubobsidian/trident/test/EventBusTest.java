@@ -2,7 +2,7 @@ package com.clubobsidian.trident.test;
 
 import com.clubobsidian.trident.Event;
 import com.clubobsidian.trident.EventBus;
-import com.clubobsidian.trident.test.impl.TestCancelableEvent;
+import com.clubobsidian.trident.test.impl.TestCancellableEvent;
 import com.clubobsidian.trident.test.impl.TestEvent;
 import com.clubobsidian.trident.test.impl.TestListener;
 import com.clubobsidian.trident.test.impl.TestOrderEvent;
@@ -37,7 +37,7 @@ public abstract class EventBusTest {
         EventBus manager = this.createNewEventBus();
         manager.registerEvents(test);
 
-        manager.callEvent(new TestCancelableEvent());
+        manager.callEvent(new TestCancellableEvent());
 
         assertTrue("Test is not true, event was not cancelled", test.getTest());
     }

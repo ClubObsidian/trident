@@ -7,8 +7,8 @@ import java.lang.reflect.Method;
 
 public class TestMethodExecutor extends MethodExecutor {
 
-    public TestMethodExecutor(Object listener, Method method, boolean ignoreCanceled) {
-        super(listener, method, ignoreCanceled);
+    public TestMethodExecutor(Object listener, Method method, boolean ignoreCancelled) {
+        super(listener, method, ignoreCancelled);
     }
 
     @Override

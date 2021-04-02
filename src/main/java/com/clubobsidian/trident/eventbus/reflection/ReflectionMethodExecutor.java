@@ -26,8 +26,8 @@ import java.lang.reflect.Method;
  */
 public class ReflectionMethodExecutor extends MethodExecutor {
 
-    public ReflectionMethodExecutor(Object listener, Method method, boolean ignoreCanceled) {
-        super(listener, method, ignoreCanceled);
+    public ReflectionMethodExecutor(Object listener, Method method, boolean ignoreCancelled) {
+        super(listener, method, ignoreCancelled);
     }
 
     @Override

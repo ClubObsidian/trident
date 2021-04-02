@@ -30,9 +30,9 @@ public enum EventPriority {
     HIGHEST(4),
     MONITOR(5);
 
-    private int value;
+    private final int value;
 
-    private EventPriority(final int value) {
+    EventPriority(final int value) {
         this.value = value;
     }
 

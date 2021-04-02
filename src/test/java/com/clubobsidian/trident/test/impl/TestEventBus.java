@@ -8,7 +8,7 @@ import java.lang.reflect.Method;
 public class TestEventBus extends EventBus {
 
     @Override
-    protected MethodExecutor createMethodExecutor(Object listener, Method method, boolean ignoreCanceled) {
+    protected MethodExecutor createMethodExecutor(Object listener, Method method, boolean ignoreCancelled) {
         return null;
     }
 }

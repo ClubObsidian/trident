@@ -26,14 +26,14 @@ import java.lang.reflect.Method;
  */
 public abstract class MethodExecutor {
 
-    private Object listener;
-    private Method method;
-    private boolean ignoreCanceled;
+    private final Object listener;
+    private final Method method;
+    private final boolean ignoreCancelled;
 
-    public MethodExecutor(Object listener, Method method, boolean ignoreCanceled) {
+    public MethodExecutor(Object listener, Method method, boolean ignoreCancelled) {
         this.listener = listener;
         this.method = method;
-        this.ignoreCanceled = ignoreCanceled;
+        this.ignoreCancelled = ignoreCancelled;
     }
 
     /**
@@ -51,10 +51,10 @@ public abstract class MethodExecutor {
     }
 
     /**
-     * @return whether or not the method executor is ignoring canceled
+     * @return whether or not the method executor is ignoring cancelled
      */
-    public boolean isIgnoringCanceled() {
-        return this.ignoreCanceled;
+    public boolean isIgnoringCancelled() {
+        return this.ignoreCancelled;
     }
 
     /**

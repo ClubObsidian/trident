@@ -20,11 +20,11 @@ import com.clubobsidian.trident.EventPriority;
 
 public class TestListenerIgnore {
 
-    private boolean canceled = false;
+    private boolean cancelled = false;
     private boolean ignored = true;
 
-    public boolean isCanceled() {
-        return this.canceled;
+    public boolean isCancelled() {
+        return this.cancelled;
     }
 
     public boolean getIgnored() {
@@ -32,13 +32,13 @@ public class TestListenerIgnore {
     }
 
     @EventHandler
-    public void setCanceled(TestCancelableEvent e) {
-        e.setCanceled(true);
-        this.canceled = true;
+    public void setCancelled(TestCancellableEvent e) {
+        e.setCancelled(true);
+        this.cancelled = true;
     }
 
-    @EventHandler(priority = EventPriority.HIGHEST, ignoreCanceled = true)
-    public void test(TestCancelableEvent e) {
+    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    public void test(TestCancellableEvent e) {
         this.ignored = false;
     }
 }

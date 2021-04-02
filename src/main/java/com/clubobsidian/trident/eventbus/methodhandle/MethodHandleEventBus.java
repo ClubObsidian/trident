@@ -11,9 +11,9 @@ import java.lang.reflect.Method;
 public class MethodHandleEventBus extends EventBus {
 
     @Override
-    protected MethodExecutor createMethodExecutor(Object listener, Method method, boolean ignoreCanceled) {
+    protected MethodExecutor createMethodExecutor(Object listener, Method method, boolean ignoreCancelled) {
         try {
-            return new MethodHandleExecutor(listener, method, ignoreCanceled);
+            return new MethodHandleExecutor(listener, method, ignoreCancelled);
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }

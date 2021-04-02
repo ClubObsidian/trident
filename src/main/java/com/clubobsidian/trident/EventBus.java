@@ -21,7 +21,6 @@ import com.clubobsidian.trident.util.EventDoublyLinkedList;
 import com.clubobsidian.trident.util.EventNode;
 
 import java.lang.reflect.Method;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentHashMap;
@@ -29,14 +28,14 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
  * Abstract class for implementing EventBus
- * classes. For an example see @see com.clubobsidian.trident.impl.javaassist.JavaAssistEventBus
+ * classes. For an example see @see com.clubobsidian.trident.eventbus.javassist.JavassistEventBus
  *
  * @author virustotalop
  */
 public abstract class EventBus {
 
-    private Map<Object, Queue<MethodExecutor>> registeredEventListeners;
-    private Map<Class<?>, EventDoublyLinkedList> registeredExecutors;
+    private final Map<Object, Queue<MethodExecutor>> registeredEventListeners;
+    private final Map<Class<?>, EventDoublyLinkedList> registeredExecutors;
 
     public EventBus() {
         this.registeredEventListeners = new ConcurrentHashMap<>();
@@ -64,9 +63,9 @@ public abstract class EventBus {
         }
         while (node != null) {
             MethodExecutor executor = node.getData();
-            if (event instanceof Cancelable) {
-                Cancelable cancelable = (Cancelable) event;
-                if (cancelable.isCanceled() && executor.isIgnoringCanceled()) {
+            if (event instanceof Cancellable) {
+                Cancellable cancellable = (Cancellable) event;
+                if (cancellable.isCancelled() && executor.isIgnoringCancelled()) {
                     node = node.getNext();
                     continue;
                 }
@@ -85,7 +84,7 @@ public abstract class EventBus {
     public boolean registerEvents(final Object listener) {
         if (listener == null) {
             return false;
-        } else if (this.registeredEventListeners.keySet().contains(listener)) {
+        } else if (this.registeredEventListeners.containsKey(listener)) {
             return false;
         }
 
@@ -102,11 +101,12 @@ public abstract class EventBus {
                             this.registeredEventListeners.put(listener, new ConcurrentLinkedQueue<>());
                         }
 
-                        boolean ignoreCanceled = handler.ignoreCanceled();
-                        MethodExecutor executor = this.createMethodExecutor(listener, method, ignoreCanceled);
+                        boolean ignoreCancelled = handler.ignoreCancelled();
+                        MethodExecutor executor = this.createMethodExecutor(listener, method, ignoreCancelled);
 
-                        if (executor == null)
+                        if (executor == null) {
                             return false;
+                        }
 
                         this.registeredExecutors.get(eventClass).insert(executor, handler.priority());
                         this.registeredEventListeners.get(listener).add(executor);
@@ -117,7 +117,7 @@ public abstract class EventBus {
         return true;
     }
 
-    protected abstract MethodExecutor createMethodExecutor(Object listener, Method method, boolean ignoreCanceled);
+    protected abstract MethodExecutor createMethodExecutor(Object listener, Method method, boolean ignoreCancelled);
 
     /**
      * @param listener listener to be unregistered
@@ -129,9 +129,7 @@ public abstract class EventBus {
             return false;
 
         for (EventDoublyLinkedList list : this.registeredExecutors.values()) {
-            Iterator<MethodExecutor> it = executors.iterator();
-            while (it.hasNext()) {
-                MethodExecutor executor = it.next();
+            for (MethodExecutor executor : executors) {
                 list.remove(executor);
             }
         }

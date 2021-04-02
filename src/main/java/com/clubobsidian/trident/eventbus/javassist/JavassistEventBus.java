@@ -31,9 +31,9 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class JavassistEventBus extends EventBus {
 
-    private static Map<String, AtomicInteger> map = new ConcurrentHashMap<>();
+    private static final Map<String, AtomicInteger> map = new ConcurrentHashMap<>();
 
-    private ClassPool pool;
+    private final ClassPool pool;
 
     public JavassistEventBus() {
         this.pool = new ClassPool(true);
@@ -49,11 +49,11 @@ public class JavassistEventBus extends EventBus {
     }
 
     @Override
-    protected MethodExecutor createMethodExecutor(Object listener, Method method, boolean ignoreCanceled) {
-        return this.generateMethodExecutor(listener, method, ignoreCanceled);
+    protected MethodExecutor createMethodExecutor(Object listener, Method method, boolean ignoreCancelled) {
+        return this.generateMethodExecutor(listener, method, ignoreCancelled);
     }
 
-    private MethodExecutor generateMethodExecutor(Object listener, final Method method, final boolean ignoreCanceled) {
+    private MethodExecutor generateMethodExecutor(Object listener, final Method method, final boolean ignoreCancelled) {
         if (listener == null || method == null) {
         	return null;
 		}
@@ -110,7 +110,7 @@ public class JavassistEventBus extends EventBus {
             methodExecutorClass.addMethod(call);
 
             Class<?> cl = methodExecutorClass.toClass(classLoader, JavassistEventBus.class.getProtectionDomain());
-            return (MethodExecutor) cl.getDeclaredConstructors()[0].newInstance(listener, method, ignoreCanceled);
+            return (MethodExecutor) cl.getDeclaredConstructors()[0].newInstance(listener, method, ignoreCancelled);
         } catch (NotFoundException | CannotCompileException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | SecurityException | ClassNotFoundException e) {
             e.printStackTrace();
         }

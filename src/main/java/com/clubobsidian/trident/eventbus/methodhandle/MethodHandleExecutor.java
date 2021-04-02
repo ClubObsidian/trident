@@ -5,7 +5,6 @@ import com.clubobsidian.trident.MethodExecutor;
 
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
@@ -13,10 +12,10 @@ import java.lang.reflect.Method;
  */
 public class MethodHandleExecutor extends MethodExecutor {
 
-    private MethodHandle handle;
+    private final MethodHandle handle;
 
-    public MethodHandleExecutor(Object listener, Method method, boolean ignoreCanceled) throws IllegalAccessException {
-        super(listener, method, ignoreCanceled);
+    public MethodHandleExecutor(Object listener, Method method, boolean ignoreCancelled) throws IllegalAccessException {
+        super(listener, method, ignoreCancelled);
         this.handle = MethodHandles.lookup().unreflect(method);
     }
 

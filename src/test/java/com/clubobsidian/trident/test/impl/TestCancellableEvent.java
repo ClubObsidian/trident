@@ -15,18 +15,18 @@
 */
 package com.clubobsidian.trident.test.impl;
 
-import com.clubobsidian.trident.Cancelable;
+import com.clubobsidian.trident.Cancellable;
 
-public class TestCancelableEvent extends TestEvent implements Cancelable {
+public class TestCancellableEvent extends TestEvent implements Cancellable {
 
-    private boolean canceled;
+    private boolean cancelled;
 
     @Override
-    public boolean isCanceled() {
-        return this.canceled;
+    public boolean isCancelled() {
+        return this.cancelled;
     }
 
-    public void setCanceled(boolean cancelled) {
-        this.canceled = cancelled;
+    public void setCancelled(boolean cancelled) {
+        this.cancelled = cancelled;
     }
 }

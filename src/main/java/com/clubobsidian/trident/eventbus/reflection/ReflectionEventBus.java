@@ -26,7 +26,7 @@ import java.lang.reflect.Method;
 public class ReflectionEventBus extends EventBus {
 
     @Override
-    protected MethodExecutor createMethodExecutor(Object listener, Method method, boolean ignoreCanceled) {
-        return new ReflectionMethodExecutor(listener, method, ignoreCanceled);
+    protected MethodExecutor createMethodExecutor(Object listener, Method method, boolean ignoreCancelled) {
+        return new ReflectionMethodExecutor(listener, method, ignoreCancelled);
     }
 }

@@ -42,13 +42,13 @@ public class TestListener {
     }
 
     @EventHandler
-    public void testCanceleable(TestCancelableEvent event) {
-        event.setCanceled(true);
+    public void testCanceleable(TestCancellableEvent event) {
+        event.setCancelled(true);
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
-    public void testCancelableHighest(TestCancelableEvent event) {
-        if (event.isCanceled()) {
+    public void testCancelableHighest(TestCancellableEvent event) {
+        if (event.isCancelled()) {
             this.test = true;
         }
     }
