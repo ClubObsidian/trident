@@ -38,14 +38,14 @@ public class MultiThreadingTest {
         Runnable testRunnable = new Runnable() {
             @Override
             public void run() {
-                for (int i = 0; i < 1000; i++) {
+                for(int i = 0; i < 1000; i++) {
                     try {
                         int inc = count.incrementAndGet();
                         TestListener testListener = new TestListener("test" + inc);
                         MethodExecutor testExecutor = new TestMethodExecutor(testListener, testListener.getClass().getDeclaredMethod("test", TestEvent.class), false);
                         EventNode node = list.insert(testExecutor, EventPriority.LOWEST);
                         assertTrue("Node was null when inserted", node != null);
-                    } catch (NoSuchMethodException | SecurityException e) {
+                    } catch(NoSuchMethodException | SecurityException e) {
                         e.printStackTrace();
                     }
                 }
@@ -58,11 +58,11 @@ public class MultiThreadingTest {
         th1.start();
         th2.start();
 
-        while (th1.isAlive() || th2.isAlive()) ;
+        while(th1.isAlive() || th2.isAlive()) ;
 
         int nodeCount = 0;
         EventNode node = list.getHead();
-        while (node != null) {
+        while(node != null) {
             nodeCount += 1;
             node = node.getNext();
         }

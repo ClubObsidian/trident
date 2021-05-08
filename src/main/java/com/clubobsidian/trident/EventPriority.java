@@ -48,7 +48,7 @@ public enum EventPriority {
      * @return The EventPriority found by the given value
      */
     public static EventPriority getByValue(final int value) {
-        if (value < 0 || value >= EventPriority.values().length) {
+        if(value < 0 || value >= EventPriority.values().length) {
             return null;
         }
         return EventPriority.values()[value];

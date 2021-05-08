@@ -24,8 +24,8 @@ import com.clubobsidian.trident.MethodExecutor;
  * @author virustotalop
  */
 public class EventNode {
-    private MethodExecutor data;
-    private int priority;
+    private final MethodExecutor data;
+    private final int priority;
     private EventNode next;
     private EventNode prev;
 

@@ -17,7 +17,7 @@ package com.clubobsidian.trident.test.impl;
 
 public class TestWrongArgumentListener {
 
-    private String data;
+    private final String data;
     private boolean test;
 
     public TestWrongArgumentListener(String data) {

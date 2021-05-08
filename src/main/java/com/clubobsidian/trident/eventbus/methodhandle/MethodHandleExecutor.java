@@ -39,7 +39,7 @@ public class MethodHandleExecutor extends MethodExecutor {
     public void execute(final Event event) {
         try {
             this.handle.invoke(this.getListener(), event);
-        } catch (Throwable ex) {
+        } catch(Throwable ex) {
             ex.printStackTrace();
         }
     }

@@ -49,8 +49,8 @@ public abstract class EventBus {
     public boolean callEvent(final Event event) {
         EventDoublyLinkedList executors = this.registeredExecutors.get(event.getClass());
 
-        if (executors == null) {
-            if (!(event instanceof DeadEvent)) {
+        if(executors == null) {
+            if(!(event instanceof DeadEvent)) {
                 this.callEvent(new DeadEvent(event));
             }
             return false;
@@ -58,14 +58,14 @@ public abstract class EventBus {
 
         boolean ran = false;
         EventNode node = executors.getHead();
-        if (node != null) {
+        if(node != null) {
             ran = true;
         }
-        while (node != null) {
+        while(node != null) {
             MethodExecutor executor = node.getData();
-            if (event instanceof Cancellable) {
+            if(event instanceof Cancellable) {
                 Cancellable cancellable = (Cancellable) event;
-                if (cancellable.isCancelled() && executor.isIgnoringCancelled()) {
+                if(cancellable.isCancelled() && executor.isIgnoringCancelled()) {
                     node = node.getNext();
                     continue;
                 }
@@ -82,29 +82,29 @@ public abstract class EventBus {
      * @return if the listener was registered
      */
     public boolean registerEvents(final Object listener) {
-        if (listener == null) {
+        if(listener == null) {
             return false;
-        } else if (this.registeredEventListeners.containsKey(listener)) {
+        } else if(this.registeredEventListeners.containsKey(listener)) {
             return false;
         }
 
         Class<?> cl = listener.getClass();
-        for (Method method : cl.getDeclaredMethods()) {
-            for (EventHandler handler : method.getAnnotationsByType(EventHandler.class)) {
-                if (method.getParameters().length == 1) {
+        for(Method method : cl.getDeclaredMethods()) {
+            for(EventHandler handler : method.getAnnotationsByType(EventHandler.class)) {
+                if(method.getParameters().length == 1) {
                     Class<?> eventClass = method.getParameterTypes()[0];
-                    if (ClassUtil.hasEventSuperClass(eventClass)) {
-                        if (this.registeredExecutors.get(eventClass) == null) {
+                    if(ClassUtil.hasEventSuperClass(eventClass)) {
+                        if(this.registeredExecutors.get(eventClass) == null) {
                             this.registeredExecutors.put(eventClass, new EventDoublyLinkedList());
                         }
-                        if (this.registeredEventListeners.get(listener) == null) {
+                        if(this.registeredEventListeners.get(listener) == null) {
                             this.registeredEventListeners.put(listener, new ConcurrentLinkedQueue<>());
                         }
 
                         boolean ignoreCancelled = handler.ignoreCancelled();
                         MethodExecutor executor = this.createMethodExecutor(listener, method, ignoreCancelled);
 
-                        if (executor == null) {
+                        if(executor == null) {
                             return false;
                         }
 
@@ -125,11 +125,11 @@ public abstract class EventBus {
      */
     public boolean unregisterEvents(Object listener) {
         Queue<MethodExecutor> executors = this.registeredEventListeners.remove(listener);
-        if (executors == null)
+        if(executors == null)
             return false;
 
-        for (EventDoublyLinkedList list : this.registeredExecutors.values()) {
-            for (MethodExecutor executor : executors) {
+        for(EventDoublyLinkedList list : this.registeredExecutors.values()) {
+            for(MethodExecutor executor : executors) {
                 list.remove(executor);
             }
         }

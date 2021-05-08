@@ -18,7 +18,14 @@ package com.clubobsidian.trident.eventbus.javassist;
 import com.clubobsidian.trident.Event;
 import com.clubobsidian.trident.EventBus;
 import com.clubobsidian.trident.MethodExecutor;
-import javassist.*;
+import javassist.CannotCompileException;
+import javassist.ClassClassPath;
+import javassist.ClassPool;
+import javassist.CtClass;
+import javassist.CtMethod;
+import javassist.CtNewMethod;
+import javassist.LoaderClassPath;
+import javassist.NotFoundException;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -54,9 +61,9 @@ public class JavassistEventBus extends EventBus {
     }
 
     private MethodExecutor generateMethodExecutor(Object listener, final Method method, final boolean ignoreCancelled) {
-        if (listener == null || method == null) {
-        	return null;
-		}
+        if(listener == null || method == null) {
+            return null;
+        }
 
         try {
             ClassLoader classLoader = listener.getClass().getClassLoader();
@@ -74,7 +81,7 @@ public class JavassistEventBus extends EventBus {
 
             AtomicInteger collision = map.get(callbackClassName);
             int classNum = -1;
-            if (collision == null) {
+            if(collision == null) {
                 collision = new AtomicInteger(0);
                 classNum = 0;
                 JavassistEventBus.map.put(callbackClassName, collision);
@@ -85,8 +92,8 @@ public class JavassistEventBus extends EventBus {
             callbackClassName += classNum;
 
             CtClass checkMethodExecutorClass = this.pool.getOrNull(callbackClassName);
-            if (checkMethodExecutorClass != null) {
-                if (checkMethodExecutorClass.isFrozen()) {
+            if(checkMethodExecutorClass != null) {
+                if(checkMethodExecutorClass.isFrozen()) {
                     return null;
                 }
             }
@@ -111,7 +118,7 @@ public class JavassistEventBus extends EventBus {
 
             Class<?> cl = methodExecutorClass.toClass(classLoader, JavassistEventBus.class.getProtectionDomain());
             return (MethodExecutor) cl.getDeclaredConstructors()[0].newInstance(listener, method, ignoreCancelled);
-        } catch (NotFoundException | CannotCompileException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | SecurityException | ClassNotFoundException e) {
+        } catch(NotFoundException | CannotCompileException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | SecurityException | ClassNotFoundException e) {
             e.printStackTrace();
         }
         return null;

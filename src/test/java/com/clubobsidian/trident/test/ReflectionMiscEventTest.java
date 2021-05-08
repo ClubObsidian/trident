@@ -39,7 +39,7 @@ public class ReflectionMiscEventTest {
 
             assertTrue("Listeners are not equal for method executor", listener.equals(executor.getListener()));
             assertTrue("Methods are not equal for method executor", testEventMethod.equals(executor.getMethod()));
-        } catch (NoSuchMethodException | SecurityException e) {
+        } catch(NoSuchMethodException | SecurityException e) {
             e.printStackTrace();
         }
     }
@@ -53,7 +53,7 @@ public class ReflectionMiscEventTest {
             executor.execute(new TestWrongArgumentEvent());
 
             assertTrue("Executor was able to execute method on a listener with a different event class", listener.getTest() == false);
-        } catch (NoSuchMethodException | SecurityException e) {
+        } catch(NoSuchMethodException | SecurityException e) {
             e.printStackTrace();
         }
     }
