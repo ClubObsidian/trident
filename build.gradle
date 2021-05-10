@@ -32,7 +32,7 @@ shadowJar {
 
 dependencies {
     testImplementation 'junit:junit:4.12'
-    compile 'org.javassist:javassist:3.27.0-GA'
+    compile 'org.javassist:javassist:3.28.0-GA'
 }
 
 jacocoTestReport {
