@@ -26,13 +26,11 @@ configurations {
 shadowJar {
    baseName = 'trident'
    classifier = null
-   relocate 'javassist', 'com.clubobsidian.trident.javassist'
 }
 
 
 dependencies {
     testImplementation 'junit:junit:4.12'
-    compile 'org.javassist:javassist:3.27.0-GA'
 }
 
 jacocoTestReport {
