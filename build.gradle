@@ -5,9 +5,11 @@ plugins {
     id 'idea'
 }
 
-
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(11))
+    }
+}
 
 group = 'com.clubobsidian'
 version = '4.0.0'
@@ -29,7 +31,7 @@ jacocoTestReport {
 }
 
 task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
+    archiveClassifier.set('javadoc')
     from javadoc.destinationDir
 }
 
