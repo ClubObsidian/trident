@@ -2,106 +2,107 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="210mm"
-   height="297mm"
-   viewBox="0 0 210 297"
-   version="1.1"
-   id="svg206"
-   inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   sodipodi:docname="Trident_logo.svg">
-  <defs
-     id="defs200" />
-  <sodipodi:namedview
-     id="base"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageopacity="0.0"
-     inkscape:pageshadow="2"
-     inkscape:zoom="0.98994949"
-     inkscape:cx="498.33266"
-     inkscape:cy="606.06303"
-     inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
-     showgrid="false"
-     inkscape:window-width="1920"
-     inkscape:window-height="1018"
-     inkscape:window-x="1912"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1" />
-  <metadata
-     id="metadata203">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <g
-     inkscape:label="Layer 1"
-     inkscape:groupmode="layer"
-     id="layer1">
+        xmlns:dc="http://purl.org/dc/elements/1.1/"
+        xmlns:cc="http://creativecommons.org/ns#"
+        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+        xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+        width="210mm"
+        height="297mm"
+        viewBox="0 0 210 297"
+        version="1.1"
+        id="svg206"
+        inkscape:version="0.92.3 (2405546, 2018-03-11)"
+        sodipodi:docname="Trident_logo.svg">
+    <defs
+            id="defs200"/>
+    <sodipodi:namedview
+            id="base"
+            pagecolor="#ffffff"
+            bordercolor="#666666"
+            borderopacity="1.0"
+            inkscape:pageopacity="0.0"
+            inkscape:pageshadow="2"
+            inkscape:zoom="0.98994949"
+            inkscape:cx="498.33266"
+            inkscape:cy="606.06303"
+            inkscape:document-units="mm"
+            inkscape:current-layer="layer1"
+            showgrid="false"
+            inkscape:window-width="1920"
+            inkscape:window-height="1018"
+            inkscape:window-x="1912"
+            inkscape:window-y="-8"
+            inkscape:window-maximized="1"/>
+    <metadata
+            id="metadata203">
+        <rdf:RDF>
+            <cc:Work
+                    rdf:about="">
+                <dc:format>image/svg+xml</dc:format>
+                <dc:type
+                        rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+                <dc:title></dc:title>
+            </cc:Work>
+        </rdf:RDF>
+    </metadata>
     <g
-       id="g106"
-       transform="matrix(0.31666503,0,0,0.37187608,49.479766,217.36762)">
-      <path
-         inkscape:connector-curvature="0"
-         d="m -52.117428,-267.3658 -12.629131,17.10298 c 2.41019,-0.76724 4.861456,-1.02039 7.417714,-0.7666 v 28.3375 c -4.077839,-0.19438 -7.075359,-0.0898 -10.118522,0.50227 -1.217264,-12.94223 -6.08633,-20.1429 -10.955391,-26.91007 2.130215,-0.76977 4.131097,-0.50754 6.200445,-0.21165 -5.355966,-4.56784 -12.55305,-8.08041 -25.33434,-8.30034 11.198842,9.38946 21.317363,22.08845 22.291178,42.13619 l -0.03819,0.71372 c 5.112516,-0.84588 9.312085,-1.94344 17.954669,-1.85041 v 16.91793 h 10.422839 v -16.91793 c 8.642584,-0.093 12.842153,1.00453 17.954669,1.85041 l -0.03819,-0.71372 c 0.97381,-20.04774 11.092332,-32.74673 22.2911782,-42.13619 -12.7812902,0.21996 -19.9783742,3.7325 -25.3343452,8.30034 2.069353,-0.29605 4.070235,-0.55828 6.20045,0.21165 -4.869066,6.76717 -9.738127,13.96784 -10.955391,26.91007 -3.043168,-0.59214 -6.040683,-0.69681 -10.118522,-0.50227 v -28.3375 c 2.556258,-0.25385 5.007524,-6.4e-4 7.41771,0.7666 z"
-         id="path2987"
-         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.01473141" />
-      <rect
-         y="-200.46268"
-         x="-57.395813"
-         height="37.257961"
-         width="10.49001"
-         id="rect102"
-         style="fill:#000000;stroke-width:0.26374468" />
-    </g>
-    <g
-       transform="matrix(0.31666503,0,0,0.37187608,50.439833,216.22744)"
-       id="g106-7"
-       style="fill:#d40000">
-      <path
-         inkscape:connector-curvature="0"
-         d="m -52.117428,-267.3658 -12.629131,17.10298 c 2.41019,-0.76724 4.861456,-1.02039 7.417714,-0.7666 v 28.3375 c -4.077839,-0.19438 -7.075359,-0.0898 -10.118522,0.50227 -1.217264,-12.94223 -6.08633,-20.1429 -10.955391,-26.91007 2.130215,-0.76977 4.131097,-0.50754 6.200445,-0.21165 -5.355966,-4.56784 -12.55305,-8.08041 -25.33434,-8.30034 11.198842,9.38946 21.317363,22.08845 22.291178,42.13619 l -0.03819,0.71372 c 5.112516,-0.84588 9.312085,-1.94344 17.954669,-1.85041 v 16.91793 h 10.422839 v -16.91793 c 8.642584,-0.093 12.842153,1.00453 17.954669,1.85041 l -0.03819,-0.71372 c 0.97381,-20.04774 11.092332,-32.74673 22.2911782,-42.13619 -12.7812902,0.21996 -19.9783742,3.7325 -25.3343452,8.30034 2.069353,-0.29605 4.070235,-0.55828 6.20045,0.21165 -4.869066,6.76717 -9.738127,13.96784 -10.955391,26.91007 -3.043168,-0.59214 -6.040683,-0.69681 -10.118522,-0.50227 v -28.3375 c 2.556258,-0.25385 5.007524,-6.4e-4 7.41771,0.7666 z"
-         id="path2987-7"
-         style="fill:#d40000;fill-opacity:1;stroke:none;stroke-width:1.01473141" />
-      <rect
-         y="-200.46268"
-         x="-57.395813"
-         height="37.257961"
-         width="10.49001"
-         id="rect102-5"
-         style="fill:#d40000;stroke-width:0.26374468" />
-    </g>
-    <flowRoot
-       xml:space="preserve"
-       id="flowRoot129"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       transform="matrix(0.26458333,0,0,0.26458333,281.83707,464.74049)"><flowRegion
+            inkscape:label="Layer 1"
+            inkscape:groupmode="layer"
+            id="layer1">
+        <g
+                id="g106"
+                transform="matrix(0.31666503,0,0,0.37187608,49.479766,217.36762)">
+            <path
+                    inkscape:connector-curvature="0"
+                    d="m -52.117428,-267.3658 -12.629131,17.10298 c 2.41019,-0.76724 4.861456,-1.02039 7.417714,-0.7666 v 28.3375 c -4.077839,-0.19438 -7.075359,-0.0898 -10.118522,0.50227 -1.217264,-12.94223 -6.08633,-20.1429 -10.955391,-26.91007 2.130215,-0.76977 4.131097,-0.50754 6.200445,-0.21165 -5.355966,-4.56784 -12.55305,-8.08041 -25.33434,-8.30034 11.198842,9.38946 21.317363,22.08845 22.291178,42.13619 l -0.03819,0.71372 c 5.112516,-0.84588 9.312085,-1.94344 17.954669,-1.85041 v 16.91793 h 10.422839 v -16.91793 c 8.642584,-0.093 12.842153,1.00453 17.954669,1.85041 l -0.03819,-0.71372 c 0.97381,-20.04774 11.092332,-32.74673 22.2911782,-42.13619 -12.7812902,0.21996 -19.9783742,3.7325 -25.3343452,8.30034 2.069353,-0.29605 4.070235,-0.55828 6.20045,0.21165 -4.869066,6.76717 -9.738127,13.96784 -10.955391,26.91007 -3.043168,-0.59214 -6.040683,-0.69681 -10.118522,-0.50227 v -28.3375 c 2.556258,-0.25385 5.007524,-6.4e-4 7.41771,0.7666 z"
+                    id="path2987"
+                    style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.01473141"/>
+            <rect
+                    y="-200.46268"
+                    x="-57.395813"
+                    height="37.257961"
+                    width="10.49001"
+                    id="rect102"
+                    style="fill:#000000;stroke-width:0.26374468"/>
+        </g>
+        <g
+                transform="matrix(0.31666503,0,0,0.37187608,50.439833,216.22744)"
+                id="g106-7"
+                style="fill:#d40000">
+            <path
+                    inkscape:connector-curvature="0"
+                    d="m -52.117428,-267.3658 -12.629131,17.10298 c 2.41019,-0.76724 4.861456,-1.02039 7.417714,-0.7666 v 28.3375 c -4.077839,-0.19438 -7.075359,-0.0898 -10.118522,0.50227 -1.217264,-12.94223 -6.08633,-20.1429 -10.955391,-26.91007 2.130215,-0.76977 4.131097,-0.50754 6.200445,-0.21165 -5.355966,-4.56784 -12.55305,-8.08041 -25.33434,-8.30034 11.198842,9.38946 21.317363,22.08845 22.291178,42.13619 l -0.03819,0.71372 c 5.112516,-0.84588 9.312085,-1.94344 17.954669,-1.85041 v 16.91793 h 10.422839 v -16.91793 c 8.642584,-0.093 12.842153,1.00453 17.954669,1.85041 l -0.03819,-0.71372 c 0.97381,-20.04774 11.092332,-32.74673 22.2911782,-42.13619 -12.7812902,0.21996 -19.9783742,3.7325 -25.3343452,8.30034 2.069353,-0.29605 4.070235,-0.55828 6.20045,0.21165 -4.869066,6.76717 -9.738127,13.96784 -10.955391,26.91007 -3.043168,-0.59214 -6.040683,-0.69681 -10.118522,-0.50227 v -28.3375 c 2.556258,-0.25385 5.007524,-6.4e-4 7.41771,0.7666 z"
+                    id="path2987-7"
+                    style="fill:#d40000;fill-opacity:1;stroke:none;stroke-width:1.01473141"/>
+            <rect
+                    y="-200.46268"
+                    x="-57.395813"
+                    height="37.257961"
+                    width="10.49001"
+                    id="rect102-5"
+                    style="fill:#d40000;stroke-width:0.26374468"/>
+        </g>
+        <flowRoot
+                xml:space="preserve"
+                id="flowRoot129"
+                style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+                transform="matrix(0.26458333,0,0,0.26458333,281.83707,464.74049)"><flowRegion
          id="flowRegion131"><rect
            id="rect133"
            width="800.04083"
            height="260.61935"
            x="-874.79211"
-           y="-1293.7653" /></flowRegion><flowPara
-         id="flowPara135"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:120px;font-family:monospace;-inkscape-font-specification:monospace">Trident</flowPara></flowRoot>    <flowRoot
-       xml:space="preserve"
-       id="flowRoot129-8"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#666666;fill-opacity:1;stroke:none"
-       transform="matrix(0.26458333,0,0,0.26458333,280.85386,463.45287)"><flowRegion
+           y="-1293.7653" /></flowRegion>
+            <flowPara
+                    id="flowPara135"
+                    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:120px;font-family:monospace;-inkscape-font-specification:monospace">Trident</flowPara></flowRoot>
+        <flowRoot
+                xml:space="preserve"
+                id="flowRoot129-8"
+                style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#666666;fill-opacity:1;stroke:none"
+                transform="matrix(0.26458333,0,0,0.26458333,280.85386,463.45287)"><flowRegion
          id="flowRegion131-6"
          style="fill:#666666"><rect
            id="rect133-3"
@@ -109,7 +110,9 @@
            height="260.61935"
            x="-874.79211"
            y="-1293.7653"
-           style="fill:#666666" /></flowRegion><flowPara
-         id="flowPara135-2"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:120px;font-family:monospace;-inkscape-font-specification:monospace;fill:#666666">Trident</flowPara></flowRoot>  </g>
+           style="fill:#666666" /></flowRegion>
+            <flowPara
+                    id="flowPara135-2"
+                    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:120px;font-family:monospace;-inkscape-font-specification:monospace;fill:#666666">Trident</flowPara></flowRoot>
+    </g>
 </svg>

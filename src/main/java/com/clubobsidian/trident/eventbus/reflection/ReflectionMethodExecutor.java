@@ -34,7 +34,7 @@ public class ReflectionMethodExecutor extends MethodExecutor {
     public void execute(final Event event) {
         try {
             this.getMethod().invoke(this.getListener(), event);
-        } catch(IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+        } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
             e.printStackTrace();
         }
     }

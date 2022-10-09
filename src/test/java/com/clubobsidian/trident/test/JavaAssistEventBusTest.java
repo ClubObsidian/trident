@@ -49,7 +49,8 @@ public class JavaAssistEventBusTest extends EventBusTest {
             generate.setAccessible(true);
             Object methodExecutor = generate.invoke(eventBus, null, null, false);
             assertTrue("Method executor is not null even though a null listener was passed", methodExecutor == null);
-        } catch(NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+        } catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException |
+                 InvocationTargetException e) {
             e.printStackTrace();
         }
     }
@@ -70,7 +71,7 @@ public class JavaAssistEventBusTest extends EventBusTest {
             System.out.println("Set map back to prior state");
 
             assertFalse("Was able to register event with invalid map", registered);
-        } catch(IllegalArgumentException | SecurityException | IllegalAccessException | NoSuchFieldException e) {
+        } catch (IllegalArgumentException | SecurityException | IllegalAccessException | NoSuchFieldException e) {
             e.printStackTrace();
         }
     }

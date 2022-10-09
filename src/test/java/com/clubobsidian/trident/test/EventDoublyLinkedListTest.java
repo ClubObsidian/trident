@@ -90,7 +90,7 @@ public class EventDoublyLinkedListTest {
             assertTrue("Highest could not be inserted", highest != null);
 
             assertTrue("Highest next node is not priority monitor", list.find(executor7).getNext().getData().equals(executor4));
-        } catch(NoSuchMethodException | SecurityException e) {
+        } catch (NoSuchMethodException | SecurityException e) {
             e.printStackTrace();
         }
     }
@@ -107,13 +107,13 @@ public class EventDoublyLinkedListTest {
             list.remove(executor);
             assertTrue("Head is not null after monitor removal", list.getHead() == null);
 
-            for(int i = EventPriority.values()[0].getValue(); i < (EventPriority.values()[EventPriority.values().length - 1]).getValue() + 1; i++) {
+            for (int i = EventPriority.values()[0].getValue(); i < (EventPriority.values()[EventPriority.values().length - 1]).getValue() + 1; i++) {
                 list.insert(new TestMethodExecutor(new TestListener("test" + i), test.getClass().getDeclaredMethod("test", TestEvent.class), false), EventPriority.getByValue(i));
             }
 
             EventNode node = list.getHead();
             int removalCount = 0;
-            while(node != null) {
+            while (node != null) {
                 list.remove(node.getData());
                 removalCount += 1;
                 node = node.getNext();
@@ -122,13 +122,13 @@ public class EventDoublyLinkedListTest {
             assertTrue("Head is not null after traversing after removing all node", list.getHead() == null);
             assertTrue("Removed nodes are not equal to EventPriority length", EventPriority.values().length == removalCount);
 
-            for(int i = (EventPriority.values()[EventPriority.values().length - 1]).getValue(); i > -1; i--) {
+            for (int i = (EventPriority.values()[EventPriority.values().length - 1]).getValue(); i > -1; i--) {
                 list.insert(new TestMethodExecutor(new TestListener("test" + i), test.getClass().getDeclaredMethod("test", TestEvent.class), false), EventPriority.getByValue(i));
             }
 
             node = list.getHead();
             removalCount = 0;
-            while(node != null) {
+            while (node != null) {
                 list.remove(node.getData());
                 removalCount += 1;
                 node = node.getNext();
@@ -140,7 +140,7 @@ public class EventDoublyLinkedListTest {
             Random rand = new Random();
 
             int iterate = 10000;
-            for(int i = 0; i < iterate; i++) {
+            for (int i = 0; i < iterate; i++) {
 
                 rand.setSeed(System.nanoTime());
                 int next = rand.nextInt(6);
@@ -151,7 +151,7 @@ public class EventDoublyLinkedListTest {
 
             node = list.getHead();
             removalCount = 0;
-            while(node != null) {
+            while (node != null) {
                 list.remove(node.getData());
                 removalCount += 1;
                 node = node.getNext();
@@ -159,7 +159,7 @@ public class EventDoublyLinkedListTest {
 
             assertTrue("Head is not null after traversing after removing all nodes after random insert", list.getHead() == null);
             assertTrue("Removed nodes are not equal to iterating length after random insert", iterate == removalCount);
-        } catch(NoSuchMethodException | SecurityException e) {
+        } catch (NoSuchMethodException | SecurityException e) {
             e.printStackTrace();
         }
     }
@@ -171,7 +171,7 @@ public class EventDoublyLinkedListTest {
         try {
             MethodExecutor executor = new TestMethodExecutor(test, test.getClass().getDeclaredMethod("test", TestEvent.class), false);
             assertTrue("Executor was removed", list.remove(executor) == null);
-        } catch(NoSuchMethodException | SecurityException e) {
+        } catch (NoSuchMethodException | SecurityException e) {
             e.printStackTrace();
         }
     }
@@ -195,7 +195,7 @@ public class EventDoublyLinkedListTest {
             assertTrue("EventNode data was not equal", removed.getData().equals(executor2));
 
             assertTrue("EventNode previous node's next node was not null", removed.getPrev().getNext() == null);
-        } catch(NoSuchMethodException | SecurityException e) {
+        } catch (NoSuchMethodException | SecurityException e) {
             e.printStackTrace();
         }
     }
@@ -223,7 +223,7 @@ public class EventDoublyLinkedListTest {
 
             assertTrue("Previous node's next node was not set to removed next node", removed.getPrev().getNext().equals(removed.getNext()));
 
-        } catch(NoSuchMethodException | SecurityException e) {
+        } catch (NoSuchMethodException | SecurityException e) {
             e.printStackTrace();
         }
     }
@@ -235,7 +235,7 @@ public class EventDoublyLinkedListTest {
             TestListener test1 = new TestListener("test1");
             MethodExecutor executor1 = new TestMethodExecutor(test1, test1.getClass().getDeclaredMethod("test", TestEvent.class), false);
             assertTrue("Executor was found while not inserted", list.find(executor1) == null);
-        } catch(NoSuchMethodException | SecurityException e) {
+        } catch (NoSuchMethodException | SecurityException e) {
             e.printStackTrace();
         }
     }
@@ -248,7 +248,8 @@ public class EventDoublyLinkedListTest {
             Method findInsertion = list.getClass().getDeclaredMethod("findInsertionNode", int.class);
             findInsertion.setAccessible(true);
             assertTrue("Null node was not found", findInsertion.invoke(list, 6) == null);
-        } catch(NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+        } catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException |
+                 InvocationTargetException e) {
             e.printStackTrace();
         }
     }
@@ -270,7 +271,7 @@ public class EventDoublyLinkedListTest {
             EventNode inserted = list.insert(executor2, priority);
 
             assertTrue("Previous node's priority is not the same", inserted.getPriority() == priority.getValue());
-        } catch(NoSuchMethodException | SecurityException e) {
+        } catch (NoSuchMethodException | SecurityException e) {
             e.printStackTrace();
         }
     }

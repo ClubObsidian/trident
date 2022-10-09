@@ -30,7 +30,7 @@ public class MethodHandleEventBus extends EventBus {
     protected MethodExecutor createMethodExecutor(Object listener, Method method, boolean ignoreCancelled) {
         try {
             return new MethodHandleExecutor(listener, method, ignoreCancelled);
-        } catch(IllegalAccessException e) {
+        } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
         return null;

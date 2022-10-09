@@ -61,15 +61,15 @@ compile 'com.github.clubobsidian:trident:3.0.0'
 
 ### Eclipse
 
-1.  Git clone the project
-2.  Generate eclipse files with `gradlew eclipse`
-3.  Import project
+1. Git clone the project
+2. Generate eclipse files with `gradlew eclipse`
+3. Import project
 
 ### Intellij
 
-1.  Git clone the project
-2.  Generate intellij files with `gradlew idea`
-3.  Import project
+1. Git clone the project
+2. Generate intellij files with `gradlew idea`
+3. Import project
 
 ### Building
 

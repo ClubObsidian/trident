@@ -1,8 +1,8 @@
 plugins {
-	id 'java'
-	id 'jacoco'
-	id 'eclipse'
-	id 'idea'
+    id 'java'
+    id 'jacoco'
+    id 'eclipse'
+    id 'idea'
 }
 
 
@@ -21,11 +21,11 @@ dependencies {
 }
 
 jacocoTestReport {
-	reports {
-		xml.enabled true
-		html.enabled false
-		html.destination file("${buildDir}/jacocoHtml")
-	}
+    reports {
+        xml.enabled true
+        html.enabled false
+        html.destination file("${buildDir}/jacocoHtml")
+    }
 }
 
 task javadocJar(type: Jar, dependsOn: javadoc) {
@@ -34,5 +34,5 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 }
 
 artifacts {
-	 archives javadocJar
+    archives javadocJar
 }

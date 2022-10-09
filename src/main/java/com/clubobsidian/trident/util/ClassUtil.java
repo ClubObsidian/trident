@@ -39,8 +39,8 @@ public final class ClassUtil {
      */
     public static boolean hasEventSuperClass(Class<?> cl) {
         Class<?> superClass = cl;
-        while((superClass = superClass.getSuperclass()) != null) {
-            if(superClass == Event.class) {
+        while ((superClass = superClass.getSuperclass()) != null) {
+            if (superClass == Event.class) {
                 return true;
             }
         }

@@ -52,30 +52,30 @@ public class EventDoublyLinkedList implements Serializable {
      * @return EventNode created or null if not created
      */
     public synchronized EventNode insert(final MethodExecutor executor, final EventPriority priority) {
-        if(executor == null || priority == null)
+        if (executor == null || priority == null)
             return null;
 
         int priorityValue = priority.getValue();
         EventNode newNode = new EventNode(executor, priorityValue);
-        if(this.head == null) {
+        if (this.head == null) {
             this.head = new EventNode(executor, priorityValue);
             return newNode;
         }
 
         EventNode found = this.findInsertionNode(priorityValue);
-        if(found.equals(this.head) && priorityValue < this.head.getPriority()) {
+        if (found.equals(this.head) && priorityValue < this.head.getPriority()) {
             EventNode oldHead = this.head;
             this.head = newNode;
             this.head.setNext(oldHead);
             oldHead.setPrev(this.head);
             return newNode;
-        } else if(found.getPriority() > priorityValue) {
+        } else if (found.getPriority() > priorityValue) {
             newNode.setNext(found);
             newNode.setPrev(found.getPrev());
             newNode.getPrev().setNext(newNode);
             found.setPrev(newNode);
             return newNode;
-        } else if(found.getNext() == null) {
+        } else if (found.getNext() == null) {
             found.setNext(newNode);
             newNode.setPrev(found);
             return newNode;
@@ -93,17 +93,17 @@ public class EventDoublyLinkedList implements Serializable {
      */
     public synchronized EventNode remove(final MethodExecutor executor) {
         EventNode found = this.find(executor);
-        if(found == null)
+        if (found == null)
             return null;
 
-        if(found.equals(this.head)) {
-            if(this.head.getNext() == null) {
+        if (found.equals(this.head)) {
+            if (this.head.getNext() == null) {
                 this.head = null;
             } else {
                 this.head = this.head.getNext();
             }
             return found;
-        } else if(found.getNext() == null) {
+        } else if (found.getNext() == null) {
             found.getPrev().setNext(null);
             return found;
         } else {
@@ -118,8 +118,8 @@ public class EventDoublyLinkedList implements Serializable {
      */
     public synchronized EventNode find(final MethodExecutor executor) {
         EventNode node = this.head;
-        while(node != null) {
-            if(node.getData().equals(executor))
+        while (node != null) {
+            if (node.getData().equals(executor))
                 return node;
             node = node.getNext();
         }
@@ -131,13 +131,13 @@ public class EventDoublyLinkedList implements Serializable {
      */
     private EventNode findInsertionNode(final int priorityValue) {
         EventNode next = this.head;
-        while(next != null) {
-            if(next.getNext() == null) //if tail
+        while (next != null) {
+            if (next.getNext() == null) //if tail
             {
                 return next;
-            } else if(next.getPriority() == priorityValue && next.getNext().getPriority() > priorityValue) {
+            } else if (next.getPriority() == priorityValue && next.getNext().getPriority() > priorityValue) {
                 return next;
-            } else if(next.getPriority() > priorityValue) {
+            } else if (next.getPriority() > priorityValue) {
                 return next;
             }
             next = next.getNext();
