@@ -1,6 +1,5 @@
 plugins {
 	id 'java'
-	id 'com.github.johnrengelman.shadow' version '5.0.0'
 	id 'jacoco'
 	id 'eclipse'
 	id 'idea'
@@ -15,19 +14,7 @@ version = '4.0.0'
 
 repositories {
     mavenCentral()
-    jcenter()
 }
-
-configurations {
-  shade
-  compile.extendsFrom shade
-}
-
-shadowJar {
-   baseName = 'trident'
-   classifier = null
-}
-
 
 dependencies {
     testImplementation 'junit:junit:4.12'
