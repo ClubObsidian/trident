@@ -30,7 +30,7 @@ public class TestDeadEventListener {
 
     @EventHandler
     public void onDeadEvent(DeadEvent event) {
-        System.out.println("Dead event: " + event.getDeadEvent().getName());
+        System.out.println("Dead event: " + event.getDeadEvent().getEventName());
         this.timesRan += 1;
     }
 

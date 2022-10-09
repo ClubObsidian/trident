@@ -29,7 +29,7 @@ public abstract class Event {
      *
      * @return name of the event
      */
-    public String getName() {
+    public String getEventName() {
         return this.getClass().getSimpleName();
     }
 }

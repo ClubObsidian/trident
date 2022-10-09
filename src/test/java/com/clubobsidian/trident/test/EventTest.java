@@ -27,6 +27,6 @@ public class EventTest {
     @Test
     public void testName() {
         Event event = new TestEvent();
-        assertTrue("Event name is not \"TestEvent\"", event.getName().equals("TestEvent"));
+        assertTrue("Event name is not \"TestEvent\"", event.getEventName().equals("TestEvent"));
     }
 }
