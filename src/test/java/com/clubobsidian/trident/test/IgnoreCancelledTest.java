@@ -17,7 +17,7 @@ package com.clubobsidian.trident.test;
 
 
 import com.clubobsidian.trident.EventBus;
-import com.clubobsidian.trident.eventbus.javassist.JavassistEventBus;
+import com.clubobsidian.trident.eventbus.methodhandle.MethodHandleEventBus;
 import com.clubobsidian.trident.test.impl.TestCancellableEvent;
 import com.clubobsidian.trident.test.impl.TestListenerIgnore;
 import org.junit.Test;
@@ -29,7 +29,7 @@ public class IgnoreCancelledTest {
     @Test
     public void ignoredCancelled() {
         TestListenerIgnore listener = new TestListenerIgnore();
-        EventBus manager = new JavassistEventBus();
+        EventBus manager = new MethodHandleEventBus();
         manager.registerEvents(listener);
         manager.callEvent(new TestCancellableEvent());
 

@@ -17,7 +17,7 @@
 package com.clubobsidian.trident.test;
 
 import com.clubobsidian.trident.EventBus;
-import com.clubobsidian.trident.eventbus.javassist.JavassistEventBus;
+import com.clubobsidian.trident.eventbus.methodhandle.MethodHandleEventBus;
 import com.clubobsidian.trident.test.impl.TestDeadEventListener;
 import com.clubobsidian.trident.test.impl.TestEvent;
 import org.junit.Test;
@@ -29,7 +29,7 @@ public class DeadEventTest {
 
     @Test
     public void testNoListener() {
-        EventBus eventBus = new JavassistEventBus();
+        EventBus eventBus = new MethodHandleEventBus();
         boolean listenedTo = eventBus.callEvent(new TestEvent());
 
         assertFalse("Event was listened to", listenedTo);
@@ -38,7 +38,7 @@ public class DeadEventTest {
 
     @Test
     public void testDeadListener() {
-        EventBus eventBus = new JavassistEventBus();
+        EventBus eventBus = new MethodHandleEventBus();
         TestDeadEventListener deadEventListener = new TestDeadEventListener();
         eventBus.registerEvents(deadEventListener);
 
