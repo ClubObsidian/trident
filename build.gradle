@@ -3,7 +3,11 @@ plugins {
     id 'jacoco'
     id 'eclipse'
     id 'idea'
+    id 'maven-publish'
 }
+
+group = 'com.github.clubobsidian'
+version = '4.0.0'
 
 java {
     toolchain {
@@ -11,11 +15,19 @@ java {
     }
 }
 
-group = 'com.clubobsidian'
-version = '4.0.0'
-
 repositories {
     mavenCentral()
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId project.group
+            artifactId project.name
+            version project.version
+            from components.java
+        }
+    }
 }
 
 dependencies {
